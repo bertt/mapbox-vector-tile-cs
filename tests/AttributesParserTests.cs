@@ -1,4 +1,5 @@
-﻿using System.Reflection;
+﻿using System.Linq;
+using System.Reflection;
 using Mapbox.Vectors.ExtensionMethods;
 using Mapbox.Vectors.mapnik.vector;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -20,12 +21,22 @@ namespace Mapbox.Vectors.tests
             var values = tile.layers[0].values;
             var tagsf1 = tile.layers[0].features[0].tags;
 
-            // act\
+            // act
             var odds = tagsf1.GetOdds();
             var evens = tagsf1.GetEvens();
 
-            // todo create a zip method that  return [[0,0],[1]]
+            for (var i = 0; i < evens.ToList().Count; i++)
+            {
+                var key = keys[(int)evens.ToList()[i]];
+                var val = values[(int)odds.ToList()[i]];
+                
+                // todo check op the following fields in val
+                // 'bool_value', 'double_value', 'float_value', 'int_value','sint_value', 'string_value', 'uint_value'
 
+            }
+
+            // assert
         }
+
     }
 }
