@@ -37,7 +37,6 @@ namespace Mapbox.Vectors
                 result = new Feature(pt);
 
             }
-            // todo add points
             // todo do something with tags
             if (result != null)
             {
