@@ -31,20 +31,41 @@ namespace Mapbox.Vectors
                 public value() { }
 
                 private string _string_value = "";
+
+                public bool HasStringValue { get; set; }
+                public bool HasFloatValue { get; set; }
+                public bool HasDoubleValue { get; set; }
+                public bool HasIntValue { get; set; }
+                public bool HasUIntValue { get; set; }
+                public bool HasSIntValue { get; set; }
+                public bool HasBoolValue { get; set; }
+
                 [global::ProtoBuf.ProtoMember(1, IsRequired = false, Name = @"string_value", DataFormat = global::ProtoBuf.DataFormat.Default)]
                 [global::System.ComponentModel.DefaultValue("")]
                 public string string_value
                 {
                     get { return _string_value; }
-                    set { _string_value = value; }
+                    set
+                    {
+                        HasStringValue = true;
+                        _string_value = value;
+                    }
                 }
                 private float _float_value = default(float);
                 [global::ProtoBuf.ProtoMember(2, IsRequired = false, Name = @"float_value", DataFormat = global::ProtoBuf.DataFormat.FixedSize)]
                 [global::System.ComponentModel.DefaultValue(default(float))]
                 public float float_value
                 {
-                    get { return _float_value; }
-                    set { _float_value = value; }
+                    get
+                    {
+                        return _float_value;
+                    }
+                    set
+                    {
+                        _float_value = value;
+                        HasFloatValue = true;
+
+                    }
                 }
                 private double _double_value = default(double);
                 [global::ProtoBuf.ProtoMember(3, IsRequired = false, Name = @"double_value", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
@@ -52,7 +73,11 @@ namespace Mapbox.Vectors
                 public double double_value
                 {
                     get { return _double_value; }
-                    set { _double_value = value; }
+                    set
+                    {
+                        _double_value = value;
+                        HasDoubleValue = true;
+                    }
                 }
                 private long _int_value = default(long);
                 [global::ProtoBuf.ProtoMember(4, IsRequired = false, Name = @"int_value", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
@@ -60,7 +85,11 @@ namespace Mapbox.Vectors
                 public long int_value
                 {
                     get { return _int_value; }
-                    set { _int_value = value; }
+                    set
+                    {
+                        _int_value = value;
+                        HasIntValue = true;
+                    }
                 }
                 private ulong _uint_value = default(ulong);
                 [global::ProtoBuf.ProtoMember(5, IsRequired = false, Name = @"uint_value", DataFormat = global::ProtoBuf.DataFormat.TwosComplement)]
@@ -68,7 +97,11 @@ namespace Mapbox.Vectors
                 public ulong uint_value
                 {
                     get { return _uint_value; }
-                    set { _uint_value = value; }
+                    set
+                    {
+                        _uint_value = value;
+                        HasUIntValue = true;
+                    }
                 }
                 private long _sint_value = default(long);
                 [global::ProtoBuf.ProtoMember(6, IsRequired = false, Name = @"sint_value", DataFormat = global::ProtoBuf.DataFormat.ZigZag)]
@@ -76,7 +109,11 @@ namespace Mapbox.Vectors
                 public long sint_value
                 {
                     get { return _sint_value; }
-                    set { _sint_value = value; }
+                    set
+                    {
+                        _sint_value = value;
+                        HasSIntValue = true;
+                    }
                 }
                 private bool _bool_value = default(bool);
                 [global::ProtoBuf.ProtoMember(7, IsRequired = false, Name = @"bool_value", DataFormat = global::ProtoBuf.DataFormat.Default)]
@@ -84,7 +121,11 @@ namespace Mapbox.Vectors
                 public bool bool_value
                 {
                     get { return _bool_value; }
-                    set { _bool_value = value; }
+                    set
+                    {
+                        _bool_value = value;
+                        HasBoolValue = true;
+                    }
                 }
                 private global::ProtoBuf.IExtension extensionObject;
                 global::ProtoBuf.IExtension global::ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)

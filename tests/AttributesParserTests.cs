@@ -1,5 +1,8 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Reflection;
+using System.Windows.Markup;
 using Mapbox.Vectors.ExtensionMethods;
 using Mapbox.Vectors.mapnik.vector;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -22,20 +25,14 @@ namespace Mapbox.Vectors.tests
             var tagsf1 = tile.layers[0].features[0].tags;
 
             // act
-            var odds = tagsf1.GetOdds();
-            var evens = tagsf1.GetEvens();
-
-            for (var i = 0; i < evens.ToList().Count; i++)
-            {
-                var key = keys[(int)evens.ToList()[i]];
-                var val = values[(int)odds.ToList()[i]];
-                
-                // todo check op the following fields in val
-                // 'bool_value', 'double_value', 'float_value', 'int_value','sint_value', 'string_value', 'uint_value'
-
-            }
+            var attributes = AttributesParser.Parse(keys, values, tagsf1);
 
             // assert
+            Assert.IsTrue(attributes.Count == 2);
+            Assert.IsTrue(attributes[0].Key=="class");
+            Assert.IsTrue((string)attributes[0].Value == "park");
+            Assert.IsTrue(attributes[1].Key =="osm_id");
+            Assert.IsTrue(attributes[1].Value.ToString() == "3000000224480");
         }
 
     }

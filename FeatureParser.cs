@@ -9,7 +9,7 @@ namespace Mapbox.Vectors
 {
     public class FeatureParser
     {
-        public static Feature Parse(tile.feature feature)
+        public static Feature Parse(tile.feature feature,List<string> keys, List<tile.value> values)
         {
             Feature result = null;
             var geom = GeometryParser.ParseGeometry(feature.geometry, feature.type);
@@ -37,10 +37,16 @@ namespace Mapbox.Vectors
                 result = new Feature(pt);
 
             }
-            // todo do something with tags
+
             if (result != null)
             {
                 result.Id = id.ToString(CultureInfo.InvariantCulture);
+                var attributes = AttributesParser.Parse(keys, values, feature.tags);
+                foreach (var item in attributes)
+                {
+                    result.Properties.Add(item.Key, item.Value);
+                }
+
             }
             return result;
         }

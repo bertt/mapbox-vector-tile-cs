@@ -28,7 +28,7 @@ namespace Mapbox.Vectors.Tests
         }
 
         [TestMethod]
-        public void TestMapBoxVecorTile()
+        public void TestMapBoxVectorTile()
         {
             // arrange
             const string mapboxfile = "Mapbox.Vectors.testdata.14-8801-5371.vector.pbf";
@@ -41,10 +41,11 @@ namespace Mapbox.Vectors.Tests
             // assert
             Assert.IsTrue(layerInfos.Count == 20);
             Assert.IsTrue(layerInfos[0].FeatureCollection.Features.Count == 107);
+            Assert.IsTrue(layerInfos[0].FeatureCollection.Features[0].Properties.Count==2);
         }
 
         [TestMethod]
-        public void TestAnotherMapBoxVecorTile()
+        public void TestAnotherMapBoxVectorTile()
         {
             // arrange
             const string mapboxfile1 = "Mapbox.Vectors.testdata.96.vector.pbf";
@@ -57,6 +58,8 @@ namespace Mapbox.Vectors.Tests
             // assert
             Assert.IsTrue(layerInfos.Count == 11);
             Assert.IsTrue(layerInfos[0].FeatureCollection.Features.Count==256);
+            Assert.IsTrue(layerInfos[0].FeatureCollection.Features[0].Properties.Count == 1);
+
         }
 
 

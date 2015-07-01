@@ -15,7 +15,7 @@ namespace Mapbox.Vectors
                 var fc = new FeatureCollection();
                 foreach (var feature in layer.features)
                 {
-                    var f = FeatureParser.Parse(feature);
+                    var f = FeatureParser.Parse(feature, layer.keys, layer.values);
                     if (f != null)
                     {
                         fc.Features.Add(f);
