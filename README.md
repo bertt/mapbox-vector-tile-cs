@@ -19,3 +19,5 @@ Assert.IsTrue(layerInfos[0].FeatureCollection.Features[0].Geometry.Type == GeoJS
 Assert.IsTrue(layerInfos[0].FeatureCollection.Features[0].Properties.Count==2);
 ```
 
+See also https://github.com/bertt/Mapbox.Vectors/blob/master/tests/TileParserTests.cs for working examples
+
