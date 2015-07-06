@@ -66,6 +66,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <Compile Include="ScreenPixelToLatLon.cs" />
     <Compile Include="tests\AttributesParserTests.cs" />
     <Compile Include="tests\IEnumerableExtensionTests.cs" />
     <Compile Include="tests\TileParserTests.cs" />
@@ -83,6 +84,7 @@
     <None Include="App.config" />
     <EmbeddedResource Include="testdata\bag.pbf" />
     <None Include="packages.config" />
+    <EmbeddedResource Include="testdata\14-8801-5371.vector1.pbf" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">

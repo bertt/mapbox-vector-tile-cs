@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Windows.Markup;
-using Mapbox.Vectors.ExtensionMethods;
+﻿using System.Reflection;
 using Mapbox.Vectors.mapnik.vector;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ProtoBuf;

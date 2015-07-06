@@ -15,7 +15,7 @@ namespace Mapbox.Vectors
             var geom = GeometryParser.ParseGeometry(feature.geometry, feature.type);
             var id = feature.id;
 
-            var positions = geom.Select(p => new GeographicPosition(p.Longitude, p.Latitude)).ToList();
+            var positions = geom.Select(p => new GeographicPosition(p.Latitude, p.Longitude)).ToList();
 
             var coordinates = positions.ToList<IPosition>();
             if (feature.type == tile.GeomType.Polygon)
