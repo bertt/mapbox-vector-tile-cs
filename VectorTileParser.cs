@@ -4,7 +4,7 @@ using Mapbox.Vectors.mapnik.vector;
 
 namespace Mapbox.Vectors
 {
-    public class TileParser
+    public class VectorTileParser
     {
         public static List<LayerInfo> Parse(tile tile)
         {

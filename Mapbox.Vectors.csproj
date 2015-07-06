@@ -73,7 +73,7 @@
     <Compile Include="tests\GeometryParserTests.cs" />
     <Compile Include="tests\ZigZagDecoderTests.cs" />
     <Compile Include="LayerInfo.cs" />
-    <Compile Include="TileParser.cs" />
+    <Compile Include="VectorTileParser.cs" />
     <Compile Include="VectorTile.cs" />
     <Compile Include="ZigZagDecoder.cs" />
   </ItemGroup>

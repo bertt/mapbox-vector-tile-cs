@@ -15,8 +15,6 @@
             [System.Serializable, ProtoBuf.ProtoContract(Name = @"value")]
             public class value : ProtoBuf.IExtensible
             {
-                public value() { }
-
                 private string _string_value = "";
 
                 public bool HasStringValue { get; set; }

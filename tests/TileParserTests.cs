@@ -21,7 +21,7 @@ namespace Mapbox.Vectors.Tests
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(bagfile);
             var tile = Serializer.Deserialize<tile>(pbfStream);
-            var layerInfos = TileParser.Parse(tile);
+            var layerInfos = VectorTileParser.Parse(tile);
 
             // assert
             Assert.IsTrue(layerInfos.Count==1);
@@ -39,7 +39,7 @@ namespace Mapbox.Vectors.Tests
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
             var tile = Serializer.Deserialize<tile>(pbfStream);
-            var layerInfos = TileParser.Parse(tile);
+            var layerInfos = VectorTileParser.Parse(tile);
 
             // assert
             Assert.IsTrue(layerInfos.Count == 20);
@@ -56,7 +56,7 @@ namespace Mapbox.Vectors.Tests
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile1);
             var tile = Serializer.Deserialize<tile>(pbfStream);
-            var layerInfos = TileParser.Parse(tile);
+            var layerInfos = VectorTileParser.Parse(tile);
 
             // assert
             Assert.IsTrue(layerInfos.Count == 11);
@@ -74,9 +74,9 @@ namespace Mapbox.Vectors.Tests
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
             var tile = Serializer.Deserialize<tile>(pbfStream);
-            var layerInfos = TileParser.Parse(tile);
+            var layerInfos = VectorTileParser.Parse(tile);
 
-            // incoming geomtry
+            // incoming geometry
             Assert.IsTrue(tile.layers[17].features[11].geometry[0] == 9);
             Assert.IsTrue(tile.layers[17].features[11].geometry[1] == 7796);
             Assert.IsTrue(tile.layers[17].features[11].geometry[2] == 3462);
@@ -94,7 +94,6 @@ namespace Mapbox.Vectors.Tests
             var p = (GeographicPosition)pnt.Coordinates;
             Assert.IsTrue(p.Longitude == 3898);
             Assert.IsTrue(p.Latitude == 1731);
-            // ACTUAL: 2365, EXPECTED 1731
 
             // Check line geometry from roads
             var road = layerInfos[8].FeatureCollection.Features[656];
@@ -111,8 +110,26 @@ namespace Mapbox.Vectors.Tests
             var thirdPoint = (GeographicPosition)ls.Coordinates[2];
             Assert.IsTrue(thirdPoint.Longitude == 1506);
             Assert.IsTrue(thirdPoint.Latitude == 347);
+
+            // check building geometry
+            var buildings = layerInfos[5].FeatureCollection.Features[0];
+            var poly = ((Polygon)buildings.Geometry).Coordinates[0];
+            Assert.IsTrue(poly.Coordinates.Count == 5);
+            var p1 = (GeographicPosition)poly.Coordinates[0];
+            Assert.IsTrue(p1.Longitude == 2039);
+            Assert.IsTrue(p1.Latitude == -32);
+            var p2 = (GeographicPosition)poly.Coordinates[1];
+            Assert.IsTrue(p2.Longitude == 2035);
+            Assert.IsTrue(p2.Latitude == -31);
+            var p3 = (GeographicPosition)poly.Coordinates[2];
+            Assert.IsTrue(p3.Longitude == 2032);
+            Assert.IsTrue(p3.Latitude == -31);
+            var p4 = (GeographicPosition)poly.Coordinates[3];
+            Assert.IsTrue(p4.Longitude == 2032);
+            Assert.IsTrue(p4.Latitude == -32);
+            var p5 = (GeographicPosition)poly.Coordinates[4];
+            Assert.IsTrue(p5.Longitude == 2039);
+            Assert.IsTrue(p5.Latitude == -32);
         }
-
-
     }
 }
