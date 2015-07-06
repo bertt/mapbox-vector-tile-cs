@@ -1,17 +1,16 @@
-﻿using System;
-using System.Linq;
+﻿using System.Linq;
 using System.Reflection;
 using GeoJSON.Net;
 using GeoJSON.Net.Geometry;
-using Mapbox.Vectors.mapnik.vector;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ProtoBuf;
 
 namespace Mapbox.Vectors.Tests
 {
     [TestClass]
     public class TileParserTests
     {
+        // tests from https://github.com/mapbox/vector-tile-js/blob/master/test/parse.test.js
+
         [TestMethod]
         public void TestBagVecorTile()
         {
@@ -64,7 +63,6 @@ namespace Mapbox.Vectors.Tests
         [TestMethod]
         public void TestMapBoxDecodeTest()
         {
-            // tests from https://github.com/mapbox/vector-tile-js/blob/master/test/parse.test.js
             // arrange
             const string mapboxfile = "Mapbox.Vectors.testdata.14-8801-5371.vector1.pbf";
 
