@@ -2,7 +2,9 @@
 
 Decode a Mapbox vector tile into a collection of GeoJSON FeatureCollection objects.
 
-For each layer there is one GeoJSON FeatureCollection.
+For each layer there is one GeoJSON FeatureCollection. Code is tested using the Mapbox tests from
+
+https://github.com/mapbox/vector-tile-js
 
 # Usage
 
