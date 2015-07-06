@@ -20,8 +20,7 @@ namespace Mapbox.Vectors.Tests
 
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(bagfile);
-            var tile = Serializer.Deserialize<tile>(pbfStream);
-            var layerInfos = VectorTileParser.Parse(tile);
+            var layerInfos = VectorTileParser.Parse(pbfStream);
 
             // assert
             Assert.IsTrue(layerInfos.Count==1);
@@ -38,8 +37,7 @@ namespace Mapbox.Vectors.Tests
 
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
-            var tile = Serializer.Deserialize<tile>(pbfStream);
-            var layerInfos = VectorTileParser.Parse(tile);
+            var layerInfos = VectorTileParser.Parse(pbfStream);
 
             // assert
             Assert.IsTrue(layerInfos.Count == 20);
@@ -55,8 +53,7 @@ namespace Mapbox.Vectors.Tests
 
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile1);
-            var tile = Serializer.Deserialize<tile>(pbfStream);
-            var layerInfos = VectorTileParser.Parse(tile);
+            var layerInfos = VectorTileParser.Parse(pbfStream);
 
             // assert
             Assert.IsTrue(layerInfos.Count == 11);
@@ -73,15 +70,8 @@ namespace Mapbox.Vectors.Tests
 
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
-            var tile = Serializer.Deserialize<tile>(pbfStream);
-            var layerInfos = VectorTileParser.Parse(tile);
+            var layerInfos = VectorTileParser.Parse(pbfStream);
 
-            // incoming geometry
-            Assert.IsTrue(tile.layers[17].features[11].geometry[0] == 9);
-            Assert.IsTrue(tile.layers[17].features[11].geometry[1] == 7796);
-            Assert.IsTrue(tile.layers[17].features[11].geometry[2] == 3462);
-
-            var l17 = String.Join(",", tile.layers[17].features[11].geometry);
             // check park feature
             var park = layerInfos[17].FeatureCollection.Features[11];
             var firstOrDefault = (from prop in park.Properties where prop.Key=="name" select prop.Value).FirstOrDefault();
