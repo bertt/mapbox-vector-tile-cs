@@ -47,8 +47,8 @@ namespace Mapbox.Vectors
 
                         dx = x;
                         dy = y;
-                        var lat = 4096 - y;
-                        coords.Add(new Coordinate { Longitude = x, Latitude = lat });
+                        // var lat = 4096 - y;
+                        coords.Add(new Coordinate { Longitude = x, Latitude = y });
                     }
                 }
             }
