@@ -12,10 +12,10 @@ namespace Mapbox.Vectors.Tests
         // tests from https://github.com/mapbox/vector-tile-js/blob/master/test/parse.test.js
 
         [TestMethod]
-        public void TestBagVecorTile()
+        public void TestBagVectorTile()
         {
             // arrange
-            const string bagfile = "Mapbox.Vectors.testdata.bag.pbf";
+            const string bagfile = "mapbox.vector.tile.tests.testdata.bag.pbf";
 
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(bagfile);
@@ -32,7 +32,7 @@ namespace Mapbox.Vectors.Tests
         public void TestMapBoxVectorTile()
         {
             // arrange
-            const string mapboxfile = "Mapbox.Vectors.testdata.14-8801-5371.vector.pbf";
+            const string mapboxfile = "mapbox.vector.tile.tests.testdata.14-8801-5371.vector.pbf";
 
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
@@ -48,7 +48,7 @@ namespace Mapbox.Vectors.Tests
         public void TestAnotherMapBoxVectorTile()
         {
             // arrange
-            const string mapboxfile1 = "Mapbox.Vectors.testdata.96.vector.pbf";
+            const string mapboxfile1 = "mapbox.vector.tile.tests.testdata.96.vector.pbf";
 
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile1);
@@ -64,7 +64,7 @@ namespace Mapbox.Vectors.Tests
         public void TestMapBoxDecodeTest()
         {
             // arrange
-            const string mapboxfile = "Mapbox.Vectors.testdata.14-8801-5371.vector1.pbf";
+            const string mapboxfile = "mapbox.vector.tile.tests.testdata.14-8801-5371.vector1.pbf";
 
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);

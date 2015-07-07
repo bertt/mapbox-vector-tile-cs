@@ -12,7 +12,7 @@ namespace Mapbox.Vectors.tests
         public void TestAttributeParser()
         {
             // arrange
-            const string mapboxfile = "Mapbox.Vectors.testdata.14-8801-5371.vector.pbf";
+            const string mapboxfile = "mapbox.vector.tile.tests.testdata.14-8801-5371.vector.pbf";
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
             var tile = Serializer.Deserialize<tile>(pbfStream);
             var keys = tile.layers[0].keys;
