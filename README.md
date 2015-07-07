@@ -1,4 +1,4 @@
-# Mapbox.Vectors
+# mapbox-vector-tile-cs 
 
 Decode a Mapbox vector tile into a collection of GeoJSON FeatureCollection objects.
 
