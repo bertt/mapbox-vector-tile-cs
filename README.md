@@ -12,6 +12,7 @@ Dependencies: GeoJSON.NET, JSON.NET, protobuf-net
 `
 PM> Install-Package mapbox-vector-tile
 `
+
 https://www.nuget.org/packages/mapbox-vector-tile
 
 # Usage
