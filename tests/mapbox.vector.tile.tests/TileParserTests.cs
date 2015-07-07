@@ -10,26 +10,45 @@ namespace mapbox.vector.tile.tests
     [TestClass]
     public class TileParserTests
     {
-        // tests from https://github.com/mapbox/vector-tile-js/blob/master/test/parse.test.js
 
         [TestMethod]
         public void TestBagVectorTile()
         {
             // arrange
-            const string bagfile = "mapbox.vector.tile.tests.testdata.bag.pbf";
+            const string bagfile = "mapbox.vector.tile.tests.testdata.bag-17-67317-43082.pbf";
 
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(bagfile);
-            var layerInfos = VectorTileParser.Parse(pbfStream);
+            var layerInfos = VectorTileParser.Parse(pbfStream,67317,43082,17);
 
             // assert
             Assert.IsTrue(layerInfos.Count==1);
-            Assert.IsTrue(layerInfos[0].FeatureCollection.Features.Count == 47);
+            Assert.IsTrue(layerInfos[0].FeatureCollection.Features.Count == 83);
             Assert.IsTrue(layerInfos[0].FeatureCollection.Features[0].Geometry.Type == GeoJSONObjectType.Polygon);
 
         }
 
         [TestMethod]
+        // tests from https://github.com/mapbox/vector-tile-js/blob/master/test/parse.test.js
+        public void TestMapBoxVectorTileWithGeographicPositions()
+        {
+            // arrange
+            const string mapboxfile = "mapbox.vector.tile.tests.testdata.14-8801-5371.vector.pbf";
+
+            // act
+            var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
+            var layerInfos = VectorTileParser.Parse(pbfStream, 8801, 5371, 14);
+
+            // assert
+            var park = layerInfos[17].FeatureCollection.Features[11];
+            var pnt = (Point)park.Geometry;
+            var p = (GeographicPosition)pnt.Coordinates;
+            Assert.IsTrue(Math.Abs(p.Longitude - 13.4022581577301) < 0.01);
+            Assert.IsTrue(Math.Abs(p.Latitude - 52.5439892538062) < 0.01);
+        }
+
+        [TestMethod]
+        // tests from https://github.com/mapbox/vector-tile-js/blob/master/test/parse.test.js
         public void TestMapBoxVectorTile()
         {
             // arrange
@@ -37,39 +56,12 @@ namespace mapbox.vector.tile.tests
 
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
-            var layerInfos = VectorTileParser.Parse(pbfStream);
+            var layerInfos = VectorTileParser.Parse(pbfStream,8801,5371,14,false);
 
-            // assert
+            // check features
             Assert.IsTrue(layerInfos.Count == 20);
             Assert.IsTrue(layerInfos[0].FeatureCollection.Features.Count == 107);
-            Assert.IsTrue(layerInfos[0].FeatureCollection.Features[0].Properties.Count==2);
-        }
-
-        [TestMethod]
-        public void TestAnotherMapBoxVectorTile()
-        {
-            // arrange
-            const string mapboxfile1 = "mapbox.vector.tile.tests.testdata.96.vector.pbf";
-
-            // act
-            var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile1);
-            var layerInfos = VectorTileParser.Parse(pbfStream);
-
-            // assert
-            Assert.IsTrue(layerInfos.Count == 11);
-            Assert.IsTrue(layerInfos[0].FeatureCollection.Features.Count==256);
-            Assert.IsTrue(layerInfos[0].FeatureCollection.Features[0].Properties.Count == 1);
-        }
-
-        [TestMethod]
-        public void TestMapBoxDecodeTest()
-        {
-            // arrange
-            const string mapboxfile = "mapbox.vector.tile.tests.testdata.14-8801-5371.vector1.pbf";
-
-            // act
-            var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
-            var layerInfos = VectorTileParser.Parse(pbfStream);
+            Assert.IsTrue(layerInfos[0].FeatureCollection.Features[0].Properties.Count == 2);
 
             // check park feature
             var park = layerInfos[17].FeatureCollection.Features[11];

@@ -8,13 +8,15 @@ namespace mapbox.vector.tile
 {
     public class FeatureParser
     {
-        public static Feature Parse(Tile.Feature feature,List<string> keys, List<Tile.Value> values)
+        public static Feature Parse(Tile.Feature feature, List<string> keys, List<Tile.Value> values, int x, int y, int z, uint extent, bool convertToGeographicPosition)
         {
             Feature result = null;
             var geom = GeometryParser.ParseGeometry(feature.Geometry, feature.Type);
             var id = feature.Id;
 
-            var positions = geom.Select(p => new GeographicPosition(p.Latitude, p.Longitude)).ToList();
+            var positions= convertToGeographicPosition?
+                geom.Select(p => p.ToGeographicPosition(x,y,z,extent)).ToList():
+                geom.Select(p => new GeographicPosition(p.Latitude, p.Longitude)).ToList();
 
             var coordinates = positions.ToList<IPosition>();
             if (feature.Type == Tile.GeomType.Polygon)

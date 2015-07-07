@@ -53,6 +53,5 @@ namespace mapbox.vector.tile
             }
             return res;
         }
-
     }
 }

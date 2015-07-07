@@ -78,19 +78,8 @@
     <EmbeddedResource Include="testdata\14-8801-5371.vector.pbf" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="testdata\14-8801-5371.vector1.pbf" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="testdata\16.pbf" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="testdata\96.vector.pbf" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="testdata\bag.pbf" />
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
+    <EmbeddedResource Include="testdata\bag-17-67317-43082.pbf" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

@@ -7,18 +7,19 @@ namespace mapbox.vector.tile
 {
     public class VectorTileParser
     {
-        public static List<LayerInfo> Parse(Stream stream)
+        public static List<LayerInfo> Parse(Stream stream, int x, int y, int z,bool convertToGeographicPosition=true)
         {
             var tile = Serializer.Deserialize<Tile>(stream);
 
-            var lis = new List<LayerInfo>();
+            var list = new List<LayerInfo>();
             foreach (var layer in tile.Layers)
             {
+                var extent = layer.Extent;
                 var li = new LayerInfo();
                 var fc = new FeatureCollection();
                 foreach (var feature in layer.Features)
                 {
-                    var f = FeatureParser.Parse(feature, layer.Keys, layer.Values);
+                    var f = FeatureParser.Parse(feature, layer.Keys, layer.Values, x, y, z, extent, convertToGeographicPosition);
                     if (f != null)
                     {
                         fc.Features.Add(f);
@@ -26,9 +27,9 @@ namespace mapbox.vector.tile
                 }
                 li.FeatureCollection = fc;
                 li.Name = layer.Name;
-                lis.Add(li);
+                list.Add(li);
             }
-            return lis;
+            return list;
         }
     }
 }
