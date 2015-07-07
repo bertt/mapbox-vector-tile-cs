@@ -1,5 +1,7 @@
 # mapbox-vector-tile-cs 
 
+[![NuGet Status](http://img.shields.io/nuget/v/mapbox-vector-tile.svg?style=flat)](https://www.nuget.org/packages/mapbox-vector-tile/)
+
 A .NET library for decoding a Mapbox vector tile into a collection of GeoJSON FeatureCollection objects.
 
 For each layer there is one GeoJSON FeatureCollection. Code is tested using the Mapbox tests from
