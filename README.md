@@ -1,10 +1,12 @@
 # mapbox-vector-tile-cs 
 
-Decode a Mapbox vector tile into a collection of GeoJSON FeatureCollection objects.
+A .NET library for decoding a Mapbox vector tile into a collection of GeoJSON FeatureCollection objects.
 
 For each layer there is one GeoJSON FeatureCollection. Code is tested using the Mapbox tests from
 
 https://github.com/mapbox/vector-tile-js
+
+Dependencies: GeoJSON.NET, JSON.NET, protobuf-net
 
 # Usage
 
