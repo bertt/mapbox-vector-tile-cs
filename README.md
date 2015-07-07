@@ -12,7 +12,8 @@ https://github.com/mapbox/vector-tile-js
 const string vtfile = "vectortile.pbf";
 using (var stream = File.OpenRead(vtfile))
 {
-  var layerInfos = VectorTileParser.Parse(stream);
+  // parameters: tileColumn = 67317, tileRow = 43082, tileLevel = 17 
+  var layerInfos = VectorTileParser.Parse(stream,67317,43082,17);
 
   Assert.IsTrue(layerInfos.Count==1);
   Assert.IsTrue(layerInfos[0].FeatureCollection.Features.Count == 47);
