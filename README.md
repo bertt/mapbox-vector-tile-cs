@@ -10,7 +10,7 @@ https://github.com/mapbox/vector-tile-js
 
 ```cs
 const string vtfile = "vectortile.pbf";
-using (Stream stream = File.OpenRead(vtfile))
+using (var stream = File.OpenRead(vtfile))
 {
   var layerInfos = VectorTileParser.Parse(stream);
 
