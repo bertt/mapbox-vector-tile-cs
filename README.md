@@ -10,14 +10,15 @@ https://github.com/mapbox/vector-tile-js
 
 ```cs
 const string vtfile = "vectortile.pbf";
+using (Stream stream = File.OpenRead(vtfile))
+{
+  var layerInfos = VectorTileParser.Parse(stream);
 
-var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(vtfile);
-var layerInfos = TileParser.Parse(pbfStream);
-
-Assert.IsTrue(layerInfos.Count==1);
-Assert.IsTrue(layerInfos[0].FeatureCollection.Features.Count == 47);
-Assert.IsTrue(layerInfos[0].FeatureCollection.Features[0].Geometry.Type == GeoJSONObjectType.Polygon);
-Assert.IsTrue(layerInfos[0].FeatureCollection.Features[0].Properties.Count==2);
+  Assert.IsTrue(layerInfos.Count==1);
+  Assert.IsTrue(layerInfos[0].FeatureCollection.Features.Count == 47);
+  Assert.IsTrue(layerInfos[0].FeatureCollection.Features[0].Geometry.Type == GeoJSONObjectType.Polygon);
+  Assert.IsTrue(layerInfos[0].FeatureCollection.Features[0].Properties.Count==2);
+}
 ```
 
 See also https://github.com/bertt/mapbox-vector-tile-cs/blob/master/tests/TileParserTests.cs for working examples
