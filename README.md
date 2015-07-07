@@ -21,5 +21,5 @@ using (var stream = File.OpenRead(vtfile))
 }
 ```
 
-See also https://github.com/bertt/mapbox-vector-tile-cs/blob/master/tests/TileParserTests.cs for working examples
+See also https://github.com/bertt/mapbox-vector-tile-cs/blob/master/tests/mapbox.vector.tile.tests/TileParserTests.cs for working examples
 
