@@ -1,9 +1,8 @@
 ﻿using System.Reflection;
-using Mapbox.Vectors.mapnik.vector;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ProtoBuf;
 
-namespace Mapbox.Vectors.tests
+namespace mapbox.vector.tile.tests
 {
     [TestClass]
     public class AttributesParserTests
@@ -14,10 +13,10 @@ namespace Mapbox.Vectors.tests
             // arrange
             const string mapboxfile = "mapbox.vector.tile.tests.testdata.14-8801-5371.vector.pbf";
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
-            var tile = Serializer.Deserialize<tile>(pbfStream);
-            var keys = tile.layers[0].keys;
-            var values = tile.layers[0].values;
-            var tagsf1 = tile.layers[0].features[0].tags;
+            var tile = Serializer.Deserialize<Tile>(pbfStream);
+            var keys = tile.Layers[0].Keys;
+            var values = tile.Layers[0].Values;
+            var tagsf1 = tile.Layers[0].Features[0].Tags;
 
             // act
             var attributes = AttributesParser.Parse(keys, values, tagsf1);
@@ -29,6 +28,5 @@ namespace Mapbox.Vectors.tests
             Assert.IsTrue(attributes[1].Key =="osm_id");
             Assert.IsTrue(attributes[1].Value.ToString() == "3000000224480");
         }
-
     }
 }

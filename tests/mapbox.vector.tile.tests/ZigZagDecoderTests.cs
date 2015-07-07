@@ -1,6 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Mapbox.Vectors.Sample.tests
+namespace mapbox.vector.tile.tests
 {
     [TestClass]
     public class ZigZagDecoderTests

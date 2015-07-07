@@ -3,7 +3,7 @@ using System.Linq;
 using Mapbox.Vectors.ExtensionMethods;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Mapbox.Vectors.tests
+namespace mapbox.vector.tile.tests
 {
     [TestClass]
     public class EnumerableExtensionTests

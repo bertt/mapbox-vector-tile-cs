@@ -1,7 +1,6 @@
-﻿
-using GeoJSON.Net.Feature;
+﻿using GeoJSON.Net.Feature;
 
-namespace Mapbox.Vectors
+namespace mapbox.vector.tile
 {
     public class LayerInfo
     {

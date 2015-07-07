@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using Mapbox.Vectors.ExtensionMethods;
-using Mapbox.Vectors.mapnik.vector;
 
-namespace Mapbox.Vectors
+namespace mapbox.vector.tile
 {
     public class AttributesParser
     {
-        public static List<KeyValuePair<String, Object>> Parse(List<string> keys, List<tile.value> values, List<uint> tags)
+        public static List<KeyValuePair<String, Object>> Parse(List<string> keys, List<Tile.Value> values, List<uint> tags)
         {
             var result = new List<KeyValuePair<String, Object>>();
             var odds = tags.GetOdds();
@@ -24,29 +23,29 @@ namespace Mapbox.Vectors
             return result;
         }
 
-        private static object GetAttr(tile.value value)
+        private static object GetAttr(Tile.Value value)
         {
             object res = null;
 
             if (value.HasBoolValue)
             {
-                res = value.bool_value;
+                res = value.BoolValue;
             }
             else if (value.HasDoubleValue)
             {
-                res = value.double_value;
+                res = value.DoubleValue;
             }
             else if (value.HasFloatValue)
             {
-                res = value.float_value;
+                res = value.FloatValue;
             }
             else if (value.HasIntValue)
             {
-                res = value.int_value;
+                res = value.IntValue;
             }
             else if (value.HasStringValue)
             {
-                res = value.string_value;
+                res = value.StringValue;
             }
             else if (value.HasUIntValue)
             {

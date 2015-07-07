@@ -7,8 +7,8 @@
     <ProjectGuid>{E1EA7DC2-6EA3-403A-A2DB-7143C9E5B704}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Mapbox.Vectors</RootNamespace>
-    <AssemblyName>Mapbox.Vectors</AssemblyName>
+    <RootNamespace>mapbox.vector.tile</RootNamespace>
+    <AssemblyName>mapbox.vector.tile</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

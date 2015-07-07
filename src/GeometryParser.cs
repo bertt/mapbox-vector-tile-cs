@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using Mapbox.Vectors.mapnik.vector;
 
-namespace Mapbox.Vectors
+namespace mapbox.vector.tile
 {
     public class GeometryParser
     {
-        // C# port of https://github.com/mapzen/mapbox-vector-tile/blob/master/mapbox_vector_tile/decoder.py
-        public static List<Coordinate> ParseGeometry(List<uint> geom, tile.GeomType geomType)
+        public static List<Coordinate> ParseGeometry(List<uint> geom, Tile.GeomType geomType)
         {
             var i = 0;
             long dx = 0;
@@ -52,7 +50,7 @@ namespace Mapbox.Vectors
                 }
             }
 
-            if (geomType== tile.GeomType.Polygon && coords.Count > 0)
+            if (geomType== Tile.GeomType.Polygon && coords.Count > 0)
             {
                 coords.Add(coords[0]);
             } 

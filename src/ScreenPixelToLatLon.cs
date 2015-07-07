@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace Mapbox.Vectors
+namespace mapbox.vector.tile
 {
     public class ScreenPixelToLatLon
     {

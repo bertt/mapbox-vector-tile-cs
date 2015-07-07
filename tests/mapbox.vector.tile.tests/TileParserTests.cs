@@ -1,10 +1,11 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using System.Reflection;
 using GeoJSON.Net;
 using GeoJSON.Net.Geometry;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
-namespace Mapbox.Vectors.Tests
+namespace mapbox.vector.tile.tests
 {
     [TestClass]
     public class TileParserTests
@@ -80,44 +81,44 @@ namespace Mapbox.Vectors.Tests
             }
             var pnt = (Point)park.Geometry;
             var p = (GeographicPosition)pnt.Coordinates;
-            Assert.IsTrue(p.Longitude == 3898);
-            Assert.IsTrue(p.Latitude == 1731);
+            Assert.IsTrue(Math.Abs(p.Longitude - 3898) < 0.1);
+            Assert.IsTrue(Math.Abs(p.Latitude - 1731) < 0.1);
 
             // Check line geometry from roads
             var road = layerInfos[8].FeatureCollection.Features[656];
             var ls = (LineString) road.Geometry;
             Assert.IsTrue(ls.Coordinates.Count == 3);
             var firstPoint = (GeographicPosition)ls.Coordinates[0];
-            Assert.IsTrue(firstPoint.Longitude==1988);
-            Assert.IsTrue(firstPoint.Latitude == 306);
+            Assert.IsTrue(Math.Abs(firstPoint.Longitude - 1988) < 0.1);
+            Assert.IsTrue(Math.Abs(firstPoint.Latitude - 306) < 0.1);
 
             var secondPoint = (GeographicPosition)ls.Coordinates[1];
-            Assert.IsTrue(secondPoint.Longitude == 1808);
-            Assert.IsTrue(secondPoint.Latitude == 321);
+            Assert.IsTrue(Math.Abs(secondPoint.Longitude - 1808) < 0.1);
+            Assert.IsTrue(Math.Abs(secondPoint.Latitude - 321) < 0.1);
 
             var thirdPoint = (GeographicPosition)ls.Coordinates[2];
-            Assert.IsTrue(thirdPoint.Longitude == 1506);
-            Assert.IsTrue(thirdPoint.Latitude == 347);
+            Assert.IsTrue(Math.Abs(thirdPoint.Longitude - 1506) < 0.1);
+            Assert.IsTrue(Math.Abs(thirdPoint.Latitude - 347) < 0.1);
 
             // check building geometry
             var buildings = layerInfos[5].FeatureCollection.Features[0];
             var poly = ((Polygon)buildings.Geometry).Coordinates[0];
             Assert.IsTrue(poly.Coordinates.Count == 5);
             var p1 = (GeographicPosition)poly.Coordinates[0];
-            Assert.IsTrue(p1.Longitude == 2039);
-            Assert.IsTrue(p1.Latitude == -32);
+            Assert.IsTrue(Math.Abs(p1.Longitude - 2039) < 0.1);
+            Assert.IsTrue(Math.Abs(p1.Latitude - (-32)) < 0.1);
             var p2 = (GeographicPosition)poly.Coordinates[1];
-            Assert.IsTrue(p2.Longitude == 2035);
-            Assert.IsTrue(p2.Latitude == -31);
+            Assert.IsTrue(Math.Abs(p2.Longitude - 2035) < 0.1);
+            Assert.IsTrue(Math.Abs(p2.Latitude - (-31)) < 0.1);
             var p3 = (GeographicPosition)poly.Coordinates[2];
-            Assert.IsTrue(p3.Longitude == 2032);
-            Assert.IsTrue(p3.Latitude == -31);
+            Assert.IsTrue(Math.Abs(p3.Longitude - 2032) < 0.1);
+            Assert.IsTrue(Math.Abs(p3.Latitude - (-31)) < 0.1);
             var p4 = (GeographicPosition)poly.Coordinates[3];
-            Assert.IsTrue(p4.Longitude == 2032);
-            Assert.IsTrue(p4.Latitude == -32);
+            Assert.IsTrue(Math.Abs(p4.Longitude - 2032) < 0.1);
+            Assert.IsTrue(Math.Abs(p4.Latitude - (-32)) < 0.1);
             var p5 = (GeographicPosition)poly.Coordinates[4];
-            Assert.IsTrue(p5.Longitude == 2039);
-            Assert.IsTrue(p5.Latitude == -32);
+            Assert.IsTrue(Math.Abs(p5.Longitude - 2039) < 0.1);
+            Assert.IsTrue(Math.Abs(p5.Latitude - (-32)) < 0.1);
         }
     }
 }
