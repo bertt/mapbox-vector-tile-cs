@@ -8,6 +8,12 @@ https://github.com/mapbox/vector-tile-js
 
 Dependencies: GeoJSON.NET, JSON.NET, protobuf-net
 
+###Get it from NuGet 
+`
+PM> Install-Package mapbox-vector-tile
+`
+https://www.nuget.org/packages/mapbox-vector-tile
+
 # Usage
 
 ```cs
