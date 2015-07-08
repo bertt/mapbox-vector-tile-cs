@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Mapbox.Vectors.ExtensionMethods;
+using mapbox.vector.tile.ExtensionMethods;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace mapbox.vector.tile.tests
@@ -15,11 +15,11 @@ namespace mapbox.vector.tile.tests
             var sequence = new List<int> { 0, 1, 2, 3 };
 
             // act
-            var evens = sequence.GetEvens();
+            var evens = sequence.GetEvens().ToList();
 
             // assert
-            Assert.IsTrue(evens.ToList()[0]==0);
-            Assert.IsTrue(evens.ToList()[1]==2);
+            Assert.IsTrue(evens[0]==0);
+            Assert.IsTrue(evens[1]==2);
         }
 
         [TestMethod]
@@ -29,11 +29,11 @@ namespace mapbox.vector.tile.tests
             var sequence = new List<int> { 0, 1, 2, 3 };
 
             // act
-            var evens = sequence.GetOdds();
+            var evens = sequence.GetOdds().ToList();
 
             // assert
-            Assert.IsTrue(evens.ToList()[0] == 1);
-            Assert.IsTrue(evens.ToList()[1] == 3);
+            Assert.IsTrue(evens[0] == 1);
+            Assert.IsTrue(evens[1] == 3);
         }
     }
 }

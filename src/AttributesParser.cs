@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Mapbox.Vectors.ExtensionMethods;
+using mapbox.vector.tile.ExtensionMethods;
 
 namespace mapbox.vector.tile
 {
@@ -10,13 +10,13 @@ namespace mapbox.vector.tile
         public static List<KeyValuePair<String, Object>> Parse(List<string> keys, List<Tile.Value> values, List<uint> tags)
         {
             var result = new List<KeyValuePair<String, Object>>();
-            var odds = tags.GetOdds();
-            var evens = tags.GetEvens();
+            var odds = tags.GetOdds().ToList();
+            var evens = tags.GetEvens().ToList();
 
-            for (var i = 0; i < evens.ToList().Count; i++)
+            for (var i = 0; i < evens.Count; i++)
             {
-                var key = keys[(int)evens.ToList()[i]];
-                var val = values[(int)odds.ToList()[i]];
+                var key = keys[(int)evens[i]];
+                var val = values[(int)odds[i]];
                 var valObject = GetAttr(val);
                 result.Add(new KeyValuePair<string, object>(key, valObject));
             }

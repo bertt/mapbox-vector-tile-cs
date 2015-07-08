@@ -10,7 +10,6 @@ namespace mapbox.vector.tile.tests
     [TestClass]
     public class TileParserTests
     {
-
         [TestMethod]
         public void TestBagVectorTile()
         {
@@ -25,7 +24,6 @@ namespace mapbox.vector.tile.tests
             Assert.IsTrue(layerInfos.Count==1);
             Assert.IsTrue(layerInfos[0].FeatureCollection.Features.Count == 83);
             Assert.IsTrue(layerInfos[0].FeatureCollection.Features[0].Geometry.Type == GeoJSONObjectType.Polygon);
-
         }
 
         [TestMethod]
@@ -43,8 +41,8 @@ namespace mapbox.vector.tile.tests
             var park = layerInfos[17].FeatureCollection.Features[11];
             var pnt = (Point)park.Geometry;
             var p = (GeographicPosition)pnt.Coordinates;
-            Assert.IsTrue(Math.Abs(p.Longitude - 13.4022581577301) < 0.01);
-            Assert.IsTrue(Math.Abs(p.Latitude - 52.5439892538062) < 0.01);
+            Assert.IsTrue(Math.Abs(p.Longitude - 13.40225) < 0.0001);
+            Assert.IsTrue(Math.Abs(p.Latitude - 52.54398) < 0.0001);
         }
 
         [TestMethod]

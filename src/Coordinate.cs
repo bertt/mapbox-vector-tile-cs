@@ -8,7 +8,6 @@ namespace mapbox.vector.tile
         public long Longitude { get; set; }
         public long Latitude { get; set; }
 
-
         public GeographicPosition ToGeographicPosition(int x, int y, int z, uint extent)
         {
             var size = extent*Math.Pow(2, z);
