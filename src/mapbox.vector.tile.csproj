@@ -67,7 +67,7 @@
     <Compile Include="LayerInfo.cs" />
     <Compile Include="VectorTileParser.cs" />
     <Compile Include="VectorTile.cs" />
-    <Compile Include="ZigZagDecoder.cs" />
+    <Compile Include="ZigZag.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

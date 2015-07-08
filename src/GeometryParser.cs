@@ -38,8 +38,8 @@ namespace mapbox.vector.tile
                         var yin = geom[i];
                         i = i + 1;
 
-                        var x = ZigZagDecoder.ZigZagDecode(xin);
-                        var y = ZigZagDecoder.ZigZagDecode(yin);
+                        var x = ZigZag.Decode(xin);
+                        var y = ZigZag.Decode(yin);
                         x = x + dx;
                         y = y + dy;
 
