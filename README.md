@@ -17,6 +17,8 @@ PM> Install-Package mapbox-vector-tile
 
 https://www.nuget.org/packages/mapbox-vector-tile
 
+NuGet package contains PCL: Profile 158 (.NET 4.5, Windows 8.0, Windows Phone Silverlight 8.0, Silverlight 5)
+
 # Usage
 
 ```cs
