@@ -1,6 +1,6 @@
 ﻿namespace mapbox.vector.tile
 {
-    [System.Serializable, ProtoBuf.ProtoContract(Name = @"tile")]
+    [ProtoBuf.ProtoContract(Name = @"tile")]
     public class Tile : ProtoBuf.IExtensible
     {
         private readonly System.Collections.Generic.List<Layer> _layers = new System.Collections.Generic.List<Layer>();
@@ -10,7 +10,7 @@
             get { return _layers; }
         }
 
-        [System.Serializable, ProtoBuf.ProtoContract(Name = @"value")]
+        [ProtoBuf.ProtoContract(Name = @"value")]
         public class Value : ProtoBuf.IExtensible
         {
             private string _stringValue = "";
@@ -115,7 +115,7 @@
             { return ProtoBuf.Extensible.GetExtensionObject(ref _extensionObject, createIfMissing); }
         }
 
-        [System.Serializable, ProtoBuf.ProtoContract(Name = @"feature")]
+        [ProtoBuf.ProtoContract(Name = @"feature")]
         public class Feature : ProtoBuf.IExtensible
         {
             private ulong _id = default(ulong);
@@ -153,7 +153,7 @@
             { return ProtoBuf.Extensible.GetExtensionObject(ref _extensionObject, createIfMissing); }
         }
 
-        [System.Serializable, ProtoBuf.ProtoContract(Name = @"layer")]
+        [ProtoBuf.ProtoContract(Name = @"layer")]
         public class Layer : ProtoBuf.IExtensible
         {
             private uint _version;
