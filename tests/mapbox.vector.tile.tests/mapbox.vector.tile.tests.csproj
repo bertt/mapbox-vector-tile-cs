@@ -69,17 +69,17 @@
     <Compile Include="ZigZagTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\mapbox.vector.tile.csproj">
-      <Project>{e1ea7dc2-6ea3-403a-a2db-7143c9e5b704}</Project>
-      <Name>mapbox.vector.tile</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="testdata\14-8801-5371.vector.pbf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
     <EmbeddedResource Include="testdata\bag-17-67317-43082.pbf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\mapbox.vector.tile.csproj">
+      <Project>{e1ea7dc2-6ea3-403a-a2db-7143c9e5b704}</Project>
+      <Name>mapbox.vector.tile</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
