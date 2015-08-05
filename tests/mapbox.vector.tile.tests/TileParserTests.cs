@@ -27,6 +27,21 @@ namespace mapbox.vector.tile.tests
         }
 
         [TestMethod]
+        public void TestMapzenTile()
+        {
+            // arrange
+            const string mapzenfile = "mapbox.vector.tile.tests.testdata.mapzen000.mvt";
+
+            // act
+            var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapzenfile);
+            var layerInfos = VectorTileParser.Parse(pbfStream, 0, 0, 0);
+
+            // assert
+            Assert.IsTrue(layerInfos.Count == 10);
+        }
+
+
+        [TestMethod]
         // tests from https://github.com/mapbox/vector-tile-js/blob/master/test/parse.test.js
         public void TestMapBoxVectorTileWithGeographicPositions()
         {

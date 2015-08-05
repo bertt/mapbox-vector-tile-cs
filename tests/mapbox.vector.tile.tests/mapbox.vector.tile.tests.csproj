@@ -74,6 +74,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <EmbeddedResource Include="testdata\bag-17-67317-43082.pbf" />
+    <EmbeddedResource Include="testdata\mapzen000.mvt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\mapbox.vector.tile.csproj">
