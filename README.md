@@ -37,3 +37,7 @@ using (var stream = File.OpenRead(vtfile))
 
 See also https://github.com/bertt/mapbox-vector-tile-cs/blob/master/tests/mapbox.vector.tile.tests/TileParserTests.cs for working examples
 
+# Projects that use mapbox-vector-tile-cs
+
+* BruTile See Mapzen vector tile layer demo in https://github.com/BruTile/BruTile/tree/master/Samples/BruTile.Demo 
+
