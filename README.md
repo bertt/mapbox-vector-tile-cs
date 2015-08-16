@@ -40,5 +40,5 @@ See also https://github.com/bertt/mapbox-vector-tile-cs/blob/master/tests/mapbox
 # Projects that use mapbox-vector-tile-cs
 
 * BruTile Mapzen vector tile layer demo in https://github.com/BruTile/BruTile/tree/master/Samples/BruTile.Demo
-* Mapbox vectortile uploader. Upload vector tile and display on Esri 3D Javascript map http://mapboxvectortileuploaderthingymajig.azurewebsites.net/
+* Mapbox vector tile uploader. Upload vector tile and display on Esri 3D Javascript map http://mapboxvectortileuploaderthingymajig.azurewebsites.net/
 
