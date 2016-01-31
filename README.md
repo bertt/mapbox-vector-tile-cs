@@ -37,6 +37,10 @@ using (var stream = File.OpenRead(vtfile))
 
 See also https://github.com/bertt/mapbox-vector-tile-cs/blob/master/tests/mapbox.vector.tile.tests/TileParserTests.cs for working examples
 
+Tip: If you use this library with vector tiles loading from a webserver, you could run into the following exception: 
+'ProtoBuf.ProtoException: Invalid wire-type; this usually means you have over-written a file without truncating or setting the length'
+Probably you need to check the GZip compression, see also TileParserTests.cs for an example.
+
 # Projects that use mapbox-vector-tile-cs
 
 * BruTile Mapzen vector tile layer demo in https://github.com/BruTile/BruTile/tree/master/Samples/BruTile.Demo
