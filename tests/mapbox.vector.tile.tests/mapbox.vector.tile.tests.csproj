@@ -63,6 +63,9 @@
   <ItemGroup>
     <Compile Include="AttributesParserTests.cs" />
     <Compile Include="GeometryParserTests.cs" />
+    <Compile Include="GZipWebClient.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="IEnumerableExtensionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TileParserTests.cs" />

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using GeoJSON.Net;
@@ -25,6 +26,30 @@ namespace mapbox.vector.tile.tests
             Assert.IsTrue(layerInfos[0].FeatureCollection.Features.Count == 83);
             Assert.IsTrue(layerInfos[0].FeatureCollection.Features[0].Geometry.Type == GeoJSONObjectType.Polygon);
         }
+
+        [TestMethod]
+        public void TestMapzenTileFromUrl()
+        {
+            // arrange
+            var url = "http://vector.mapzen.com/osm/all/0/0/0.mvt";
+
+            // Note: Use GzipWebClient with automatic decompression 
+            // instead of regular WebClient otherwise we get exception 
+            // 'ProtoBuf.ProtoException: Invalid wire-type; this usually means you have over-written a file without truncating or setting the length'
+            var webCLient = new GZipWebClient();
+            var bytes = webCLient.DownloadData(url);
+            if (bytes != null)
+            {
+                var stream = new MemoryStream(bytes);
+
+                // act
+                var layerInfos = VectorTileParser.Parse(stream, 0, 0, 0);
+
+                // assert
+                Assert.IsTrue(layerInfos.Count > 0);
+            }
+        }
+
 
         [TestMethod]
         public void TestMapzenTile()
