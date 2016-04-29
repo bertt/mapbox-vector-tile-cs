@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using mapbox.vector.tile.ExtensionMethods;
 
@@ -7,9 +6,9 @@ namespace mapbox.vector.tile
 {
     public class AttributesParser
     {
-        public static List<KeyValuePair<String, Object>> Parse(List<string> keys, List<Tile.Value> values, List<uint> tags)
+        public static List<KeyValuePair<string, object>> Parse(List<string> keys, List<Tile.Value> values, List<uint> tags)
         {
-            var result = new List<KeyValuePair<String, Object>>();
+            var result = new List<KeyValuePair<string, object>>();
             var odds = tags.GetOdds().ToList();
             var evens = tags.GetEvens().ToList();
 
