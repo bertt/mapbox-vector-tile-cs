@@ -1,14 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using mapbox.vector.tile.ExtensionMethods;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace mapbox.vector.tile.tests
 {
-    [TestClass]
     public class EnumerableExtensionTests
     {
-        [TestMethod]
+        [Test]
         public void TestEvensMethod()
         {
             // arrange
@@ -22,7 +21,7 @@ namespace mapbox.vector.tile.tests
             Assert.IsTrue(evens[1]==2);
         }
 
-        [TestMethod]
+        [Test]
         public void TestOddsMethod()
         {
             // arrange

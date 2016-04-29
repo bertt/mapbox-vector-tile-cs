@@ -1,13 +1,12 @@
 ﻿using System.Reflection;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 using ProtoBuf;
 
 namespace mapbox.vector.tile.tests
 {
-    [TestClass]
     public class AttributesParserTests
     {
-        [TestMethod]
+        [Test]
         public void TestAttributeParser()
         {
             // arrange

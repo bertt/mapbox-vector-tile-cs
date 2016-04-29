@@ -4,14 +4,13 @@ using System.Linq;
 using System.Reflection;
 using GeoJSON.Net;
 using GeoJSON.Net.Geometry;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace mapbox.vector.tile.tests
 {
-    [TestClass]
     public class TileParserTests
     {
-        [TestMethod]
+        [Test]
         public void TestBagVectorTile()
         {
             // arrange
@@ -27,7 +26,7 @@ namespace mapbox.vector.tile.tests
             Assert.IsTrue(layerInfos[0].FeatureCollection.Features[0].Geometry.Type == GeoJSONObjectType.Polygon);
         }
 
-        [TestMethod]
+        [Test]
         public void TestMapzenTileFromUrl()
         {
             // arrange
@@ -51,7 +50,7 @@ namespace mapbox.vector.tile.tests
         }
 
 
-        [TestMethod]
+        [Test]
         public void TestMapzenTile()
         {
             // arrange
@@ -66,7 +65,7 @@ namespace mapbox.vector.tile.tests
         }
 
 
-        [TestMethod]
+        [Test]
         // tests from https://github.com/mapbox/vector-tile-js/blob/master/test/parse.test.js
         public void TestMapBoxVectorTileWithGeographicPositions()
         {
@@ -85,7 +84,7 @@ namespace mapbox.vector.tile.tests
             Assert.IsTrue(Math.Abs(p.Latitude - 52.54398) < 0.0001);
         }
 
-        [TestMethod]
+        [Test]
         // tests from https://github.com/mapbox/vector-tile-js/blob/master/test/parse.test.js
         public void TestMapBoxVectorTile()
         {

@@ -1,13 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using NUnit.Framework;
 
 namespace mapbox.vector.tile.tests
 {
-    [TestClass]
     public class GeometryParserTests
     {
-        [TestMethod]
+        [Test]
         public void AnotherGeometryParserTest2()
         {
             var input = new List<uint> {9, 7796, 3462};

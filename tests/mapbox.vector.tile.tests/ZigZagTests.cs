@@ -1,11 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿
+using NUnit.Framework;
 
 namespace mapbox.vector.tile.tests
 {
-    [TestClass]
     public class ZigZagTests
     {
-        [TestMethod]
+        [Test]
         public void TestZigZagDecode()
         {
             // arrange
@@ -18,7 +18,7 @@ namespace mapbox.vector.tile.tests
             Assert.IsTrue(res == -1);
         }
 
-        [TestMethod]
+        [Test]
         public void AnotherTestZigZagDecode()
         {
             // arrange
@@ -31,7 +31,7 @@ namespace mapbox.vector.tile.tests
             Assert.IsTrue(res == -2 );
         }
 
-        [TestMethod]
+        [Test]
         public void TestZigZagEncode()
         {
             // arrange
