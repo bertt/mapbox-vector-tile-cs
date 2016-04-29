@@ -6,7 +6,7 @@ using GeoJSON.Net.Geometry;
 
 namespace mapbox.vector.tile
 {
-    public class FeatureParser
+    public static class FeatureParser
     {
         public static Feature Parse(Tile.Feature feature, List<string> keys, List<Tile.Value> values, int x, int y, int z, uint extent, bool convertToGeographicPosition)
         {

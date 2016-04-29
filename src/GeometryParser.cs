@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace mapbox.vector.tile
 {
-    public class GeometryParser
+    public static class GeometryParser
     {
         public static List<Coordinate> ParseGeometry(List<uint> geom, Tile.GeomType geomType)
         {

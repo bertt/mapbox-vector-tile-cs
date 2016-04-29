@@ -4,7 +4,7 @@ using mapbox.vector.tile.ExtensionMethods;
 
 namespace mapbox.vector.tile
 {
-    public class AttributesParser
+    public static class AttributesParser
     {
         public static List<KeyValuePair<string, object>> Parse(List<string> keys, List<Tile.Value> values, List<uint> tags)
         {
@@ -22,7 +22,7 @@ namespace mapbox.vector.tile
             return result;
         }
 
-        private static object GetAttr(Tile.Value value)
+        static object GetAttr(Tile.Value value)
         {
             object res = null;
 

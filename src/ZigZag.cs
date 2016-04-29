@@ -1,6 +1,6 @@
 ﻿namespace mapbox.vector.tile
 {
-    public class ZigZag
+    public static class ZigZag
     {
         public static long Decode(long n)
         {

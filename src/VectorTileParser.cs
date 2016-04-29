@@ -5,14 +5,14 @@ using ProtoBuf;
 
 namespace mapbox.vector.tile
 {
-    public class VectorTileParser
+    public static class VectorTileParser
     {
         public static List<LayerInfo> Parse(Stream stream, int x, int y, int z,bool convertToGeographicPosition=true)
         {
-            var tile = Serializer.Deserialize<Tile>(stream);
+            var tile1 = Serializer.Deserialize<Tile>(stream);
 
             var list = new List<LayerInfo>();
-            foreach (var layer in tile.Layers)
+            foreach (var layer in tile1.Layers)
             {
                 var extent = layer.Extent;
                 var li = new LayerInfo();
