@@ -2,6 +2,7 @@
 
 namespace mapbox.vector.tile
 {
+	/** deprecated **/
     public class LayerInfo
     {
         public FeatureCollection FeatureCollection { get; set; }

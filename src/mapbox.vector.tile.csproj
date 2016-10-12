@@ -66,6 +66,8 @@
     <Compile Include="VectorTileParser.cs" />
     <Compile Include="VectorTile.cs" />
     <Compile Include="ZigZag.cs" />
+    <Compile Include="VectorTileFeature.cs" />
+    <Compile Include="VectorTileLayer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
