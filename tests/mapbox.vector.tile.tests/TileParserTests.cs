@@ -11,6 +11,21 @@ namespace mapbox.vector.tile.tests
     public class TileParserTests
     {
         [Test]
+        // test for issue 3 https://github.com/bertt/mapbox-vector-tile-cs/issues/3
+        // tile: https://b.tiles.mapbox.com/v4/mapbox.mapbox-terrain-v2,mapbox.mapbox-streets-v7/13/4260/2911.vector.pbf
+        public void TestIssue3MapBoxVectorTile()
+        {
+            // arrange
+            const string mapboxissue3file = "mapbox.vector.tile.tests.testdata.issue3_2911.vector.pbf";
+
+            // act
+            var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxissue3file);
+            var layerInfos = VectorTileParser.Parse(pbfStream, 4260, 2911, 13, false);
+			Assert.IsTrue(layerInfos[0].Version == 2);
+			Assert.IsTrue(layerInfos[7].Name=="road");
+		}
+
+        [Test]
         public void TestBagVectorTile()
         {
             // arrange

@@ -158,7 +158,7 @@
         public class Layer : ProtoBuf.IExtensible
         {
             uint _version;
-            [ProtoBuf.ProtoMember(15, IsRequired = true, Name = @"version", DataFormat = ProtoBuf.DataFormat.TwosComplement)]
+            [ProtoBuf.ProtoMember(15, IsRequired = true, Name = @"version", DataFormat = ProtoBuf.DataFormat.Default)]
             public uint Version
             {
                 get { return _version; }

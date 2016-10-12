@@ -60,6 +60,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="testdata\14-8801-5371.vector.pbf" />
+    <EmbeddedResource Include="testdata\issue3_2911.vector.pbf" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
