@@ -7,5 +7,6 @@ namespace mapbox.vector.tile
         public FeatureCollection FeatureCollection { get; set; }
         public string Name { get; set; }
 		public uint Version { get; set; }
+		public uint Extent { get; set; }
     }
 }

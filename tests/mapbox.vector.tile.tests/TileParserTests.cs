@@ -21,8 +21,10 @@ namespace mapbox.vector.tile.tests
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxissue3file);
             var layerInfos = VectorTileParser.Parse(pbfStream, 4260, 2911, 13, false);
+			Assert.IsTrue(layerInfos[7].FeatureCollection.Features.Count == 225);
 			Assert.IsTrue(layerInfos[0].Version == 2);
 			Assert.IsTrue(layerInfos[7].Name=="road");
+			Assert.IsTrue(layerInfos[7].Extent == 4096);
 		}
 
         [Test]

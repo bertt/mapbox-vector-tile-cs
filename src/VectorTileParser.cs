@@ -28,6 +28,7 @@ namespace mapbox.vector.tile
                 li.FeatureCollection = fc;
                 li.Name = layer.Name;
 				li.Version = layer.Version;
+				li.Extent = layer.Extent;
                 list.Add(li);
             }
             return list;
