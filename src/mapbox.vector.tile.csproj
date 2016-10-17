@@ -68,6 +68,8 @@
     <Compile Include="ZigZag.cs" />
     <Compile Include="VectorTileFeature.cs" />
     <Compile Include="VectorTileLayer.cs" />
+    <Compile Include="ExtensionMethods\VectorTileFeatureExtensions.cs" />
+    <Compile Include="ExtensionMethods\VectorTileLayerExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

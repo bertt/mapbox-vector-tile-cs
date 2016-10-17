@@ -8,6 +8,8 @@ namespace mapbox.vector.tile
 {
     public static class FeatureParser
     {
+		// todo: remove geojson.net dependency, return VectorTileFeature
+		// todo: move GeoJSON.NET code to extension methods
         public static Feature Parse(Tile.Feature feature, List<string> keys, List<Tile.Value> values, int x, int y, int z, uint extent, bool convertToGeographicPosition)
         {
             Feature result = null;

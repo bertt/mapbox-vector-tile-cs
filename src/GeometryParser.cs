@@ -5,7 +5,8 @@ namespace mapbox.vector.tile
 {
     public static class GeometryParser
     {
-        public static List<Coordinate> ParseGeometry(List<uint> geom, Tile.GeomType geomType)
+		// todo: return List<List<Coordinate>>
+		public static List<Coordinate> ParseGeometry(List<uint> geom, Tile.GeomType geomType)
         {
             var i = 0;
             long dx = 0;
