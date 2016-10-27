@@ -8,8 +8,36 @@ namespace mapbox.vector.tile
 {
     public static class FeatureParser
     {
-		// todo: remove geojson.net dependency, return VectorTileFeature
-		// todo: move GeoJSON.NET code to extension methods
+
+        public static VectorTileFeature ParseNew(Tile.Feature feature, List<string> keys, List<Tile.Value> values,uint extent)
+        {
+            VectorTileFeature result = new VectorTileFeature(); 
+            var id = feature.Id;
+
+            if (id == 241452814 && feature.Type == Tile.GeomType.LineString)
+            {
+                var i = 0;
+
+            }
+            var geom =  GeometryParser.ParseGeometryNew(feature.Geometry, feature.Type);
+
+            result.GeometryType = feature.Type;
+
+            // add the geometry
+            result.Geometry = geom;
+
+            // now add the attributes
+            if (result != null)
+            {
+                result.Id = id.ToString(CultureInfo.InvariantCulture);
+                result.Attributes = AttributesParser.Parse(keys, values, feature.Tags);
+            }
+            return result;
+        }
+
+
+        // todo: remove geojson.net dependency, return VectorTileFeature
+        // todo: move GeoJSON.NET code to extension methods
         public static Feature Parse(Tile.Feature feature, List<string> keys, List<Tile.Value> values, int x, int y, int z, uint extent, bool convertToGeographicPosition)
         {
             Feature result = null;
@@ -38,7 +66,6 @@ namespace mapbox.vector.tile
             {
                 var pt = new Point(coordinates[0]);
                 result = new Feature(pt);
-
             }
 
             if (result != null)

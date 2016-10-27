@@ -7,6 +7,25 @@ namespace mapbox.vector.tile
 {
     public static class VectorTileParser
     {
+        public static List<VectorTileLayer> ParseNew(Stream stream)
+        {
+            var tile1 = Serializer.Deserialize<Tile>(stream);
+            var list = new List<VectorTileLayer>();
+            foreach (var layer in tile1.Layers)
+            {
+                var extent = layer.Extent;
+                var vectorTileLayer = new VectorTileLayer();
+                foreach (var feature in layer.Features)
+                {
+                    var vectorTileFeature = FeatureParser.ParseNew(feature, layer.Keys, layer.Values, extent);
+                    vectorTileLayer.VectorTileFeatures.Add(vectorTileFeature);
+                }
+                list.Add(vectorTileLayer);
+            }
+            return list;
+        }
+
+
         public static List<LayerInfo> Parse(Stream stream, int x, int y, int z,bool convertToGeographicPosition=true)
         {
             var tile1 = Serializer.Deserialize<Tile>(stream);

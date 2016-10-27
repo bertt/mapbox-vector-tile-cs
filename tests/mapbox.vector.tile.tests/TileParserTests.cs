@@ -102,6 +102,59 @@ namespace mapbox.vector.tile.tests
         }
 
         [Test]
+        public void TestMapBoxVectorTileNew()
+        {
+            // arrange
+            const string mapboxfile = "mapbox.vector.tile.tests.testdata.14-8801-5371.vector.pbf";
+
+            // act
+            var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
+            var layerInfos = VectorTileParser.ParseNew(pbfStream);
+
+            // check features
+            Assert.IsTrue(layerInfos.Count == 20);
+            Assert.IsTrue(layerInfos[0].VectorTileFeatures.Count == 107);
+            Assert.IsTrue(layerInfos[0].VectorTileFeatures[0].Attributes.Count == 2);
+
+            // check park feature
+            var park = layerInfos[17].VectorTileFeatures[11];
+            var firstOrDefault = (from prop in park.Attributes where prop.Key == "name" select prop.Value).FirstOrDefault();
+            if (firstOrDefault != null)
+            {
+                var namePark = firstOrDefault.ToString();
+                Assert.IsTrue(namePark == "Mauerpark");
+            }
+
+            // check point geometry type from park
+            Assert.IsTrue(park.Id == "3000003150561");
+            Assert.IsTrue(park.GeometryType == Tile.GeomType.Point);
+            Assert.IsTrue(park.Geometry.Count == 1);
+            Assert.IsTrue(park.Geometry[0].Count == 1);
+            var p = park.Geometry[0][0];
+            Assert.IsTrue(Math.Abs(p.Longitude - 3898) < 0.1);
+            Assert.IsTrue(Math.Abs(p.Latitude - 1731) < 0.1);
+
+            // Check line geometry from roads
+            var road = layerInfos[8].VectorTileFeatures[656];
+            Assert.IsTrue(road.Id == "241452814");
+            Assert.IsTrue(road.GeometryType == Tile.GeomType.LineString);
+            var ls = road.Geometry;
+            Assert.IsTrue(ls.Count == 1);
+            Assert.IsTrue(ls[0].Count == 3);
+            var firstPoint = ls[0][0];
+            Assert.IsTrue(Math.Abs(firstPoint.Longitude - 1988) < 0.1);
+            Assert.IsTrue(Math.Abs(firstPoint.Latitude - 306) < 0.1);
+
+            var secondPoint = ls[0][1];
+            Assert.IsTrue(Math.Abs(secondPoint.Longitude - 1808) < 0.1);
+            Assert.IsTrue(Math.Abs(secondPoint.Latitude - 321) < 0.1);
+
+            var thirdPoint = ls[0][2];
+            Assert.IsTrue(Math.Abs(thirdPoint.Longitude - 1506) < 0.1);
+            Assert.IsTrue(Math.Abs(thirdPoint.Latitude - 347) < 0.1);
+        }
+
+        [Test]
         // tests from https://github.com/mapbox/vector-tile-js/blob/master/test/parse.test.js
         public void TestMapBoxVectorTile()
         {
