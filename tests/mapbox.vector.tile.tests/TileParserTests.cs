@@ -31,6 +31,11 @@ namespace mapbox.vector.tile.tests
             Assert.IsTrue(firstroad.Geometry[0].Count == 1);
             Assert.IsTrue(firstroad.Geometry[0][0].Longitude == 816);
             Assert.IsTrue(firstroad.Geometry[0][0].Latitude == 3446);
+
+            var secondroad = layerInfos[7].VectorTileFeatures[1];
+            Assert.IsTrue(secondroad.Geometry.Count == 2);
+            Assert.IsTrue(secondroad.Geometry[0][0].Longitude == 3281);
+            Assert.IsTrue(secondroad.Geometry[0][0].Latitude == 424);
         }
 
         [Test]

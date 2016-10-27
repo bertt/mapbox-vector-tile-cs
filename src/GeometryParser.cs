@@ -8,9 +8,9 @@ namespace mapbox.vector.tile
         public static List<List<Coordinate>> ParseGeometryNew1(List<uint> geom, Tile.GeomType geomType)
         {
             const uint cmdMoveTo = 1;
-            const uint cmdLineTo = 2;
+            //const uint cmdLineTo = 2;
             const uint cmdSegEnd = 7;
-            const uint cmdBits = 3;
+            //const uint cmdBits = 3;
 
             long x = 0;
             long y = 0;
