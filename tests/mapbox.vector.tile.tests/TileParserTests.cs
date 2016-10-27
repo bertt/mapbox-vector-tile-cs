@@ -5,6 +5,7 @@ using System.Reflection;
 using GeoJSON.Net;
 using GeoJSON.Net.Geometry;
 using NUnit.Framework;
+using static mapbox.vector.tile.Tile;
 
 namespace mapbox.vector.tile.tests
 {
@@ -66,7 +67,6 @@ namespace mapbox.vector.tile.tests
             }
         }
 
-
         [Test]
         public void TestMapzenTile()
         {
@@ -80,7 +80,6 @@ namespace mapbox.vector.tile.tests
             // assert
             Assert.IsTrue(layerInfos.Count == 10);
         }
-
 
         [Test]
         // tests from https://github.com/mapbox/vector-tile-js/blob/master/test/parse.test.js
@@ -137,7 +136,7 @@ namespace mapbox.vector.tile.tests
             // Check line geometry from roads
             var road = layerInfos[8].VectorTileFeatures[656];
             Assert.IsTrue(road.Id == "241452814");
-            Assert.IsTrue(road.GeometryType == Tile.GeomType.LineString);
+            Assert.IsTrue(road.GeometryType == GeomType.LineString);
             var ls = road.Geometry;
             Assert.IsTrue(ls.Count == 1);
             Assert.IsTrue(ls[0].Count == 3);
@@ -152,6 +151,29 @@ namespace mapbox.vector.tile.tests
             var thirdPoint = ls[0][2];
             Assert.IsTrue(Math.Abs(thirdPoint.Longitude - 1506) < 0.1);
             Assert.IsTrue(Math.Abs(thirdPoint.Latitude - 347) < 0.1);
+
+            // Check polygon geometry for buildings
+            var building = layerInfos[5].VectorTileFeatures[0];
+            Assert.IsTrue(building.Id == "1000267229912");
+            Assert.IsTrue(building.GeometryType == GeomType.Polygon);
+            var b = building.Geometry;
+            Assert.IsTrue(b.Count == 1);
+            Assert.IsTrue(b[0].Count == 5);
+            firstPoint = b[0][0];
+            Assert.IsTrue(Math.Abs(firstPoint.Longitude - 2039) < 0.1);
+            Assert.IsTrue(Math.Abs(firstPoint.Latitude + 32) < 0.1);
+            secondPoint = b[0][1];
+            Assert.IsTrue(Math.Abs(secondPoint.Longitude - 2035) < 0.1);
+            Assert.IsTrue(Math.Abs(secondPoint.Latitude + 31) < 0.1);
+            thirdPoint = b[0][2];
+            Assert.IsTrue(Math.Abs(thirdPoint.Longitude - 2032) < 0.1);
+            Assert.IsTrue(Math.Abs(thirdPoint.Latitude + 31) < 0.1);
+            var fourthPoint = b[0][3];
+            Assert.IsTrue(Math.Abs(fourthPoint.Longitude - 2032) < 0.1);
+            Assert.IsTrue(Math.Abs(fourthPoint.Latitude + 32) < 0.1);
+            var fifthPoint = b[0][4];
+            Assert.IsTrue(Math.Abs(fifthPoint.Longitude - 2039) < 0.1);
+            Assert.IsTrue(Math.Abs(fifthPoint.Latitude + 32) < 0.1);
         }
 
         [Test]

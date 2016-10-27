@@ -15,6 +15,10 @@ namespace mapbox.vector.tile
             {
                 var extent = layer.Extent;
                 var vectorTileLayer = new VectorTileLayer();
+                vectorTileLayer.Name = layer.Name;
+                vectorTileLayer.Version = layer.Version;
+                vectorTileLayer.Extent = layer.Extent;
+
                 foreach (var feature in layer.Features)
                 {
                     var vectorTileFeature = FeatureParser.ParseNew(feature, layer.Keys, layer.Values, extent);

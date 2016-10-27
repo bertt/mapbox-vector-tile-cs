@@ -60,11 +60,14 @@ namespace mapbox.vector.tile
                     }
                 }
             }
-
-            //if (geomType == Tile.GeomType.Polygon && coords.Count > 0)
-            //{
-            //    coords.Add(coords[0]);
-            //}
+            // close polygons
+            foreach(var line1 in lines)
+            {
+                if (geomType == Tile.GeomType.Polygon && line1.Count > 0)
+                {
+                    line.Add(line[0]);
+                }
+            }
 
             return lines;
         }
