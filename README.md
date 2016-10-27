@@ -43,6 +43,8 @@ Probably you need to check the GZip compression, see also TileParserTests.cs for
 
 # Projects that use mapbox-vector-tile-cs
 
-* BruTile Mapzen vector tile layer demo in https://github.com/BruTile/BruTile/tree/master/Samples/BruTile.Demo
+* OSMSharp VectorTileToBitmapRenderer Mapzen vector tile layer demo in 
+https://github.com/OsmSharp/VectorTileToBitmapRenderer
+
 * Mapbox vector tile uploader. Upload vector tile and display on Esri 3D Javascript map http://mapboxvectortileuploaderthingymajig.azurewebsites.net/
 
