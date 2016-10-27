@@ -22,6 +22,8 @@ namespace mapbox.vector.tile.tests
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxissue3file);
             var layerInfos = VectorTileParser.ParseNew(pbfStream);
+
+            // asserts
 			Assert.IsTrue(layerInfos[7].VectorTileFeatures.Count == 225);
 			Assert.IsTrue(layerInfos[0].Version == 2);
 			Assert.IsTrue(layerInfos[7].Name=="road");
@@ -34,6 +36,7 @@ namespace mapbox.vector.tile.tests
 
             var secondroad = layerInfos[7].VectorTileFeatures[1];
             Assert.IsTrue(secondroad.Geometry.Count == 2);
+            Assert.IsTrue(secondroad.Geometry[0].Count == 9);
             Assert.IsTrue(secondroad.Geometry[0][0].Longitude == 3281);
             Assert.IsTrue(secondroad.Geometry[0][0].Latitude == 424);
         }
