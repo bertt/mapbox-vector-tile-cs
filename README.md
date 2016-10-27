@@ -46,5 +46,17 @@ Probably you need to check the GZip compression, see also TileParserTests.cs for
 * OSMSharp VectorTileToBitmapRenderer Mapzen vector tile layer demo in 
 https://github.com/OsmSharp/VectorTileToBitmapRenderer
 
+* BruTile BruTile.Samples.VectorTileToBitmap
+https://github.com/BruTile/BruTile/tree/master/Samples/BruTile.Samples.VectorTileToBitmap
+
+* longlostbro/MapsDevelopmentApplication/RadControls/
+https://github.com/longlostbro/MapsDevelopmentApplication/tree/master/RadControls
+
+* ArcBruTile/ArcBruTile
+https://github.com/ArcBruTile/ArcBruTile
+
 * Mapbox vector tile uploader. Upload vector tile and display on Esri 3D Javascript map http://mapboxvectortileuploaderthingymajig.azurewebsites.net/
+
+* indirasam/StreetHarassmentReporting/CartMap
+https://github.com/indirasam/StreetHarassmentReporting/tree/indira/CartMap
 
