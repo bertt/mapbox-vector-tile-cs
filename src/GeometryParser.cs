@@ -38,7 +38,6 @@ namespace mapbox.vector.tile
                             lines.Add(line);
                         };
                         line = new List<Coordinate>();
-                        lines.Add(line);
                     }
 
                     for (var j = 0; j < cmdLength; j++)
@@ -60,8 +59,11 @@ namespace mapbox.vector.tile
                     }
                 }
             }
+
+            lines.Add(line);
+
             // close polygons
-            foreach(var line1 in lines)
+            foreach (var line1 in lines)
             {
                 if (geomType == Tile.GeomType.Polygon && line1.Count > 0)
                 {

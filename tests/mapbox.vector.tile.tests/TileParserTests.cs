@@ -21,12 +21,17 @@ namespace mapbox.vector.tile.tests
 
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxissue3file);
-            var layerInfos = VectorTileParser.Parse(pbfStream, 4260, 2911, 13, false);
-			Assert.IsTrue(layerInfos[7].FeatureCollection.Features.Count == 225);
+            var layerInfos = VectorTileParser.ParseNew(pbfStream);
+			Assert.IsTrue(layerInfos[7].VectorTileFeatures.Count == 225);
 			Assert.IsTrue(layerInfos[0].Version == 2);
 			Assert.IsTrue(layerInfos[7].Name=="road");
 			Assert.IsTrue(layerInfos[7].Extent == 4096);
-		}
+            var firstroad = layerInfos[7].VectorTileFeatures[0];
+            Assert.IsTrue(firstroad.Geometry.Count == 5);
+            Assert.IsTrue(firstroad.Geometry[0].Count == 1);
+            Assert.IsTrue(firstroad.Geometry[0][0].Longitude == 3446);
+            Assert.IsTrue(firstroad.Geometry[0][0].Latitude == 816);
+        }
 
         [Test]
         public void TestBagVectorTile()

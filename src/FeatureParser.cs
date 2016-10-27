@@ -14,13 +14,7 @@ namespace mapbox.vector.tile
             VectorTileFeature result = new VectorTileFeature(); 
             var id = feature.Id;
 
-            if (id == 241452814 && feature.Type == Tile.GeomType.LineString)
-            {
-                var i = 0;
-
-            }
             var geom =  GeometryParser.ParseGeometryNew(feature.Geometry, feature.Type);
-
             result.GeometryType = feature.Type;
 
             // add the geometry
