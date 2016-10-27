@@ -14,7 +14,7 @@ namespace mapbox.vector.tile
             VectorTileFeature result = new VectorTileFeature(); 
             var id = feature.Id;
 
-            var geom =  GeometryParser.ParseGeometryNew(feature.Geometry, feature.Type);
+            var geom =  GeometryParser.ParseGeometryNew1(feature.Geometry, feature.Type);
             result.GeometryType = feature.Type;
 
             // add the geometry

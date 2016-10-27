@@ -29,8 +29,8 @@ namespace mapbox.vector.tile.tests
             var firstroad = layerInfos[7].VectorTileFeatures[0];
             Assert.IsTrue(firstroad.Geometry.Count == 5);
             Assert.IsTrue(firstroad.Geometry[0].Count == 1);
-            Assert.IsTrue(firstroad.Geometry[0][0].Longitude == 3446);
-            Assert.IsTrue(firstroad.Geometry[0][0].Latitude == 816);
+            Assert.IsTrue(firstroad.Geometry[0][0].Longitude == 816);
+            Assert.IsTrue(firstroad.Geometry[0][0].Latitude == 3446);
         }
 
         [Test]
