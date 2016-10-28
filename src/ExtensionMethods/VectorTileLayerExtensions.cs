@@ -1,8 +1,10 @@
-﻿namespace mapbox.vector.tile
+﻿using GeoJSON.Net.Feature;
+
+namespace mapbox.vector.tile
 {
 	public static class VectorTileLayerExtensions
 	{
-		public static GeoJSON.Net.Feature.FeatureCollection ToGeoJSON(this VectorTileLayer vectortileLayer)
+		public static FeatureCollection ToGeoJSON(this VectorTileLayer vectortileLayer)
 		{
 			// todo: create convertor
 			return null;

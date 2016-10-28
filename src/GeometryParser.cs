@@ -59,7 +59,7 @@ namespace mapbox.vector.tile
                 y = y + ldy;
 
                 // use scale? var  coord = new Coordinate(x / scale, y / scale);
-                var  coord = new Coordinate() { Longitude = x, Latitude = y };
+                var  coord = new Coordinate() { X = x, Y = y };
                 coords.Add(coord);
             }
             return coordsList;

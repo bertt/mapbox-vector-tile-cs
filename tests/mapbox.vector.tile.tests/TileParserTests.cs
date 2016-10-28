@@ -33,14 +33,14 @@ namespace mapbox.vector.tile.tests
             var firstroad = layerInfos[7].VectorTileFeatures[0];
             Assert.IsTrue(firstroad.Geometry.Count == 5);
             Assert.IsTrue(firstroad.Geometry[0].Count == 1);
-            Assert.IsTrue(firstroad.Geometry[0][0].Longitude == 816);
-            Assert.IsTrue(firstroad.Geometry[0][0].Latitude == 3446);
+            Assert.IsTrue(firstroad.Geometry[0][0].X == 816);
+            Assert.IsTrue(firstroad.Geometry[0][0].Y == 3446);
 
             var secondroad = layerInfos[7].VectorTileFeatures[1];
             Assert.IsTrue(secondroad.Geometry.Count == 2);
             Assert.IsTrue(secondroad.Geometry[0].Count == 9);
-            Assert.IsTrue(secondroad.Geometry[0][0].Longitude == 3281);
-            Assert.IsTrue(secondroad.Geometry[0][0].Latitude == 424);
+            Assert.IsTrue(secondroad.Geometry[0][0].X == 3281);
+            Assert.IsTrue(secondroad.Geometry[0][0].Y == 424);
         }
 
         [Test]
@@ -136,8 +136,8 @@ namespace mapbox.vector.tile.tests
             Assert.IsTrue(park.Geometry.Count == 1);
             Assert.IsTrue(park.Geometry[0].Count == 1);
             var p = park.Geometry[0][0];
-            Assert.IsTrue(Math.Abs(p.Longitude - 3898) < 0.1);
-            Assert.IsTrue(Math.Abs(p.Latitude - 1731) < 0.1);
+            Assert.IsTrue(Math.Abs(p.X - 3898) < 0.1);
+            Assert.IsTrue(Math.Abs(p.Y - 1731) < 0.1);
 
             // Check line geometry from roads
             var road = layerInfos[8].VectorTileFeatures[656];
@@ -147,16 +147,16 @@ namespace mapbox.vector.tile.tests
             Assert.IsTrue(ls.Count == 1);
             Assert.IsTrue(ls[0].Count == 3);
             var firstPoint = ls[0][0];
-            Assert.IsTrue(Math.Abs(firstPoint.Longitude - 1988) < 0.1);
-            Assert.IsTrue(Math.Abs(firstPoint.Latitude - 306) < 0.1);
+            Assert.IsTrue(Math.Abs(firstPoint.X - 1988) < 0.1);
+            Assert.IsTrue(Math.Abs(firstPoint.Y - 306) < 0.1);
 
             var secondPoint = ls[0][1];
-            Assert.IsTrue(Math.Abs(secondPoint.Longitude - 1808) < 0.1);
-            Assert.IsTrue(Math.Abs(secondPoint.Latitude - 321) < 0.1);
+            Assert.IsTrue(Math.Abs(secondPoint.X - 1808) < 0.1);
+            Assert.IsTrue(Math.Abs(secondPoint.Y - 321) < 0.1);
 
             var thirdPoint = ls[0][2];
-            Assert.IsTrue(Math.Abs(thirdPoint.Longitude - 1506) < 0.1);
-            Assert.IsTrue(Math.Abs(thirdPoint.Latitude - 347) < 0.1);
+            Assert.IsTrue(Math.Abs(thirdPoint.X - 1506) < 0.1);
+            Assert.IsTrue(Math.Abs(thirdPoint.Y - 347) < 0.1);
 
             // Check polygon geometry for buildings
             var building = layerInfos[5].VectorTileFeatures[0];
@@ -166,20 +166,20 @@ namespace mapbox.vector.tile.tests
             Assert.IsTrue(b.Count == 1);
             Assert.IsTrue(b[0].Count == 5);
             firstPoint = b[0][0];
-            Assert.IsTrue(Math.Abs(firstPoint.Longitude - 2039) < 0.1);
-            Assert.IsTrue(Math.Abs(firstPoint.Latitude + 32) < 0.1);
+            Assert.IsTrue(Math.Abs(firstPoint.X - 2039) < 0.1);
+            Assert.IsTrue(Math.Abs(firstPoint.Y + 32) < 0.1);
             secondPoint = b[0][1];
-            Assert.IsTrue(Math.Abs(secondPoint.Longitude - 2035) < 0.1);
-            Assert.IsTrue(Math.Abs(secondPoint.Latitude + 31) < 0.1);
+            Assert.IsTrue(Math.Abs(secondPoint.X - 2035) < 0.1);
+            Assert.IsTrue(Math.Abs(secondPoint.Y + 31) < 0.1);
             thirdPoint = b[0][2];
-            Assert.IsTrue(Math.Abs(thirdPoint.Longitude - 2032) < 0.1);
-            Assert.IsTrue(Math.Abs(thirdPoint.Latitude + 31) < 0.1);
+            Assert.IsTrue(Math.Abs(thirdPoint.X - 2032) < 0.1);
+            Assert.IsTrue(Math.Abs(thirdPoint.Y + 31) < 0.1);
             var fourthPoint = b[0][3];
-            Assert.IsTrue(Math.Abs(fourthPoint.Longitude - 2032) < 0.1);
-            Assert.IsTrue(Math.Abs(fourthPoint.Latitude + 32) < 0.1);
+            Assert.IsTrue(Math.Abs(fourthPoint.X - 2032) < 0.1);
+            Assert.IsTrue(Math.Abs(fourthPoint.Y + 32) < 0.1);
             var fifthPoint = b[0][4];
-            Assert.IsTrue(Math.Abs(fifthPoint.Longitude - 2039) < 0.1);
-            Assert.IsTrue(Math.Abs(fifthPoint.Latitude + 32) < 0.1);
+            Assert.IsTrue(Math.Abs(fifthPoint.X - 2039) < 0.1);
+            Assert.IsTrue(Math.Abs(fifthPoint.Y + 32) < 0.1);
         }
 
         [Test]
@@ -208,24 +208,24 @@ namespace mapbox.vector.tile.tests
             }
             var pnt = park.Geometry[0];
             var p = pnt[0];
-            Assert.IsTrue(Math.Abs(p.Longitude - 3898) < 0.1);
-            Assert.IsTrue(Math.Abs(p.Latitude - 1731) < 0.1);
+            Assert.IsTrue(Math.Abs(p.X - 3898) < 0.1);
+            Assert.IsTrue(Math.Abs(p.Y - 1731) < 0.1);
 
             // Check line geometry from roads
             var road = layerInfos[8].VectorTileFeatures[656];
             var ls = road.Geometry[0];
             Assert.IsTrue(ls.Count == 3);
             var firstPoint = ls[0];
-            Assert.IsTrue(Math.Abs(firstPoint.Longitude - 1988) < 0.1);
-            Assert.IsTrue(Math.Abs(firstPoint.Latitude - 306) < 0.1);
+            Assert.IsTrue(Math.Abs(firstPoint.X - 1988) < 0.1);
+            Assert.IsTrue(Math.Abs(firstPoint.Y - 306) < 0.1);
 
             var secondPoint = ls[1];
-            Assert.IsTrue(Math.Abs(secondPoint.Longitude - 1808) < 0.1);
-            Assert.IsTrue(Math.Abs(secondPoint.Latitude - 321) < 0.1);
+            Assert.IsTrue(Math.Abs(secondPoint.X - 1808) < 0.1);
+            Assert.IsTrue(Math.Abs(secondPoint.Y - 321) < 0.1);
 
             var thirdPoint = ls[2];
-            Assert.IsTrue(Math.Abs(thirdPoint.Longitude - 1506) < 0.1);
-            Assert.IsTrue(Math.Abs(thirdPoint.Latitude - 347) < 0.1);
+            Assert.IsTrue(Math.Abs(thirdPoint.X - 1506) < 0.1);
+            Assert.IsTrue(Math.Abs(thirdPoint.Y - 347) < 0.1);
 
             // check building geometry
             var buildings = layerInfos[5].VectorTileFeatures[0];
@@ -233,20 +233,20 @@ namespace mapbox.vector.tile.tests
             Assert.IsTrue(poly.Count == 5);
 
             var p1 = poly[0];
-            Assert.IsTrue(Math.Abs(p1.Longitude - 2039) < 0.1);
-            Assert.IsTrue(Math.Abs(p1.Latitude - (-32)) < 0.1);
+            Assert.IsTrue(Math.Abs(p1.X - 2039) < 0.1);
+            Assert.IsTrue(Math.Abs(p1.Y - (-32)) < 0.1);
             var p2 = poly[1];
-            Assert.IsTrue(Math.Abs(p2.Longitude - 2035) < 0.1);
-            Assert.IsTrue(Math.Abs(p2.Latitude - (-31)) < 0.1);
+            Assert.IsTrue(Math.Abs(p2.X - 2035) < 0.1);
+            Assert.IsTrue(Math.Abs(p2.Y - (-31)) < 0.1);
             var p3 = poly[2];
-            Assert.IsTrue(Math.Abs(p3.Longitude - 2032) < 0.1);
-            Assert.IsTrue(Math.Abs(p3.Latitude - (-31)) < 0.1);
+            Assert.IsTrue(Math.Abs(p3.X - 2032) < 0.1);
+            Assert.IsTrue(Math.Abs(p3.Y - (-31)) < 0.1);
             var p4 = poly[3];
-            Assert.IsTrue(Math.Abs(p4.Longitude - 2032) < 0.1);
-            Assert.IsTrue(Math.Abs(p4.Latitude - (-32)) < 0.1);
+            Assert.IsTrue(Math.Abs(p4.X - 2032) < 0.1);
+            Assert.IsTrue(Math.Abs(p4.Y - (-32)) < 0.1);
             var p5 = poly[4];
-            Assert.IsTrue(Math.Abs(p5.Longitude - 2039) < 0.1);
-            Assert.IsTrue(Math.Abs(p5.Latitude - (-32)) < 0.1);
+            Assert.IsTrue(Math.Abs(p5.X - 2039) < 0.1);
+            Assert.IsTrue(Math.Abs(p5.Y - (-32)) < 0.1);
         }
     }
 }
