@@ -54,6 +54,7 @@
     <Compile Include="IEnumerableExtensionTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TileParserTests.cs" />
+    <Compile Include="VectorTileFeatureTests.cs" />
     <Compile Include="ZigZagTests.cs" />
   </ItemGroup>
   <ItemGroup>

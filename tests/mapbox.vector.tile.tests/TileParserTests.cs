@@ -51,12 +51,12 @@ namespace mapbox.vector.tile.tests
 
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(bagfile);
-            var layerInfos = VectorTileParser.Parse(pbfStream,67317,43082,17);
+            var layerInfos = VectorTileParser.ParseNew(pbfStream);
 
             // assert
             Assert.IsTrue(layerInfos.Count==1);
-            Assert.IsTrue(layerInfos[0].FeatureCollection.Features.Count == 83);
-            Assert.IsTrue(layerInfos[0].FeatureCollection.Features[0].Geometry.Type == GeoJSONObjectType.Polygon);
+            Assert.IsTrue(layerInfos[0].VectorTileFeatures.Count== 83);
+            Assert.IsTrue(layerInfos[0].VectorTileFeatures[0].GeometryType == GeomType.Polygon);
         }
 
         [Test]
@@ -79,7 +79,7 @@ namespace mapbox.vector.tile.tests
                 var stream = new MemoryStream(bytes);
 
                 // act
-                var layerInfos = VectorTileParser.Parse(stream, 0, 0, 0);
+                var layerInfos = VectorTileParser.ParseNew(stream);
 
                 // assert
                 Assert.IsTrue(layerInfos.Count > 0);
@@ -94,7 +94,7 @@ namespace mapbox.vector.tile.tests
 
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapzenfile);
-            var layerInfos = VectorTileParser.Parse(pbfStream, 0, 0, 0);
+            var layerInfos = VectorTileParser.ParseNew(pbfStream);
 
             // assert
             Assert.IsTrue(layerInfos.Count == 10);
@@ -104,19 +104,6 @@ namespace mapbox.vector.tile.tests
         // tests from https://github.com/mapbox/vector-tile-js/blob/master/test/parse.test.js
         public void TestMapBoxVectorTileWithGeographicPositions()
         {
-            // arrange
-            const string mapboxfile = "mapbox.vector.tile.tests.testdata.14-8801-5371.vector.pbf";
-
-            // act
-            var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
-            var layerInfos = VectorTileParser.Parse(pbfStream, 8801, 5371, 14);
-
-            // assert
-            var park = layerInfos[17].FeatureCollection.Features[11];
-            var pnt = (Point)park.Geometry;
-            var p = (GeographicPosition)pnt.Coordinates;
-            Assert.IsTrue(Math.Abs(p.Longitude - 13.40225) < 0.0001);
-            Assert.IsTrue(Math.Abs(p.Latitude - 52.54398) < 0.0001);
         }
 
         [Test]
@@ -204,59 +191,60 @@ namespace mapbox.vector.tile.tests
 
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
-            var layerInfos = VectorTileParser.Parse(pbfStream,8801,5371,14,false);
+            var layerInfos = VectorTileParser.ParseNew(pbfStream);
 
             // check features
             Assert.IsTrue(layerInfos.Count == 20);
-            Assert.IsTrue(layerInfos[0].FeatureCollection.Features.Count == 107);
-            Assert.IsTrue(layerInfos[0].FeatureCollection.Features[0].Properties.Count == 2);
+            Assert.IsTrue(layerInfos[0].VectorTileFeatures.Count == 107);
+            Assert.IsTrue(layerInfos[0].VectorTileFeatures[0].Attributes.Count == 2);
 
             // check park feature
-            var park = layerInfos[17].FeatureCollection.Features[11];
-            var firstOrDefault = (from prop in park.Properties where prop.Key=="name" select prop.Value).FirstOrDefault();
+            var park = layerInfos[17].VectorTileFeatures[11];
+            var firstOrDefault = (from prop in park.Attributes where prop.Key=="name" select prop.Value).FirstOrDefault();
             if (firstOrDefault != null)
             {
                 var namePark = firstOrDefault.ToString();
                 Assert.IsTrue(namePark=="Mauerpark");
             }
-            var pnt = (Point)park.Geometry;
-            var p = (GeographicPosition)pnt.Coordinates;
+            var pnt = park.Geometry[0];
+            var p = pnt[0];
             Assert.IsTrue(Math.Abs(p.Longitude - 3898) < 0.1);
             Assert.IsTrue(Math.Abs(p.Latitude - 1731) < 0.1);
 
             // Check line geometry from roads
-            var road = layerInfos[8].FeatureCollection.Features[656];
-            var ls = (LineString) road.Geometry;
-            Assert.IsTrue(ls.Coordinates.Count == 3);
-            var firstPoint = (GeographicPosition)ls.Coordinates[0];
+            var road = layerInfos[8].VectorTileFeatures[656];
+            var ls = road.Geometry[0];
+            Assert.IsTrue(ls.Count == 3);
+            var firstPoint = ls[0];
             Assert.IsTrue(Math.Abs(firstPoint.Longitude - 1988) < 0.1);
             Assert.IsTrue(Math.Abs(firstPoint.Latitude - 306) < 0.1);
 
-            var secondPoint = (GeographicPosition)ls.Coordinates[1];
+            var secondPoint = ls[1];
             Assert.IsTrue(Math.Abs(secondPoint.Longitude - 1808) < 0.1);
             Assert.IsTrue(Math.Abs(secondPoint.Latitude - 321) < 0.1);
 
-            var thirdPoint = (GeographicPosition)ls.Coordinates[2];
+            var thirdPoint = ls[2];
             Assert.IsTrue(Math.Abs(thirdPoint.Longitude - 1506) < 0.1);
             Assert.IsTrue(Math.Abs(thirdPoint.Latitude - 347) < 0.1);
 
             // check building geometry
-            var buildings = layerInfos[5].FeatureCollection.Features[0];
-            var poly = ((Polygon)buildings.Geometry).Coordinates[0];
-            Assert.IsTrue(poly.Coordinates.Count == 5);
-            var p1 = (GeographicPosition)poly.Coordinates[0];
+            var buildings = layerInfos[5].VectorTileFeatures[0];
+            var poly = buildings.Geometry[0];
+            Assert.IsTrue(poly.Count == 5);
+
+            var p1 = poly[0];
             Assert.IsTrue(Math.Abs(p1.Longitude - 2039) < 0.1);
             Assert.IsTrue(Math.Abs(p1.Latitude - (-32)) < 0.1);
-            var p2 = (GeographicPosition)poly.Coordinates[1];
+            var p2 = poly[1];
             Assert.IsTrue(Math.Abs(p2.Longitude - 2035) < 0.1);
             Assert.IsTrue(Math.Abs(p2.Latitude - (-31)) < 0.1);
-            var p3 = (GeographicPosition)poly.Coordinates[2];
+            var p3 = poly[2];
             Assert.IsTrue(Math.Abs(p3.Longitude - 2032) < 0.1);
             Assert.IsTrue(Math.Abs(p3.Latitude - (-31)) < 0.1);
-            var p4 = (GeographicPosition)poly.Coordinates[3];
+            var p4 = poly[3];
             Assert.IsTrue(Math.Abs(p4.Longitude - 2032) < 0.1);
             Assert.IsTrue(Math.Abs(p4.Latitude - (-32)) < 0.1);
-            var p5 = (GeographicPosition)poly.Coordinates[4];
+            var p5 = poly[4];
             Assert.IsTrue(Math.Abs(p5.Longitude - 2039) < 0.1);
             Assert.IsTrue(Math.Abs(p5.Latitude - (-32)) < 0.1);
         }

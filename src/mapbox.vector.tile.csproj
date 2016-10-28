@@ -62,7 +62,6 @@
     <Compile Include="FeatureParser.cs" />
     <Compile Include="GeometryParser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="LayerInfo.cs" />
     <Compile Include="VectorTileParser.cs" />
     <Compile Include="VectorTile.cs" />
     <Compile Include="ZigZag.cs" />
