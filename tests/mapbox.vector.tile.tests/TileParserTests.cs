@@ -6,6 +6,8 @@ using GeoJSON.Net;
 using GeoJSON.Net.Geometry;
 using NUnit.Framework;
 using static mapbox.vector.tile.Tile;
+using System.Net;
+using System.Net.Http;
 
 namespace mapbox.vector.tile.tests
 {
@@ -63,11 +65,15 @@ namespace mapbox.vector.tile.tests
             // arrange
             var url = "http://vector.mapzen.com/osm/all/0/0/0.mvt";
 
-            // Note: Use GzipWebClient with automatic decompression 
-            // instead of regular WebClient otherwise we get exception 
+            // Note: Use HttpClient with automatic decompression 
+            // instead of regular HttpClient otherwise we get exception 
             // 'ProtoBuf.ProtoException: Invalid wire-type; this usually means you have over-written a file without truncating or setting the length'
-            var webCLient = new GZipWebClient();
-            var bytes = webCLient.DownloadData(url);
+            var gzipWebClient = new HttpClient(new HttpClientHandler()
+            {
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+            });
+            var bytes = gzipWebClient.GetByteArrayAsync(url).Result;
+
             if (bytes != null)
             {
                 var stream = new MemoryStream(bytes);
