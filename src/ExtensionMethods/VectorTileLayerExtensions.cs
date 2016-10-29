@@ -4,10 +4,16 @@ namespace mapbox.vector.tile
 {
 	public static class VectorTileLayerExtensions
 	{
-		public static FeatureCollection ToGeoJSON(this VectorTileLayer vectortileLayer)
+		public static FeatureCollection ToGeoJSON(this VectorTileLayer vectortileLayer, int x, int y, int z, uint extent)
 		{
-			// todo: create convertor
-			return null;
+		    var featureCollection = new FeatureCollection();
+
+            foreach (var feature in vectortileLayer.VectorTileFeatures)
+            {
+                var geojsonFeature = feature.ToGeoJSON(x,y,z, extent);
+                featureCollection.Features.Add(geojsonFeature);
+            }
+		    return featureCollection;
 		}
 	}
 }
