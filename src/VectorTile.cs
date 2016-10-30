@@ -1,7 +1,7 @@
 ﻿namespace mapbox.vector.tile
 {
     [ProtoBuf.ProtoContract(Name = @"tile")]
-    public class Tile : ProtoBuf.IExtensible
+    public sealed class Tile : ProtoBuf.IExtensible
     {
         readonly System.Collections.Generic.List<Layer> _layers = new System.Collections.Generic.List<Layer>();
         [ProtoBuf.ProtoMember(3, Name = @"layers", DataFormat = ProtoBuf.DataFormat.Default)]
@@ -11,7 +11,7 @@
         }
 
         [ProtoBuf.ProtoContract(Name = @"value")]
-        public class Value : ProtoBuf.IExtensible
+        public sealed class Value : ProtoBuf.IExtensible
         {
             string _stringValue = "";
 
@@ -117,7 +117,7 @@
         }
 
         [ProtoBuf.ProtoContract(Name = @"feature")]
-        public class Feature : ProtoBuf.IExtensible
+        public sealed class Feature : ProtoBuf.IExtensible
         {
             ulong _id;
             [ProtoBuf.ProtoMember(1, IsRequired = false, Name = @"id", DataFormat = ProtoBuf.DataFormat.TwosComplement)]
@@ -155,7 +155,7 @@
         }
 
         [ProtoBuf.ProtoContract(Name = @"layer")]
-        public class Layer : ProtoBuf.IExtensible
+        public sealed class Layer : ProtoBuf.IExtensible
         {
             uint _version;
             [ProtoBuf.ProtoMember(15, IsRequired = true, Name = @"version", DataFormat = ProtoBuf.DataFormat.Default)]
