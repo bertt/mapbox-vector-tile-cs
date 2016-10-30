@@ -7,7 +7,7 @@ namespace mapbox.vector.tile.tests
     {
 
         [Test]
-        public void TestVectorTileFeatureToGeoJSON()
+        public void TestVectorTileFeatureToGeoJson()
         {
             // arrange
             const string mapboxfile = "mapbox.vector.tile.tests.testdata.14-8801-5371.vector.pbf";

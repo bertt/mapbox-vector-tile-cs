@@ -2,13 +2,14 @@
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using System.Reflection;
+using mapbox.vector.tile.ExtensionMethods;
 
 namespace mapbox.vector.tile.tests
 {
-    public class ToGeoJSONTests
+    public class ToGeoJsonTests
     {
         [Test]
-        public void TestToGeoJSONPolygonFeature()
+        public void TestToGeoJsonPolygonFeature()
         {
             const string mapboxfile = "mapbox.vector.tile.tests.testdata.14-8801-5371.vector.pbf";
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
@@ -40,7 +41,7 @@ namespace mapbox.vector.tile.tests
         }
 
         [Test]
-        public void TestToGeoJSONLineFeature()
+        public void TestToGeoJsonLineFeature()
         {
             const string mapboxfile = "mapbox.vector.tile.tests.testdata.14-8801-5371.vector.pbf";
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
@@ -73,7 +74,7 @@ namespace mapbox.vector.tile.tests
         }
 
         [Test]
-        public void TestToGeoJSONPointFeature()
+        public void TestToGeoJsonPointFeature()
         {
             // arrange
             const string mapboxfile = "mapbox.vector.tile.tests.testdata.14-8801-5371.vector.pbf";

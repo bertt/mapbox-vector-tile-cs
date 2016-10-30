@@ -47,8 +47,8 @@ namespace mapbox.vector.tile
                     continue;
                 }
 
-                uint dx = geom[i++];
-                uint dy = geom[i++];
+                var dx = geom[i++];
+                var dy = geom[i++];
 
                 length--;
 

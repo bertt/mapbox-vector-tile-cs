@@ -1,22 +1,15 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using GeoJSON.Net.Feature;
 using GeoJSON.Net.Geometry;
-using mapbox.vector.tile.ExtensionMethods;
-using System.Linq;
 
-namespace mapbox.vector.tile
+namespace mapbox.vector.tile.ExtensionMethods
 {
     public static class VectorTileFeatureExtensions
     {
-
         private static List<GeographicPosition> Project(List<Coordinate> coords, int x, int y, int z, uint extent)
         {
-            var projectedCoords = new List<GeographicPosition>();
-            foreach (var coord in coords)
-            {
-                projectedCoords.Add(coord.ToGeographicPosition(x,y,z, extent));
-            }
-            return projectedCoords;
+            return coords.Select(coord => coord.ToGeographicPosition(x, y, z, extent)).ToList();
         }
 
         private static LineString CreateLineString(List<GeographicPosition> pos)
@@ -26,7 +19,7 @@ namespace mapbox.vector.tile
 
         private static IGeometryObject GetPointGeometry(List<GeographicPosition> pointList)
         {
-            IGeometryObject geom = null;
+            IGeometryObject geom;
             if (pointList.Count == 1)
             {
                 geom = new Point(pointList[0]);
@@ -41,19 +34,12 @@ namespace mapbox.vector.tile
 
         private static List<LineString> GetLineStringList(List<List<GeographicPosition>> pointList)
         {
-            var lines = new List<LineString>();
-
-            foreach (var part in pointList)
-            {
-                var ls = CreateLineString(part);
-                lines.Add(ls);
-            }
-            return lines;
+            return pointList.Select(part => CreateLineString(part)).ToList();
         }
 
         private static IGeometryObject GetLineGeometry(List<List<GeographicPosition>> pointList)
         {
-            IGeometryObject geom = null;
+            IGeometryObject geom;
 
             if (pointList.Count == 1)
             {
@@ -93,7 +79,6 @@ namespace mapbox.vector.tile
 
         public static Feature ToGeoJSON(this VectorTileFeature vectortileFeature, int x, int y, int z)
         {
-            Feature result = null;
             IGeometryObject geom = null;
 
             switch (vectortileFeature.GeometryType)
@@ -115,7 +100,7 @@ namespace mapbox.vector.tile
                     break;
             }
 
-            result = new Feature(geom);
+            var result = new Feature(geom);
 
             // add attributes
             foreach (var item in vectortileFeature.Attributes)

@@ -17,10 +17,10 @@ namespace mapbox.vector.tile.tests
         public void TestIssue3MapBoxVectorTile()
         {
             // arrange
-            const string mapboxissue3file = "mapbox.vector.tile.tests.testdata.issue3_2911.vector.pbf";
+            const string mapboxissue3File = "mapbox.vector.tile.tests.testdata.issue3_2911.vector.pbf";
 
             // act
-            var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxissue3file);
+            var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxissue3File);
             var layerInfos = VectorTileParser.Parse(pbfStream);
 
             // asserts
@@ -130,7 +130,7 @@ namespace mapbox.vector.tile.tests
 
             // check point geometry type from park
             Assert.IsTrue(park.Id == "3000003150561");
-            Assert.IsTrue(park.GeometryType == Tile.GeomType.Point);
+            Assert.IsTrue(park.GeometryType == GeomType.Point);
             Assert.IsTrue(park.Geometry.Count == 1);
             Assert.IsTrue(park.Geometry[0].Count == 1);
             var p = park.Geometry[0][0];

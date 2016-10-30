@@ -1,4 +1,5 @@
 ﻿using GeoJSON.Net.Feature;
+using mapbox.vector.tile.ExtensionMethods;
 
 namespace mapbox.vector.tile
 {
