@@ -6,7 +6,7 @@ namespace mapbox.vector.tile
     public static class FeatureParser
     {
 
-        public static VectorTileFeature ParseNew(Tile.Feature feature, List<string> keys, List<Tile.Value> values,uint extent)
+        public static VectorTileFeature Parse(Tile.Feature feature, List<string> keys, List<Tile.Value> values,uint extent)
         {
             VectorTileFeature result = new VectorTileFeature(); 
             var id = feature.Id;
@@ -16,6 +16,7 @@ namespace mapbox.vector.tile
 
             // add the geometry
             result.Geometry = geom;
+            result.Extent = extent;
 
             // now add the attributes
             if (result != null)

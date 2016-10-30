@@ -21,10 +21,9 @@ namespace mapbox.vector.tile
 
         private static LineString CreateLineString(List<GeographicPosition> pos)
         {
-            var pnts = pos.Select(p => new Point(p)).ToList();
-            var ls = new LineString(pos);
-            return ls;
+            return new LineString(pos);
         }
+
         private static IGeometryObject GetPointGeometry(List<GeographicPosition> pointList)
         {
             IGeometryObject geom = null;
@@ -92,7 +91,7 @@ namespace mapbox.vector.tile
             return pointList;
         }
 
-        public static Feature ToGeoJSON(this VectorTileFeature vectortileFeature, int x, int y, int z, uint extent)
+        public static Feature ToGeoJSON(this VectorTileFeature vectortileFeature, int x, int y, int z)
         {
             Feature result = null;
             IGeometryObject geom = null;
@@ -100,15 +99,15 @@ namespace mapbox.vector.tile
             switch (vectortileFeature.GeometryType)
             {
                 case Tile.GeomType.Point:
-                    var projectedPoints = ProjectPoints(vectortileFeature.Geometry, x, y, z, extent);
+                    var projectedPoints = ProjectPoints(vectortileFeature.Geometry, x, y, z, vectortileFeature.Extent);
                     geom = GetPointGeometry(projectedPoints);
                     break;
                 case Tile.GeomType.LineString:
-                    var projectedLines = ProjectLines(vectortileFeature.Geometry, x, y, z, extent);
+                    var projectedLines = ProjectLines(vectortileFeature.Geometry, x, y, z, vectortileFeature.Extent);
                     geom = GetLineGeometry(projectedLines);
                     break;
                 case Tile.GeomType.Polygon:
-                    var projectedPolygons = ProjectLines(vectortileFeature.Geometry, x, y, z, extent);
+                    var projectedPolygons = ProjectLines(vectortileFeature.Geometry, x, y, z, vectortileFeature.Extent);
                     // todo: inner/outer linearrings, multipolygons...
                     if (projectedPolygons.Count <= 1)
                     {

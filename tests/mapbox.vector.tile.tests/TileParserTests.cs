@@ -2,8 +2,6 @@
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using GeoJSON.Net;
-using GeoJSON.Net.Geometry;
 using NUnit.Framework;
 using static mapbox.vector.tile.Tile;
 using System.Net;
