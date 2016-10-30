@@ -15,8 +15,7 @@ namespace mapbox.vector.tile.ExtensionMethods
             var lon = (c.X + x0) * 360 / size - 180;
             var lat = 360 / Math.PI * Math.Atan(Math.Exp(y2 * Math.PI / 180)) - 90;
 
-            var g = new GeographicPosition(lat, lon);
-            return g;
+            return new GeographicPosition(lat, lon);
         }
     }
 }
