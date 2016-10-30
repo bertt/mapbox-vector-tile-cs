@@ -36,8 +36,7 @@ namespace mapbox.vector.tile.tests
                 }
             ");
 
-            // todo: fix the following  test...
-            // Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
+            Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
         }
 
         [Test]

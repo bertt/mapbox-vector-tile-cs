@@ -96,6 +96,7 @@ namespace mapbox.vector.tile.ExtensionMethods
                     // todo: inner/outer linearrings, multipolygons...
                     if (projectedPolygons.Count <= 1)
                     {
+                        geom = new Polygon(new List<LineString> {new LineString(projectedPolygons[0])});
                     }
                     break;
             }
