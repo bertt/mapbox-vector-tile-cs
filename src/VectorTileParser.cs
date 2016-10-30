@@ -6,7 +6,7 @@ namespace mapbox.vector.tile
 {
     public static class VectorTileParser
     {
-        public static List<VectorTileLayer> ParseNew(Stream stream)
+        public static List<VectorTileLayer> Parse(Stream stream)
         {
             var tile1 = Serializer.Deserialize<Tile>(stream);
             var list = new List<VectorTileLayer>();

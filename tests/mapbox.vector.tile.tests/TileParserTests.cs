@@ -23,7 +23,7 @@ namespace mapbox.vector.tile.tests
 
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxissue3file);
-            var layerInfos = VectorTileParser.ParseNew(pbfStream);
+            var layerInfos = VectorTileParser.Parse(pbfStream);
 
             // asserts
 			Assert.IsTrue(layerInfos[7].VectorTileFeatures.Count == 225);
@@ -51,7 +51,7 @@ namespace mapbox.vector.tile.tests
 
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(bagfile);
-            var layerInfos = VectorTileParser.ParseNew(pbfStream);
+            var layerInfos = VectorTileParser.Parse(pbfStream);
 
             // assert
             Assert.IsTrue(layerInfos.Count==1);
@@ -79,7 +79,7 @@ namespace mapbox.vector.tile.tests
                 var stream = new MemoryStream(bytes);
 
                 // act
-                var layerInfos = VectorTileParser.ParseNew(stream);
+                var layerInfos = VectorTileParser.Parse(stream);
 
                 // assert
                 Assert.IsTrue(layerInfos.Count > 0);
@@ -94,7 +94,7 @@ namespace mapbox.vector.tile.tests
 
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapzenfile);
-            var layerInfos = VectorTileParser.ParseNew(pbfStream);
+            var layerInfos = VectorTileParser.Parse(pbfStream);
 
             // assert
             Assert.IsTrue(layerInfos.Count == 10);
@@ -114,7 +114,7 @@ namespace mapbox.vector.tile.tests
 
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
-            var layerInfos = VectorTileParser.ParseNew(pbfStream);
+            var layerInfos = VectorTileParser.Parse(pbfStream);
 
             // check features
             Assert.IsTrue(layerInfos.Count == 20);
@@ -191,7 +191,7 @@ namespace mapbox.vector.tile.tests
 
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
-            var layerInfos = VectorTileParser.ParseNew(pbfStream);
+            var layerInfos = VectorTileParser.Parse(pbfStream);
 
             // check features
             Assert.IsTrue(layerInfos.Count == 20);

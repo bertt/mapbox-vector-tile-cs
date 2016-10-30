@@ -124,6 +124,7 @@ namespace mapbox.vector.tile
                 result.Properties.Add(item.Key, item.Value);
 
             }
+            result.Id = vectortileFeature.Id;
             return result;
         }
     }

@@ -14,7 +14,7 @@ namespace mapbox.vector.tile.tests
 
             // act
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
-            var layerInfos = VectorTileParser.ParseNew(pbfStream);
+            var layerInfos = VectorTileParser.Parse(pbfStream);
             var park = layerInfos[17].VectorTileFeatures[11];
 
             // assert
