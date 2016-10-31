@@ -85,8 +85,6 @@ namespace mapbox.vector.tile.tests
             Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
         }
 
-
-
         [Test]
         public void TestToGeoJsonMultiLineFeature()
         {
