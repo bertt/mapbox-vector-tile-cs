@@ -69,6 +69,8 @@
     <EmbeddedResource Include="testdata\bag-17-67317-43082.pbf" />
     <EmbeddedResource Include="testdata\mapzen000.mvt" />
     <EmbeddedResource Include="testdata\multi-point.pbf" />
+    <EmbeddedResource Include="testdata\multi-line.pbf" />
+    <EmbeddedResource Include="testdata\multi-polygon.pbf" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\mapbox.vector.tile.csproj">
