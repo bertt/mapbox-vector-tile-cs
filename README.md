@@ -42,6 +42,13 @@ Tip: If you use this library with vector tiles loading from a webserver, you cou
 'ProtoBuf.ProtoException: Invalid wire-type; this usually means you have over-written a file without truncating or setting the length'
 Probably you need to check the GZip compression, see also TileParserTests.cs for an example.
 
+# History
+
+2016-10-31: Release 3.0
+Changes: Add support for multi-geometries 
+2015-07-08: Release 2.0 
+2015-07-07: Release 1.0 
+
 # Projects that use mapbox-vector-tile-cs
 
 * OSMSharp VectorTileToBitmapRenderer Mapzen vector tile layer demo in 
