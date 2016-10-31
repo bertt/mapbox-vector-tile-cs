@@ -17,21 +17,23 @@ PM> Install-Package mapbox-vector-tile
 
 https://www.nuget.org/packages/mapbox-vector-tile
 
-NuGet package contains PCL: Profile 158 (.NET 4.5, Windows 8.0, Windows Phone Silverlight 8.0, Silverlight 5)
+NuGet package contains PCL: Profile 111 (.NET Framework 4.5, Windows 8.0, Windows Phone 8.1, Xamarin.Android, Xamarin.iOS)
 
 # Usage
 
 ```cs
+using mapbox.vector.tile.ExtensionMethods;
+
 const string vtfile = "vectortile.pbf";
 using (var stream = File.OpenRead(vtfile))
 {
   // parameters: tileColumn = 67317, tileRow = 43082, tileLevel = 17 
-  var layerInfos = VectorTileParser.Parse(stream,67317,43082,17);
-
-  Assert.IsTrue(layerInfos.Count==1);
-  Assert.IsTrue(layerInfos[0].FeatureCollection.Features.Count == 47);
-  Assert.IsTrue(layerInfos[0].FeatureCollection.Features[0].Geometry.Type == GeoJSONObjectType.Polygon);
-  Assert.IsTrue(layerInfos[0].FeatureCollection.Features[0].Properties.Count==2);
+  var layerInfos = VectorTileParser.Parse(stream);
+  var fc = layerInfos[0].ToGeoJSON(67317,43082,17);
+  Assert.IsTrue(fc.Features.Count==1);
+  Assert.IsTrue(fc.Features.Count == 47);
+  Assert.IsTrue(fc.Features[0].Geometry.Type == GeoJSONObjectType.Polygon);
+  Assert.IsTrue(fc.Features[0].Properties.Count==2);
 }
 ```
 
