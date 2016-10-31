@@ -1,28 +1,17 @@
-﻿using GeoJSON.Net.Feature;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
-using System.Reflection;
-using mapbox.vector.tile.ExtensionMethods;
 
 namespace mapbox.vector.tile.tests
 {
     public class MultiGeomtryTests
     {
-        private Feature GeoJSONFromFixture(string name)
-        {
-            var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(name);
-            var layerInfos = VectorTileParser.Parse(pbfStream);
-            var test = layerInfos[0].VectorTileFeatures[0].ToGeoJSON(0, 0, 0);
-            return test;
-        }
-
         [Test]
         public void TestToGeoJsonMultiPolygonFeature()
         {
             // arrange
             const string mapboxfile = "mapbox.vector.tile.tests.testdata.multi-polygon.pbf";
-            var feature = GeoJSONFromFixture(mapboxfile);
+            var feature = PbfLoader.GeoJSONFromFixture(mapboxfile);
 
             // act
             var json = JsonConvert.SerializeObject(feature);
@@ -90,7 +79,7 @@ namespace mapbox.vector.tile.tests
         {
             // arrange
             const string mapboxfile = "mapbox.vector.tile.tests.testdata.multi-line.pbf";
-            var feature = GeoJSONFromFixture(mapboxfile);
+            var feature = PbfLoader.GeoJSONFromFixture(mapboxfile);
 
             // act
             var json = JsonConvert.SerializeObject(feature);
@@ -136,7 +125,7 @@ namespace mapbox.vector.tile.tests
         public void TestToGeoJsonMultiPointFeature()
         {
             const string mapboxfile = "mapbox.vector.tile.tests.testdata.multi-point.pbf";
-            var feature = GeoJSONFromFixture(mapboxfile);
+            var feature = PbfLoader.GeoJSONFromFixture(mapboxfile);
             var json = JsonConvert.SerializeObject(feature);
             var actualResult = JObject.Parse(json);
 

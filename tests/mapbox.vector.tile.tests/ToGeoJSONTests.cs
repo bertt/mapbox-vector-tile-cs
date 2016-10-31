@@ -3,13 +3,11 @@ using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using System.Reflection;
 using mapbox.vector.tile.ExtensionMethods;
-using GeoJSON.Net.Feature;
 
 namespace mapbox.vector.tile.tests
 {
     public class ToGeoJsonTests
     {
-
         [Test]
         public void TestToGeoJsonPolygonFeature()
         {
