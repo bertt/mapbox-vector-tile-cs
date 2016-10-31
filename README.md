@@ -1,3 +1,4 @@
+
 # mapbox-vector-tile-cs 
 
 [![NuGet Status](http://img.shields.io/nuget/v/mapbox-vector-tile.svg?style=flat)](https://www.nuget.org/packages/mapbox-vector-tile/)
@@ -45,8 +46,11 @@ Probably you need to check the GZip compression, see also TileParserTests.cs for
 # History
 
 2016-10-31: Release 3.0
+
 Changes: Add support for multi-geometries 
+
 2015-07-08: Release 2.0 
+
 2015-07-07: Release 1.0 
 
 # Projects that use mapbox-vector-tile-cs
