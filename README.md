@@ -30,7 +30,6 @@ using (var stream = File.OpenRead(vtfile))
   // parameters: tileColumn = 67317, tileRow = 43082, tileLevel = 17 
   var layerInfos = VectorTileParser.Parse(stream);
   var fc = layerInfos[0].ToGeoJSON(67317,43082,17);
-  Assert.IsTrue(fc.Features.Count==1);
   Assert.IsTrue(fc.Features.Count == 47);
   Assert.IsTrue(fc.Features[0].Geometry.Type == GeoJSONObjectType.Polygon);
   Assert.IsTrue(fc.Features[0].Properties.Count==2);
