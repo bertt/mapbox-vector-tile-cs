@@ -17,6 +17,7 @@ namespace mapbox.vector.tile.ExtensionMethods
             return new LineString(pos);
         }
 
+
         private static IGeometryObject GetPointGeometry(List<GeographicPosition> pointList)
         {
             IGeometryObject geom;
@@ -52,6 +53,29 @@ namespace mapbox.vector.tile.ExtensionMethods
             return geom;
         }
 
+        private static IGeometryObject GetPolygonGeometry(List<List<GeographicPosition>> polygons)
+        {
+            {
+                IGeometryObject geom;
+
+                if (polygons.Count <= 1)
+                {
+                    geom = new Polygon(new List<LineString> { new LineString(polygons[0]) });
+                }
+                else
+                {
+                    var polys = new List<Polygon>() { };
+                    foreach(var poly in polygons)
+                    {
+                        polys.Add(new Polygon(new List<LineString> { new LineString(polygons[0]) }));
+                    }
+
+                    geom = new MultiPolygon(polys);
+                }
+                return geom;
+            }
+        }
+
         public static List<GeographicPosition> ProjectPoints(List<List<Coordinate>> Geometry, int x, int y, int z, uint extent)
         {
             var projectedCoords = new List<GeographicPosition>();
@@ -77,6 +101,7 @@ namespace mapbox.vector.tile.ExtensionMethods
             return pointList;
         }
 
+
         public static Feature ToGeoJSON(this VectorTileFeature vectortileFeature, int x, int y, int z)
         {
             IGeometryObject geom = null;
@@ -93,11 +118,7 @@ namespace mapbox.vector.tile.ExtensionMethods
                     break;
                 case Tile.GeomType.Polygon:
                     var projectedPolygons = ProjectLines(vectortileFeature.Geometry, x, y, z, vectortileFeature.Extent);
-                    // todo: inner/outer linearrings, multipolygons...
-                    if (projectedPolygons.Count <= 1)
-                    {
-                        geom = new Polygon(new List<LineString> {new LineString(projectedPolygons[0])});
-                    }
+                    geom = GetPolygonGeometry(projectedPolygons);
                     break;
             }
 

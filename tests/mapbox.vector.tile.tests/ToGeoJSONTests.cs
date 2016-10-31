@@ -3,14 +3,17 @@ using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using System.Reflection;
 using mapbox.vector.tile.ExtensionMethods;
+using GeoJSON.Net.Feature;
 
 namespace mapbox.vector.tile.tests
 {
     public class ToGeoJsonTests
     {
+
         [Test]
         public void TestToGeoJsonPolygonFeature()
         {
+            // arrange
             const string mapboxfile = "mapbox.vector.tile.tests.testdata.14-8801-5371.vector.pbf";
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
             var layerInfos = VectorTileParser.Parse(pbfStream);
@@ -18,6 +21,8 @@ namespace mapbox.vector.tile.tests
 
             var geoJson = building.ToGeoJSON(8801, 5371, 14);
             var json = JsonConvert.SerializeObject(geoJson);
+
+            // act
             var actualResult = JObject.Parse(json);
 
             var expectedResult = JObject.Parse(@"
@@ -36,6 +41,7 @@ namespace mapbox.vector.tile.tests
                 }
             ");
 
+            // assert
             Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
         }
 
