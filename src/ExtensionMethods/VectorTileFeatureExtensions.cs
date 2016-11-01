@@ -60,7 +60,8 @@ namespace Mapbox.Vector.Tile
 
                 if (polygons.Count <= 1)
                 {
-                    geom = new Polygon(new List<LineString> { new LineString(polygons[0]) });
+                    var poly = new LineString(polygons[0]);
+                    geom = new Polygon(new List<LineString> { poly });
                 }
                 else
                 {
