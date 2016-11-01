@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace mapbox.vector.tile
+namespace Mapbox.Vector.Tile
 {
 	public class VectorTileLayer
 	{

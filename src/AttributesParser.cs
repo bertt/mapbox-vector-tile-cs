@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using mapbox.vector.tile.ExtensionMethods;
 
-namespace mapbox.vector.tile
+namespace Mapbox.Vector.Tile
 {
     public static class AttributesParser
     {

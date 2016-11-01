@@ -1,9 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using mapbox.vector.tile.ExtensionMethods;
 using NUnit.Framework;
 
-namespace mapbox.vector.tile.tests
+namespace Mapbox.Vector.Tile.tests
 {
     public class EnumerableExtensionTests
     {

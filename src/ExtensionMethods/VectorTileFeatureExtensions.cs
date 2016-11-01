@@ -3,7 +3,7 @@ using System.Linq;
 using GeoJSON.Net.Feature;
 using GeoJSON.Net.Geometry;
 
-namespace mapbox.vector.tile.ExtensionMethods
+namespace Mapbox.Vector.Tile
 {
     public static class VectorTileFeatureExtensions
     {

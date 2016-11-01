@@ -2,12 +2,12 @@
 using System.Linq;
 using NUnit.Framework;
 
-namespace mapbox.vector.tile.tests
+namespace Mapbox.Vector.Tile.tests
 {
     public class GeometryParserTests
     {
         [Test]
-        public void AnotherGeometryParserTest2()
+        public void AnotherGeometryParserTest()
         {
             var input = new List<uint> {9, 7796, 3462};
             var output = GeometryParser.ParseGeometry(input, Tile.GeomType.Point);

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Globalization;
 
-namespace mapbox.vector.tile
+namespace Mapbox.Vector.Tile
 {
     public static class FeatureParser
     {

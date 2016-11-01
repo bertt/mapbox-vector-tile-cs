@@ -3,11 +3,11 @@ using System.IO;
 using System.Linq;
 using System.Reflection;
 using NUnit.Framework;
-using static mapbox.vector.tile.Tile;
+using static Mapbox.Vector.Tile.Tile;
 using System.Net;
 using System.Net.Http;
 
-namespace mapbox.vector.tile.tests
+namespace Mapbox.Vector.Tile.tests
 {
     public class TileParserTests
     {

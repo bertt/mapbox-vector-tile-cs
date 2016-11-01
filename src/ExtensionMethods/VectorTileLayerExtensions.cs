@@ -1,6 +1,6 @@
 ﻿using GeoJSON.Net.Feature;
 
-namespace mapbox.vector.tile.ExtensionMethods
+namespace Mapbox.Vector.Tile
 {
 	public static class VectorTileLayerExtensions
 	{

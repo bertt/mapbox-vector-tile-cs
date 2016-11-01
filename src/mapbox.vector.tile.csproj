@@ -8,8 +8,8 @@
     <ProjectGuid>{E1EA7DC2-6EA3-403A-A2DB-7143C9E5B704}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>mapbox.vector.tile</RootNamespace>
-    <AssemblyName>mapbox.vector.tile</AssemblyName>
+    <RootNamespace>Mapbox.Vector.Tile</RootNamespace>
+    <AssemblyName>Mapbox.Vector.Tile</AssemblyName>
     <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>

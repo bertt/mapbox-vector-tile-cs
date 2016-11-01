@@ -2,9 +2,8 @@
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using System.Reflection;
-using mapbox.vector.tile.ExtensionMethods;
 
-namespace mapbox.vector.tile.tests
+namespace Mapbox.Vector.Tile
 {
     public class ToGeoJsonTests
     {

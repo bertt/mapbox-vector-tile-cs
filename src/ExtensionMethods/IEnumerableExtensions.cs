@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 
-namespace mapbox.vector.tile.ExtensionMethods
+namespace Mapbox.Vector.Tile
 {
     public static class EnumerableExtensions
     {

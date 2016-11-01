@@ -1,7 +1,7 @@
 ﻿using GeoJSON.Net.Geometry;
 using System;
 
-namespace mapbox.vector.tile.ExtensionMethods
+namespace Mapbox.Vector.Tile
 {
     public static class CoordinateExtensions
     {

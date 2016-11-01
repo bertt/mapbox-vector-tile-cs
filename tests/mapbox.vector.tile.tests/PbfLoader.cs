@@ -1,8 +1,7 @@
 ﻿using GeoJSON.Net.Feature;
 using System.Reflection;
-using mapbox.vector.tile.ExtensionMethods;
 
-namespace mapbox.vector.tile.tests
+namespace Mapbox.Vector.Tile.tests
 {
     public class PbfLoader
     {

@@ -1,4 +1,4 @@
-﻿namespace mapbox.vector.tile
+﻿namespace Mapbox.Vector.Tile
 {
     [ProtoBuf.ProtoContract(Name = @"tile")]
     public sealed class Tile : ProtoBuf.IExtensible

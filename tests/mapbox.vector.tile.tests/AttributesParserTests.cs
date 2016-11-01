@@ -2,7 +2,7 @@
 using NUnit.Framework;
 using ProtoBuf;
 
-namespace mapbox.vector.tile.tests
+namespace Mapbox.Vector.Tile.tests
 {
     public class AttributesParserTests
     {
