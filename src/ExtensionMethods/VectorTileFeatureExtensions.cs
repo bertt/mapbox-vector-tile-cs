@@ -53,6 +53,7 @@ namespace Mapbox.Vector.Tile
             return geom;
         }
 
+
         private static IGeometryObject GetPolygonGeometry(List<List<GeographicPosition>> polygons)
         {
             {

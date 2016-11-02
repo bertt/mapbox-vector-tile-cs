@@ -54,6 +54,7 @@
     <Compile Include="IEnumerableExtensionTests.cs" />
     <Compile Include="MultiGeometryTests.cs" />
     <Compile Include="PbfLoader.cs" />
+    <Compile Include="PolygonTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TileParserTests.cs" />
     <Compile Include="ToGeoJSONTests.cs" />
