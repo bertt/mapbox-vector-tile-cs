@@ -21,6 +21,8 @@ namespace mapbox.vector.tile.tests
 
             // assert
             Assert.IsTrue(classify.Count == 2);
+            Assert.IsTrue(classify[0].Count == 1);
+            Assert.IsTrue(classify[1].Count == 1);
         }
 
         [Test]
@@ -60,6 +62,7 @@ namespace mapbox.vector.tile.tests
             // assert
             Assert.IsTrue(classify.Count == 2);
             Assert.IsTrue(classify[0].Count == 2);
+            Assert.IsTrue(classify[1].Count == 1);
         }
     }
 }
