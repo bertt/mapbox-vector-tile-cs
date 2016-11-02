@@ -1,13 +1,13 @@
 ﻿using Mapbox.Vector.Tile;
 using System.Collections.Generic;
 
-namespace mapbox.vector.tile.tests
+namespace Mapbox.Vector.Tile
 {
-    public class Polygon
+    public class VTPolygon
     {
         private List<Coordinate> points;
 
-        public Polygon(List<Coordinate> points)
+        public VTPolygon(List<Coordinate> points)
         {
             this.points = points;
         }

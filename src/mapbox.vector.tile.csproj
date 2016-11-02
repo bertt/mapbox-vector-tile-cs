@@ -57,12 +57,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AttributesParser.cs" />
+    <Compile Include="ClassifyRings.cs" />
     <Compile Include="Coordinate.cs" />
     <Compile Include="ExtensionMethods\CoordinateExtensions.cs" />
     <Compile Include="ExtensionMethods\IEnumerableExtensions.cs" />
     <Compile Include="FeatureParser.cs" />
     <Compile Include="GeometryParser.cs" />
-    <Compile Include="Polygon.cs" />
+    <Compile Include="VTPolygon.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VectorTileParser.cs" />
     <Compile Include="VectorTile.cs" />

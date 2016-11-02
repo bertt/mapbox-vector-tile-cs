@@ -103,7 +103,6 @@ namespace Mapbox.Vector.Tile
             return pointList;
         }
 
-
         public static Feature ToGeoJSON(this VectorTileFeature vectortileFeature, int x, int y, int z)
         {
             IGeometryObject geom = null;
@@ -119,6 +118,8 @@ namespace Mapbox.Vector.Tile
                     geom = GetLineGeometry(projectedLines);
                     break;
                 case Tile.GeomType.Polygon:
+
+
                     var projectedPolygons = ProjectLines(vectortileFeature.Geometry, x, y, z, vectortileFeature.Extent);
                     geom = GetPolygonGeometry(projectedPolygons);
                     break;
