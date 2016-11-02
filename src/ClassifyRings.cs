@@ -4,17 +4,25 @@ namespace Mapbox.Vector.Tile
 {
     public class ClassifyRings
     {
+        // docs for inner/outer rings https://www.mapbox.com/vector-tiles/specification/
         public static List<List<List<Coordinate>>> Classify(List<List<Coordinate>> rings)
         {
-            bool ccw;
             var polygons = new List<List<List<Coordinate>>>();
+            List<List<Coordinate>> newpoly = null; 
             foreach (var ring in rings)
             {
                 var poly = new VTPolygon(ring);
                 if (poly.isCW())
                 {
-                    var newpoly = new List<List<Coordinate>>() { ring };
+                    newpoly = new List<List<Coordinate>>() { ring };
                     polygons.Add(newpoly);
+                }
+                else
+                {
+                    if (newpoly != null)
+                    {
+                        newpoly.Add(ring);
+                    }
                 }
             }
 
