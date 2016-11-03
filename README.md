@@ -56,6 +56,15 @@ Changes: Add support for multi-geometries
 
 # Benchmark test
 Test performed with Mapbox vector tile '14-8801-5371.vector.pbf'
+
+Layers used:
+
+Point layer: parks (id=17) - 558 features
+
+Line layer: roads (id=8) - 686 features
+
+Polygon layer: building (id=5) - 975 features
+
 ```
 Host Process Environment Information:
 BenchmarkDotNet.Core=v0.9.9.0
