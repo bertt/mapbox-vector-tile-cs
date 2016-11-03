@@ -1,5 +1,4 @@
-﻿using Mapbox.Vector.Tile;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace Mapbox.Vector.Tile
 {
@@ -23,14 +22,19 @@ namespace Mapbox.Vector.Tile
             return 0.5 * sum;
         }
 
-        public bool isCCW()
+        public bool IsOuterRing()
         {
-            return SignedArea() > 0;
+            return IsCCW();
         }
 
-        public bool isCW()
+        public bool IsCW()
         {
             return SignedArea() < 0;
+        }
+
+        public bool IsCCW()
+        {
+            return SignedArea() > 0;
         }
 
     }

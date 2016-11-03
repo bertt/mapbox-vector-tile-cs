@@ -72,16 +72,13 @@ namespace Mapbox.Vector.Tile.tests
             });
             var bytes = gzipWebClient.GetByteArrayAsync(url).Result;
 
-            if (bytes != null)
-            {
-                var stream = new MemoryStream(bytes);
+            var stream = new MemoryStream(bytes);
 
-                // act
-                var layerInfos = VectorTileParser.Parse(stream);
+            // act
+            var layerInfos = VectorTileParser.Parse(stream);
 
-                // assert
-                Assert.IsTrue(layerInfos.Count > 0);
-            }
+            // assert
+            Assert.IsTrue(layerInfos.Count > 0);
         }
 
         [Test]

@@ -53,26 +53,37 @@ namespace Mapbox.Vector.Tile
             return geom;
         }
 
+        private static Polygon GetPolygon(List<List<GeographicPosition>> lines)
+        {
+            var res = new List<LineString>();
+            foreach (var innerring in lines)
+            {
+                var line = new LineString(innerring);
+                res.Add(line);
+            }
+            var geom = new Polygon(res);
+            return geom;
+        }
 
-        private static IGeometryObject GetPolygonGeometry(List<List<GeographicPosition>> polygons)
+        private static IGeometryObject GetPolygonGeometry(List<List<List<GeographicPosition>>> polygons)
         {
             {
-                IGeometryObject geom;
+                IGeometryObject geom=null;
 
-                if (polygons.Count <= 1)
+                if (polygons.Count == 1)
                 {
-                    var poly = new LineString(polygons[0]);
-                    geom = new Polygon(new List<LineString> { poly });
+                    geom = GetPolygon(polygons[0]);
                 }
-                else
+                else if(polygons.Count>0)
                 {
-                    var polys = new List<Polygon>() { };
+                    var multipolys = new List<Polygon>();
                     foreach(var poly in polygons)
                     {
-                        polys.Add(new Polygon(new List<LineString> { new LineString(polygons[0]) }));
+                        var pl = GetPolygon(poly);
+                        multipolys.Add(pl);
                     }
 
-                    geom = new MultiPolygon(polys);
+                    geom = new MultiPolygon(multipolys);
                 }
                 return geom;
             }
@@ -103,6 +114,19 @@ namespace Mapbox.Vector.Tile
             return pointList;
         }
 
+        public static List<List<List<GeographicPosition>>> ProjectPolygons(List<List<List<Coordinate>>> Geometry, int x, int y, int z, uint extent)
+        {
+            var projectedCoords = new List<List<GeographicPosition>>();
+            var result = new List<List<List<GeographicPosition>>>();
+            foreach (var g in Geometry)
+            {
+                projectedCoords = ProjectLines(g, x, y, z, extent);
+                result.Add(projectedCoords);
+            }
+            return result;
+        }
+
+
         public static Feature ToGeoJSON(this VectorTileFeature vectortileFeature, int x, int y, int z)
         {
             IGeometryObject geom = null;
@@ -120,8 +144,10 @@ namespace Mapbox.Vector.Tile
                 case Tile.GeomType.Polygon:
                     // todo: Call method ClassifyRings.Classify first...
                     // and process the classified rings...
-                    // var rings = ClassifyRings.Classify(vectortileFeature.Geometry);
-                    var projectedPolygons = ProjectLines(vectortileFeature.Geometry, x, y, z, vectortileFeature.Extent);
+                    var rings = ClassifyRings.Classify(vectortileFeature.Geometry);
+                    var projectedPolygons = ProjectPolygons(rings, x, y, z, vectortileFeature.Extent);
+
+                    // var projectedPolygons = ProjectLines(vectortileFeature.Geometry, x, y, z, vectortileFeature.Extent);
                     geom = GetPolygonGeometry(projectedPolygons);
                     break;
             }

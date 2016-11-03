@@ -8,21 +8,19 @@ namespace Mapbox.Vector.Tile
         public static List<List<List<Coordinate>>> Classify(List<List<Coordinate>> rings)
         {
             var polygons = new List<List<List<Coordinate>>>();
-            List<List<Coordinate>> newpoly = null; 
+            List<List<Coordinate>> newpoly = null;
             foreach (var ring in rings)
             {
                 var poly = new VTPolygon(ring);
-                if (poly.isCW())
+
+                if (poly.IsOuterRing())
                 {
                     newpoly = new List<List<Coordinate>>() { ring };
                     polygons.Add(newpoly);
                 }
                 else
                 {
-                    if (newpoly != null)
-                    {
-                        newpoly.Add(ring);
-                    }
+                    newpoly.Add(ring);
                 }
             }
 

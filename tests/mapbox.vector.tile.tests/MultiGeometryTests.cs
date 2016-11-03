@@ -18,22 +18,64 @@ namespace Mapbox.Vector.Tile.tests
             var actualResult = JObject.Parse(json);
             // todo: why is there a difference of 0.03 wrt the mapbox js test?
             var expectedResult = JObject.Parse(@"
-                {
-                  'geometry': {
-                    'coordinates':
-[[[2.021484375,-2.0210651187669839],[-2.021484375,-2.0210651187669839],[-2.021484375,2.0210651187669839],[2.021484375,2.0210651187669839],[2.021484375,-2.0210651187669839]],
- [[-0.966796875,0.966796875],[-0.966796875,-0.966796875],[0.966796875,-0.966796875],[0.966796875,0.966796875],[-0.966796875,0.966796875]]],
-                    'type': 'Polygon'
-                  },
-                  'id': '1',
-                  'properties': {},
-                  'type': 'Feature'
-                }
-            ");
+{
+  'geometry': {
+    'coordinates': [
+      [
+        [
+          2.021484375,
+          -2.0210651187669839
+        ],
+        [
+          -2.021484375,
+          -2.0210651187669839
+        ],
+        [
+          -2.021484375,
+          2.0210651187669839
+        ],
+        [
+          2.021484375,
+          2.0210651187669839
+        ],
+        [
+          2.021484375,
+          -2.0210651187669839
+        ]
+      ],
+      [
+        [
+          -0.966796875,
+          0.96675099976664569
+        ],
+        [
+          -0.966796875,
+          -0.96675099976663148
+        ],
+        [
+          0.966796875,
+          -0.96675099976663148
+        ],
+        [
+          0.966796875,
+          0.96675099976664569
+        ],
+        [
+          -0.966796875,
+          0.96675099976664569
+        ]
+      ]
+    ],
+    'type': 'Polygon'
+  },
+  'id': '1',
+  'properties': {},
+  'type': 'Feature'
+}
+");
 
             // assert
-            // Todo: Fix the following test for polygon wth innerring
-            // Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
+            Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
         }
 
 
@@ -75,7 +117,11 @@ namespace Mapbox.Vector.Tile.tests
                       [
                         [
                           [
-                            0.966796875,
+                            -0.966796875,
+                            -0.96675099976663148
+                          ],
+                          [
+                            -0.966796875,
                             0.0
                           ],
                           [
@@ -83,12 +129,8 @@ namespace Mapbox.Vector.Tile.tests
                             0.0
                           ],
                           [
-                            0.966796875,
-                            0.96675099976664569
-                          ],
-                          [
-                            0.966796875,
-                            0.0
+                            -0.966796875,
+                            -0.96675099976663148
                           ]
                         ]
                       ]
@@ -99,7 +141,7 @@ namespace Mapbox.Vector.Tile.tests
                   'properties': {},
                   'type': 'Feature'
                 }
-            ");
+");
 
             // assert
             Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));

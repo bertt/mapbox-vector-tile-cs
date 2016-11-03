@@ -7,12 +7,21 @@ namespace mapbox.vector.tile.tests
     public class ClassifyRingsTests
     {
         [Test]
+        public void TestReversePolygon()
+        {
+            var poly1 = TestData.GetCWPolygon(2);
+            Assert.IsTrue(new VTPolygon(poly1).IsCW());
+            poly1.Reverse();
+            Assert.IsTrue(new VTPolygon(poly1).IsCCW());
+        }
+
+        [Test]
         public void TestClassifyRingsWithTwoOuterrings()
         {
             // arrange
             var coords = new List<List<Coordinate>>();
-            var poly1 = TestData.GetCWPolygon(2);
-            var poly2 = TestData.GetCWPolygon(1);
+            var poly1 = TestData.GetCCWPolygon(2);
+            var poly2 = TestData.GetCCWPolygon(1);
             coords.Add(poly1);
             coords.Add(poly2);
 
@@ -30,8 +39,8 @@ namespace mapbox.vector.tile.tests
         {
             // arrange
             var coords = new List<List<Coordinate>>();
-            var poly1 = TestData.GetCWPolygon(2);
-            var poly2 = TestData.GetCCWPolygon(1);
+            var poly1 = TestData.GetCCWPolygon(2);
+            var poly2 = TestData.GetCWPolygon(1);
             coords.Add(poly1);
             coords.Add(poly2);
 
@@ -48,9 +57,9 @@ namespace mapbox.vector.tile.tests
         {
             // arrange
             var coords = new List<List<Coordinate>>();
-            var poly1 = TestData.GetCWPolygon(3);
-            var poly2 = TestData.GetCCWPolygon(2);
-            var poly3 = TestData.GetCWPolygon(1);
+            var poly1 = TestData.GetCCWPolygon(3);
+            var poly2 = TestData.GetCWPolygon(2);
+            var poly3 = TestData.GetCCWPolygon(1);
 
             coords.Add(poly1);
             coords.Add(poly2);

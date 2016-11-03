@@ -14,9 +14,10 @@ namespace mapbox.vector.tile.tests
             var poly = new VTPolygon(coords);
 
             // act
-            var ccw = poly.isCW();
+            var ccw = poly.IsCW();
 
             // assert
+            Assert.IsTrue(poly.SignedArea() < 0);
             Assert.IsTrue(ccw);
         }
 
@@ -27,9 +28,10 @@ namespace mapbox.vector.tile.tests
             var poly = new VTPolygon(coords);
 
             // act
-            var ccw = poly.isCCW();
+            var ccw = poly.IsCCW();
 
             // assert
+            Assert.IsTrue(poly.SignedArea() > 0);
             Assert.IsTrue(ccw);
         }
     }
