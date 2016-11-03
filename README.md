@@ -54,6 +54,25 @@ Changes: Add support for multi-geometries
 
 2015-07-07: Release 1.0 
 
+# Benchmark test
+
+```
+Host Process Environment Information:
+BenchmarkDotNet.Core=v0.9.9.0
+OS=Microsoft Windows NT 6.2.9200.0
+Processor=Intel(R) Core(TM) i7-6820HQ CPU 2.70GHz, ProcessorCount=8
+Frequency=2648440 ticks, Resolution=377.5808 ns, Timer=TSC
+CLR=MS.NET 4.0.30319.42000, Arch=32-bit RELEASE
+GC=Concurrent Workstation
+JitModules=clrjit-v4.6.1586.0
+
+Type=ParsingBenchmark  Mode=Throughput
+
+                    Method |      Median |    StdDev |
+-------------------------- |------------ |---------- |
+ ParseVectorTileFromStream | 591.4251 ns | 5.6014 ns |
+``` 
+
 # Projects that use mapbox-vector-tile-cs
 
 * OSMSharp VectorTileToBitmapRenderer Mapzen vector tile layer demo in 
