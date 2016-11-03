@@ -189,6 +189,7 @@ namespace Mapbox.Vector.Tile.tests
             var layerInfos = VectorTileParser.Parse(pbfStream);
 
             // check features
+            Assert.IsTrue(layerInfos[17].ToGeoJSON(8801,5371,14)!=null);
             Assert.IsTrue(layerInfos.Count == 20);
             Assert.IsTrue(layerInfos[0].VectorTileFeatures.Count == 107);
             Assert.IsTrue(layerInfos[0].VectorTileFeatures[0].Attributes.Count == 2);

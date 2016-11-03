@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mapbox.vector.tile", "src\mapbox.vector.tile.csproj", "{E1EA7DC2-6EA3-403A-A2DB-7143C9E5B704}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mapbox.vector.tile.tests", "tests\mapbox.vector.tile.tests\mapbox.vector.tile.tests.csproj", "{37C76CED-224F-475D-8819-93D194161BB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "mapbox.vector.tile.benchmark", "mapbox.vector.tile.benchmark\mapbox.vector.tile.benchmark.csproj", "{99D6786C-8627-4CDA-B047-D0ECA0F1EADF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{37C76CED-224F-475D-8819-93D194161BB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{37C76CED-224F-475D-8819-93D194161BB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{37C76CED-224F-475D-8819-93D194161BB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99D6786C-8627-4CDA-B047-D0ECA0F1EADF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99D6786C-8627-4CDA-B047-D0ECA0F1EADF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99D6786C-8627-4CDA-B047-D0ECA0F1EADF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99D6786C-8627-4CDA-B047-D0ECA0F1EADF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
