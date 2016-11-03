@@ -23,8 +23,6 @@ NuGet package contains PCL: Profile 111 (.NET Framework 4.5, Windows 8.0, Window
 # Usage
 
 ```cs
-using mapbox.vector.tile.ExtensionMethods;
-
 const string vtfile = "vectortile.pbf";
 using (var stream = File.OpenRead(vtfile))
 {
@@ -44,6 +42,9 @@ Tip: If you use this library with vector tiles loading from a webserver, you cou
 Probably you need to check the GZip compression, see also TileParserTests.cs for an example.
 
 # History
+2016-11-03: Release 3.1
+
+Changes: Add support for polygon inner- and outerrings
 
 2016-10-31: Release 3.0
 
