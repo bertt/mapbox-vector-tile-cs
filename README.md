@@ -71,6 +71,7 @@ Type=ParsingBenchmark  Mode=Throughput
 -------------------------- |---------- |---------- |
  ParseVectorTileFromStream | 1.7147 us | 0.0196 us |
 
+```
 # Projects that use mapbox-vector-tile-cs
 
 * OSMSharp VectorTileToBitmapRenderer Mapzen vector tile layer demo in 
