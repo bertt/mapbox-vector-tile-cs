@@ -2,7 +2,6 @@
 using Mapbox.Vector.Tile;
 using System.Collections.Generic;
 using System.IO;
-using System.Reflection;
 
 namespace mapbox.vector.tile.benchmark
 {
@@ -11,8 +10,8 @@ namespace mapbox.vector.tile.benchmark
         Stream input;
         public ParsingBenchmark()
         {
-            const string mapboxissue3File = "mapbox.vector.tile.benchmark.testdata.14-8801-5371.vector.pbf";
-            input = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxissue3File);
+            const string mapboxissue3File = @"./testdata/14-8801-5371.vector.pbf";
+            input = File.OpenRead(mapboxissue3File);
         }
 
         [Benchmark]

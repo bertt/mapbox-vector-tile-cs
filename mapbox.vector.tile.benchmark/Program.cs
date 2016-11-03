@@ -8,6 +8,7 @@ namespace mapbox.vector.tile.benchmark
         static void Main(string[] args)
         {
             var summary = BenchmarkRunner.Run<ParsingBenchmark>();
+            var summary1= BenchmarkRunner.Run<SeondBenchmark>();
             Console.ReadKey();
         }
     }
