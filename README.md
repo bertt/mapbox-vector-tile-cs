@@ -55,7 +55,7 @@ Changes: Add support for multi-geometries
 2015-07-07: Release 1.0 
 
 # Benchmark test
-
+Test performed with Mapbox vector tile '14-8801-5371.vector.pbf'
 ```
 Host Process Environment Information:
 BenchmarkDotNet.Core=v0.9.9.0
@@ -67,11 +67,9 @@ GC=Concurrent Workstation
 JitModules=clrjit-v4.6.1586.0
 
 Type=ParsingBenchmark  Mode=Throughput
-
-                    Method |      Median |    StdDev |
--------------------------- |------------ |---------- |
- ParseVectorTileFromStream | 591.4251 ns | 5.6014 ns |
-``` 
+                    Method |    Median |    StdDev |
+-------------------------- |---------- |---------- |
+ ParseVectorTileFromStream | 1.7147 us | 0.0196 us |
 
 # Projects that use mapbox-vector-tile-cs
 
