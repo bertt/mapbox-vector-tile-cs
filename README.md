@@ -55,6 +55,15 @@ Changes: Add support for multi-geometries
 2015-07-07: Release 1.0 
 
 # Benchmark test
+Test performed with Mapbox vector tile '14-8801-5371.vector.pbf'
+
+Layers used:
+
+Point layer: parks (id=17) - 558 features
+
+Line layer: roads (id=8) - 686 features
+
+Polygon layer: building (id=5) - 975 features
 
 ```
 Host Process Environment Information:
@@ -67,12 +76,17 @@ GC=Concurrent Workstation
 JitModules=clrjit-v4.6.1586.0
 
 Type=ParsingBenchmark  Mode=Throughput
+-------------------------------- |-------------- |-------------|
+                          Method |    Median     |    StdDev   |
+-------------------------------- |-------------- |-------------|
+       ParseVectorTileFromStream |     1.7147 us |   0.0196 us |
+ --------------------------------|-------------- |------------ |
+   VectorTilePointLayerToGeoJSON |   719.3773 us |   5.7271 us |
+    VectorTileLineLayerToGeoJSON | 1,532.6888 us | 114.5458 us |
+ VectorTilePolygonLayerToGeoJSON | 4,458.0017 us | 274.7238 us |
+-------------------------------- |-------------- |-------------|
 
-                    Method |      Median |    StdDev |
--------------------------- |------------ |---------- |
- ParseVectorTileFromStream | 591.4251 ns | 5.6014 ns |
-``` 
-
+```
 # Projects that use mapbox-vector-tile-cs
 
 * OSMSharp VectorTileToBitmapRenderer Mapzen vector tile layer demo in 
