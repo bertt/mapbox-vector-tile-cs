@@ -17,7 +17,6 @@ namespace mapbox.vector.tile.tests
             // act
             var json = JsonConvert.SerializeObject(feature);
             var actualResult = JObject.Parse(json);
-            // todo: why is there a difference of 0.03 wrt the mapbox js test?
             var expectedResult = JObject.Parse(@"
             {
               'geometry': {
@@ -46,7 +45,6 @@ namespace mapbox.vector.tile.tests
             // act
             var json = JsonConvert.SerializeObject(feature);
             var actualResult = JObject.Parse(json);
-            // todo: why is there a difference of 0.03 wrt the mapbox js test?
             var expectedResult = JObject.Parse(@"
                 {
                   'geometry': {
@@ -82,7 +80,6 @@ namespace mapbox.vector.tile.tests
             // act
             var json = JsonConvert.SerializeObject(feature);
             var actualResult = JObject.Parse(json);
-            // todo: why is there a difference of 0.03 wrt the mapbox js test?
             var expectedResult = JObject.Parse(@"
                 {
                   'geometry': {

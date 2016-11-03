@@ -53,6 +53,7 @@
     <Compile Include="ClassifyRingsTests.cs" />
     <Compile Include="GeometryParserTests.cs" />
     <Compile Include="IEnumerableExtensionTests.cs" />
+    <Compile Include="LotsOfTagsTest.cs" />
     <Compile Include="MultiGeometryTests.cs" />
     <Compile Include="PbfLoader.cs" />
     <Compile Include="PolygonTests.cs" />
@@ -80,6 +81,8 @@
     <EmbeddedResource Include="testdata\singleton-line.pbf" />
     <EmbeddedResource Include="testdata\singleton-point.pbf" />
     <EmbeddedResource Include="testdata\singleton-polygon.pbf" />
+    <EmbeddedResource Include="testdata\stacked-multipolygon.pbf" />
+    <EmbeddedResource Include="testdata\lots-of-tags.vector.pbf" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\mapbox.vector.tile.csproj">
