@@ -57,6 +57,7 @@
     <Compile Include="PbfLoader.cs" />
     <Compile Include="PolygonTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SingletonGeometryTests.cs" />
     <Compile Include="TestData.cs" />
     <Compile Include="TileParserTests.cs" />
     <Compile Include="ToGeoJSONTests.cs" />
@@ -76,6 +77,9 @@
     <EmbeddedResource Include="testdata\multi-line.pbf" />
     <EmbeddedResource Include="testdata\multi-polygon.pbf" />
     <EmbeddedResource Include="testdata\polygon-with-inner.pbf" />
+    <EmbeddedResource Include="testdata\singleton-line.pbf" />
+    <EmbeddedResource Include="testdata\singleton-point.pbf" />
+    <EmbeddedResource Include="testdata\singleton-polygon.pbf" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\mapbox.vector.tile.csproj">
