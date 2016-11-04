@@ -42,6 +42,11 @@ Tip: If you use this library with vector tiles loading from a webserver, you cou
 Probably you need to check the GZip compression, see also TileParserTests.cs for an example.
 
 # History
+
+2016-11-04: Release 3.1.1
+
+Changes: Add error handling for polygon linearrings
+
 2016-11-03: Release 3.1
 
 Changes: Add support for polygon inner- and outerrings
