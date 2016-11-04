@@ -59,7 +59,10 @@ namespace Mapbox.Vector.Tile
             foreach (var innerring in lines)
             {
                 var line = new LineString(innerring);
-                res.Add(line);
+                if (line.IsLinearRing() && line.IsClosed())
+                {
+                    res.Add(line);
+                }
             }
             var geom = new Polygon(res);
             return geom;

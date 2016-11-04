@@ -8,6 +8,22 @@ namespace Mapbox.Vector.Tile
     public class ToGeoJsonTests
     {
         [Test]
+        public void TestBagTile()
+        {
+            // arrange
+            const string name = "mapbox.vector.tile.tests.testdata.bag_7_65_41.pbf";
+            var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(name);
+            var layerInfos = VectorTileParser.Parse(pbfStream);
+            var buildings = layerInfos[0];
+
+            // act
+            var geoJson = buildings.ToGeoJSON(8801, 5371, 14);
+
+            // assert
+            Assert.IsTrue(geoJson != null);
+        }
+
+        [Test]
         public void TestToGeoJsonPolygonFeature()
         {
             // arrange

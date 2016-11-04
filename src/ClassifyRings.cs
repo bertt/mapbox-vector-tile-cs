@@ -20,7 +20,10 @@ namespace Mapbox.Vector.Tile
                 }
                 else
                 {
-                    newpoly.Add(ring);
+                    if (newpoly != null)
+                    {
+                        newpoly.Add(ring);
+                    }
                 }
             }
 

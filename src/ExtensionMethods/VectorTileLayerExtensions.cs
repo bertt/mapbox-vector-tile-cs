@@ -11,7 +11,10 @@ namespace Mapbox.Vector.Tile
             foreach (var feature in vectortileLayer.VectorTileFeatures)
             {
                 var geojsonFeature = feature.ToGeoJSON(x,y,z);
-                featureCollection.Features.Add(geojsonFeature);
+                if (geojsonFeature.Geometry != null)
+                {
+                    featureCollection.Features.Add(geojsonFeature);
+                }
             }
 		    return featureCollection;
 		}
