@@ -55,7 +55,7 @@ namespace Mapbox.Vector.Tile
             ");
 
             // assert
-            // Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
+            Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
         }
 
         [Test]
