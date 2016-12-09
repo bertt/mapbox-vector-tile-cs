@@ -95,6 +95,7 @@ Type=ParsingBenchmark  Mode=Throughput
 # Projects that use mapbox-vector-tile-cs
 
 * ryanlowdermilk/VectorTilesWithXamarinMaps
+
 A sample Android, iOS and Windows Universal app that maps vector tile data onto Xamarin Maps
 https://github.com/ryanlowdermilk/VectorTilesWithXamarinMaps
 
