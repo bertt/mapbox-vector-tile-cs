@@ -94,6 +94,10 @@ Type=ParsingBenchmark  Mode=Throughput
 ```
 # Projects that use mapbox-vector-tile-cs
 
+* nextgis - ArcQMS
+
+https://github.com/nextgis/ArcQMS
+
 * ryanlowdermilk/VectorTilesWithXamarinMaps
 
 A sample Android, iOS and Windows Universal app that maps vector tile data onto Xamarin Maps
