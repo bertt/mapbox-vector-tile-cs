@@ -1,3 +1,4 @@
+
 # mapbox-vector-tile-cs 
 
 [![NuGet Status](http://img.shields.io/nuget/v/mapbox-vector-tile.svg?style=flat)](https://www.nuget.org/packages/mapbox-vector-tile/)
@@ -10,14 +11,16 @@ https://github.com/mapbox/vector-tile-js
 
 Dependencies: GeoJSON.NET, JSON.NET, protobuf-net
 
-### Installation
-```
+###Get it from NuGet 
+`
 PM> Install-Package mapbox-vector-tile
-```
+`
+
+https://www.nuget.org/packages/mapbox-vector-tile
 
 NuGet package contains PCL: Profile 111 (.NET Framework 4.5, Windows 8.0, Windows Phone 8.1, Xamarin.Android, Xamarin.iOS)
 
-### Usage
+# Usage
 
 ```cs
 const string vtfile = "vectortile.pbf";
@@ -38,7 +41,12 @@ Tip: If you use this library with vector tiles loading from a webserver, you cou
 'ProtoBuf.ProtoException: Invalid wire-type; this usually means you have over-written a file without truncating or setting the length'
 Probably you need to check the GZip compression, see also TileParserTests.cs for an example.
 
-### History
+# History
+
+2016-11-04: Release 3.1.1
+
+Changes: Add error handling for polygon linearrings
+
 2016-11-03: Release 3.1
 
 Changes: Add support for polygon inner- and outerrings
@@ -51,7 +59,7 @@ Changes: Add support for multi-geometries
 
 2015-07-07: Release 1.0 
 
-### Benchmark test
+# Benchmark test
 Test performed with Mapbox vector tile '14-8801-5371.vector.pbf'
 
 Layers used:
@@ -84,7 +92,16 @@ Type=ParsingBenchmark  Mode=Throughput
 -------------------------------- |-------------- |-------------|
 
 ```
-### Projects that use mapbox-vector-tile-cs
+# Projects that use mapbox-vector-tile-cs
+
+* nextgis - ArcQMS
+
+https://github.com/nextgis/ArcQMS
+
+* ryanlowdermilk/VectorTilesWithXamarinMaps
+
+A sample Android, iOS and Windows Universal app that maps vector tile data onto Xamarin Maps
+https://github.com/ryanlowdermilk/VectorTilesWithXamarinMaps
 
 * OSMSharp VectorTileToBitmapRenderer Mapzen vector tile layer demo in 
 https://github.com/OsmSharp/VectorTileToBitmapRenderer
