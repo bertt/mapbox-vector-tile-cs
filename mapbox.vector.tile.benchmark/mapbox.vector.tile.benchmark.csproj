@@ -142,7 +142,7 @@
     <Compile Include="ParsingBenchmark.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SeondBenchmark.cs" />
+    <Compile Include="SecondBenchmark.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

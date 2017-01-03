@@ -6,10 +6,10 @@ using System.IO;
 
 namespace mapbox.vector.tile.benchmark
 {
-    public class SeondBenchmark
+    public class SecondBenchmark
     {
         List<VectorTileLayer> layers;
-        public SeondBenchmark()
+        public SecondBenchmark()
         {
             const string mapboxissue3File = @"./testdata/14-8801-5371.vector.pbf";
             var input = File.OpenRead(mapboxissue3File);
