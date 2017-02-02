@@ -82,6 +82,30 @@ namespace Mapbox.Vector.Tile.tests
         }
 
         [Test]
+        public void TestBagTileFromUrl()
+        {
+            // arrange
+            var url = "http://research.geodan.nl/service/geoserver/gwc/service/tms/1.0.0/research%3Apand@World_3857@pbf/14/8425/10978.pbf";
+
+            // Note: Use HttpClient with automatic decompression 
+            // instead of regular HttpClient otherwise we get exception 
+            // 'ProtoBuf.ProtoException: Invalid wire-type; this usually means you have over-written a file without truncating or setting the length'
+            var gzipWebClient = new HttpClient(new HttpClientHandler()
+            {
+                AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
+            });
+            var bytes = gzipWebClient.GetByteArrayAsync(url).Result;
+
+            var stream = new MemoryStream(bytes);
+
+            // act
+            var layerInfos = VectorTileParser.Parse(stream);
+
+            // assert
+            Assert.IsTrue(layerInfos.Count > 0);
+        }
+
+        [Test]
         public void TestMapzenTile()
         {
             // arrange
