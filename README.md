@@ -15,7 +15,7 @@ Dependencies: GeoJSON.NET, JSON.NET, protobuf-net
 PM> Install-Package mapbox-vector-tile
 ```
 
-NuGet package contains PCL: Profile 111 (.NET Framework 4.5, Windows 8.0, Windows Phone 8.1, Xamarin.Android, Xamarin.iOS)
+NuGet package contains PCL: Profile 259 (portable-net45+netcore45+wpa81+wp8)
 
 ### Usage
 
