@@ -45,9 +45,13 @@ namespace Mapbox.Vector.Tile
             {
                 res = value.StringValue;
             }
+            else if (value.HasSIntValue)
+            {
+                res = value.SintValue;
+            }
             else if (value.HasUIntValue)
             {
-                res = value.HasUIntValue;
+                res = value.UintValue;
             }
             return res;
         }
