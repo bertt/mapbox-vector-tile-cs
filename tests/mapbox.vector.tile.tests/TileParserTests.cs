@@ -12,6 +12,24 @@ namespace Mapbox.Vector.Tile.tests
     public class TileParserTests
     {
         [Test]
+        // test for issue 10 https://github.com/bertt/mapbox-vector-tile-cs/issues/10
+        // Attributes tests for short Int values
+        public void TestIssue10MapBoxVectorTile()
+        {
+            // arrange
+            const string mapboxissue10File = "mapbox.vector.tile.tests.testdata.cadastral.pbf";
+
+            // act
+            var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxissue10File);
+            var layerInfos = VectorTileParser.Parse(pbfStream);
+
+            // asserts
+            var firstattribute = layerInfos[0].VectorTileFeatures[0].Attributes[0];
+            var val = firstattribute.Value;
+            Assert.IsTrue((long)val == 867160);
+        }
+
+        [Test]
         // test for issue 3 https://github.com/bertt/mapbox-vector-tile-cs/issues/3
         // tile: https://b.tiles.mapbox.com/v4/mapbox.mapbox-terrain-v2,mapbox.mapbox-streets-v7/13/4260/2911.vector.pbf
         public void TestIssue3MapBoxVectorTile()
