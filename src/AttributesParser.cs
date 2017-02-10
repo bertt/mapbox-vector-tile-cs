@@ -21,7 +21,7 @@ namespace Mapbox.Vector.Tile
             return result;
         }
 
-        static object GetAttr(Tile.Value value)
+        private static object GetAttr(Tile.Value value)
         {
             object res = null;
 

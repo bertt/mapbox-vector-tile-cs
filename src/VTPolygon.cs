@@ -14,8 +14,8 @@ namespace Mapbox.Vector.Tile
         // method assuming polygon is closed (first point is the same as last point)
         public double SignedArea()
         {
-            double sum = 0.0;
-            for (int i = 0; i < points.Count-1; i++)
+            var sum = 0.0;
+            for (var i = 0; i < points.Count-1; i++)
             {
                 sum = sum + (points[i].X * points[i + 1].Y - (points[i].Y * points[i + 1].X));
             }

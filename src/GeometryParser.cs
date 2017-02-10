@@ -15,10 +15,10 @@ namespace Mapbox.Vector.Tile
             long y = 0;
             var coordsList = new List<List<Coordinate>>();
             List<Coordinate> coords = null;
-            int geometryCount = geom.Count;
+            var geometryCount = geom.Count;
             uint length = 0;
             uint command = 0;
-            int i = 0;
+            var i = 0;
             while (i < geometryCount)
             {
                 if (length <= 0)
