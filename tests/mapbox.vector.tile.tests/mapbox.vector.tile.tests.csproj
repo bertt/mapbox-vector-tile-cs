@@ -58,6 +58,7 @@
     <Compile Include="PbfLoader.cs" />
     <Compile Include="PolygonTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SignedAreaTests.cs" />
     <Compile Include="SingletonGeometryTests.cs" />
     <Compile Include="TestData.cs" />
     <Compile Include="TileParserTests.cs" />
