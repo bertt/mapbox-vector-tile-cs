@@ -15,7 +15,7 @@ Dependencies: GeoJSON.NET, JSON.NET, protobuf-net
 PM> Install-Package mapbox-vector-tile
 ```
 
-NuGet package contains PCL: Profile 259 (portable-net45+netcore45+wpa81+wp8)
+NuGet package contains .NET Standard 1.3 library
 
 ### Usage
 
@@ -39,6 +39,8 @@ Tip: If you use this library with vector tiles loading from a webserver, you cou
 Probably you need to check the GZip compression, see also TileParserTests.cs for an example.
 
 # History
+2017-10-19: Release version 4.0 for .NET Standard 1.3
+
 2016-11-03: Release 3.1
 
 Changes: Add support for polygon inner- and outerrings
