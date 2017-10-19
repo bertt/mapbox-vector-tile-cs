@@ -155,7 +155,7 @@ namespace Mapbox.Vector.Tile
                     break;
             }
 
-            var result = new Feature(geom);
+            var result = new Feature(geom, id: vectortileFeature.Id);
 
             // add attributes
             foreach (var item in vectortileFeature.Attributes)
@@ -163,8 +163,6 @@ namespace Mapbox.Vector.Tile
                 result.Properties.Add(item.Key, item.Value);
 
             }
-            // todo: @bertt fix issue below
-            // result.Id = vectortileFeature.Id;
             return result;
         }
     }

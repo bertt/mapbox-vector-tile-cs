@@ -79,7 +79,7 @@ namespace Mapbox.Vector.Tile.tests
         public void TestMapzenTileFromUrl()
         {
             // arrange
-            var url = "http://tile.mapzen.com/mapzen/vector/v1/all/0/0/0.mvt?api_key=mapzen-BbwpFPn";
+            var url = "https://tile.mapzen.com/mapzen/vector/v1/all/0/0/0.mvt?api_key=mapzen-BbwpFPn";
 
             // Note: Use HttpClient with automatic decompression 
             // instead of regular HttpClient otherwise we get exception 
