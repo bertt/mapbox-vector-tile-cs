@@ -195,3 +195,4 @@ _Pvt_Extensions/
 ModelManifest.xml
 /.vs/mapbox-vector-tile/v15/sqlite3
 /mapbox-vector-tile.v3.ncrunchsolution
+/*.ncrunchsolution
