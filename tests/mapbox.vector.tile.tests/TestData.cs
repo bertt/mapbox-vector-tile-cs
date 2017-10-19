@@ -1,7 +1,6 @@
-﻿using Mapbox.Vector.Tile;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace mapbox.vector.tile.tests
+namespace Mapbox.Vector.Tile.tests
 {
     public class TestData
     {
@@ -25,7 +24,5 @@ namespace mapbox.vector.tile.tests
             var coords = new List<Coordinate>() { firstp, secondp, thirdp, fourthp, firstp };
             return coords;
         }
-
-
     }
 }

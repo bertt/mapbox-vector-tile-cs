@@ -1,8 +1,7 @@
-﻿using Mapbox.Vector.Tile;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System.Reflection;
 
-namespace mapbox.vector.tile.tests
+namespace Mapbox.Vector.Tile.tests
 {
     public class LotsOfTagsTest
     {

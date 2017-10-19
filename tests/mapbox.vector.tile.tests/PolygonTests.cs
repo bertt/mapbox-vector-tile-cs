@@ -1,7 +1,5 @@
-﻿using Mapbox.Vector.Tile;
-using NUnit.Framework;
-
-namespace mapbox.vector.tile.tests
+﻿using NUnit.Framework;
+namespace Mapbox.Vector.Tile.tests
 {
     public class PolygonTests
     {

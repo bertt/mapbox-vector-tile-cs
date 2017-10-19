@@ -1,8 +1,8 @@
-﻿using Mapbox.Vector.Tile;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System.Collections.Generic;
 
-namespace mapbox.vector.tile.tests
+namespace Mapbox.Vector.Tile.tests
+
 {
     public class SignedAreaTests
     {
