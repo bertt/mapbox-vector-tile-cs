@@ -5,7 +5,7 @@ namespace Mapbox.Vector.Tile
 {
     public static class CoordinateExtensions
     {
-        public static GeographicPosition ToGeographicPosition(this Coordinate c, int x, int y, int z, uint extent)
+        public static Position ToPosition(this Coordinate c, int x, int y, int z, uint extent)
         {
             var size = extent * Math.Pow(2, z);
             var x0 = extent * x;
@@ -15,7 +15,7 @@ namespace Mapbox.Vector.Tile
             var lon = (c.X + x0) * 360 / size - 180;
             var lat = 360 / Math.PI * Math.Atan(Math.Exp(y2 * Math.PI / 180)) - 90;
 
-            return new GeographicPosition(lat, lon);
+            return new Position(lat, lon);
         }
     }
 }
