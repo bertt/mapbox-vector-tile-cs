@@ -193,3 +193,4 @@ FakesAssemblies/
 GeneratedArtifacts/
 _Pvt_Extensions/
 ModelManifest.xml
+/.vs/mapbox-vector-tile/v15/sqlite3/storage.ide

@@ -7,18 +7,18 @@ namespace Mapbox.Vector.Tile
 {
     public static class VectorTileFeatureExtensions
     {
-        private static List<GeographicPosition> Project(List<Coordinate> coords, int x, int y, int z, uint extent)
+        private static List<Position> Project(List<Coordinate> coords, int x, int y, int z, uint extent)
         {
-            return coords.Select(coord => coord.ToGeographicPosition(x, y, z, extent)).ToList();
+            return coords.Select(coord => coord.ToPosition(x, y, z, extent)).ToList();
         }
 
-        private static LineString CreateLineString(List<GeographicPosition> pos)
+        private static LineString CreateLineString(List<Position> pos)
         {
             return new LineString(pos);
         }
 
 
-        private static IGeometryObject GetPointGeometry(List<GeographicPosition> pointList)
+        private static IGeometryObject GetPointGeometry(List<Position> pointList)
         {
             IGeometryObject geom;
             if (pointList.Count == 1)
@@ -33,12 +33,12 @@ namespace Mapbox.Vector.Tile
             return geom;
         }
 
-        private static List<LineString> GetLineStringList(List<List<GeographicPosition>> pointList)
+        private static List<LineString> GetLineStringList(List<List<Position>> pointList)
         {
             return pointList.Select(part => CreateLineString(part)).ToList();
         }
 
-        private static IGeometryObject GetLineGeometry(List<List<GeographicPosition>> pointList)
+        private static IGeometryObject GetLineGeometry(List<List<Position>> pointList)
         {
             IGeometryObject geom;
 
@@ -53,7 +53,7 @@ namespace Mapbox.Vector.Tile
             return geom;
         }
 
-        private static Polygon GetPolygon(List<List<GeographicPosition>> lines)
+        private static Polygon GetPolygon(List<List<Position>> lines)
         {
             var res = new List<LineString>();
             foreach (var innerring in lines)
@@ -68,7 +68,7 @@ namespace Mapbox.Vector.Tile
             return geom;
         }
 
-        private static IGeometryObject GetPolygonGeometry(List<List<List<GeographicPosition>>> polygons)
+        private static IGeometryObject GetPolygonGeometry(List<List<List<Position>>> polygons)
         {
             {
                 IGeometryObject geom=null;
@@ -92,9 +92,9 @@ namespace Mapbox.Vector.Tile
             }
         }
 
-        public static List<GeographicPosition> ProjectPoints(List<List<Coordinate>> Geometry, int x, int y, int z, uint extent)
+        public static List<Position> ProjectPoints(List<List<Coordinate>> Geometry, int x, int y, int z, uint extent)
         {
-            var projectedCoords = new List<GeographicPosition>();
+            var projectedCoords = new List<Position>();
             var coords = new List<Coordinate>();
 
             foreach (var g in Geometry)
@@ -105,10 +105,10 @@ namespace Mapbox.Vector.Tile
             return projectedCoords;
         }
 
-        public static List<List<GeographicPosition>> ProjectLines(List<List<Coordinate>> Geometry, int x, int y, int z, uint extent)
+        public static List<List<Position>> ProjectLines(List<List<Coordinate>> Geometry, int x, int y, int z, uint extent)
         {
-            var projectedCoords = new List<GeographicPosition>();
-            var pointList = new List<List<GeographicPosition>>();
+            var projectedCoords = new List<Position>();
+            var pointList = new List<List<Position>>();
             foreach (var g in Geometry)
             {
                 projectedCoords = Project(g, x, y, z, extent);
@@ -117,10 +117,10 @@ namespace Mapbox.Vector.Tile
             return pointList;
         }
 
-        public static List<List<List<GeographicPosition>>> ProjectPolygons(List<List<List<Coordinate>>> Geometry, int x, int y, int z, uint extent)
+        public static List<List<List<Position>>> ProjectPolygons(List<List<List<Coordinate>>> Geometry, int x, int y, int z, uint extent)
         {
-            var projectedCoords = new List<List<GeographicPosition>>();
-            var result = new List<List<List<GeographicPosition>>>();
+            var projectedCoords = new List<List<Position>>();
+            var result = new List<List<List<Position>>>();
             foreach (var g in Geometry)
             {
                 projectedCoords = ProjectLines(g, x, y, z, extent);
@@ -155,7 +155,7 @@ namespace Mapbox.Vector.Tile
                     break;
             }
 
-            var result = new Feature(geom);
+            var result = new Feature(geom, id: vectortileFeature.Id);
 
             // add attributes
             foreach (var item in vectortileFeature.Attributes)
@@ -163,7 +163,6 @@ namespace Mapbox.Vector.Tile
                 result.Properties.Add(item.Key, item.Value);
 
             }
-            result.Id = vectortileFeature.Id;
             return result;
         }
     }
