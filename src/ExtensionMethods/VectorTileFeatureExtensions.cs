@@ -145,12 +145,8 @@ namespace Mapbox.Vector.Tile
                     geom = GetLineGeometry(projectedLines);
                     break;
                 case Tile.GeomType.Polygon:
-                    // todo: Call method ClassifyRings.Classify first...
-                    // and process the classified rings...
                     var rings = ClassifyRings.Classify(vectortileFeature.Geometry);
                     var projectedPolygons = ProjectPolygons(rings, x, y, z, vectortileFeature.Extent);
-
-                    // var projectedPolygons = ProjectLines(vectortileFeature.Geometry, x, y, z, vectortileFeature.Extent);
                     geom = GetPolygonGeometry(projectedPolygons);
                     break;
             }
