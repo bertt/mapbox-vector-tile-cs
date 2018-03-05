@@ -22,7 +22,7 @@ namespace mapbox.vector.tile.tests
 
             // it is enough to serialize into stream
             var serializedTileStream = new MemoryStream();
-            ProtoBuf.Serializer.Serialize<Tile>(serializedTileStream, tile);
+            Serializer.Serialize<Tile>(serializedTileStream, tile);
 
             // read the stream again
             serializedTileStream.Seek(0, SeekOrigin.Begin);
@@ -33,8 +33,8 @@ namespace mapbox.vector.tile.tests
 
             // next line: 
             // expected result: true,
-            /// actual result: false 
-            /// see https://github.com/bertt/mapbox-vector-tile-cs/issues/16)
+            // actual result: false 
+            // see https://github.com/bertt/mapbox-vector-tile-cs/issues/16)
             Assert.IsTrue(deserializedTile.Layers[4].Values[1].HasIntValue);
         }
     }
