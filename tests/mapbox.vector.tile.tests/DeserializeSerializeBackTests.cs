@@ -35,11 +35,6 @@ namespace mapbox.vector.tile.tests
             Assert.IsTrue(deserializedTile.Layers[4].Values[1].HasIntValue);
             Assert.IsTrue(deserializedTile.Layers[4].Values[0].StringValue == "");
             Assert.IsTrue(deserializedTile.Layers[4].Values[0].HasStringValue);
-
-            // next line: 
-            // expected result: true,
-            // actual result: false 
-            // see https://github.com/bertt/mapbox-vector-tile-cs/issues/16)
         }
     }
 }

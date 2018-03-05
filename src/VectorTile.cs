@@ -53,7 +53,7 @@
             }
             double _doubleValue;
             [ProtoBuf.ProtoMember(3, IsRequired = false, Name = @"double_value", DataFormat = ProtoBuf.DataFormat.TwosComplement)]
-            [System.ComponentModel.DefaultValue(default(double))]
+            [System.ComponentModel.DefaultValue(double.MinValue)]
             public double DoubleValue
             {
                 get { return _doubleValue; }
@@ -77,7 +77,7 @@
             }
             ulong _uintValue;
             [ProtoBuf.ProtoMember(5, IsRequired = false, Name = @"uint_value", DataFormat = ProtoBuf.DataFormat.TwosComplement)]
-            [System.ComponentModel.DefaultValue(default(ulong))]
+            [System.ComponentModel.DefaultValue(ulong.MinValue)]
             public ulong UintValue
             {
                 get { return _uintValue; }
@@ -89,7 +89,7 @@
             }
             long _sintValue;
             [ProtoBuf.ProtoMember(6, IsRequired = false, Name = @"sint_value", DataFormat = ProtoBuf.DataFormat.ZigZag)]
-            [System.ComponentModel.DefaultValue(default(long))]
+            [System.ComponentModel.DefaultValue(long.MinValue)]
             public long SintValue
             {
                 get { return _sintValue; }
@@ -101,7 +101,7 @@
             }
             bool _boolValue;
             [ProtoBuf.ProtoMember(7, IsRequired = false, Name = @"bool_value", DataFormat = ProtoBuf.DataFormat.Default)]
-            [System.ComponentModel.DefaultValue(default(bool))]
+            [System.ComponentModel.DefaultValue(null)]
             public bool BoolValue
             {
                 get { return _boolValue; }
