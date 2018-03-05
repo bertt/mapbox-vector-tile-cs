@@ -13,7 +13,7 @@ namespace mapbox.vector.tile.tests
             string pbf = "mapbox.vector.tile.tests.testdata.16_34440_23455_raw.mvt";
             var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(pbf);
 
-            // deseriale the tile first
+            // deserialize the tile first
             var tile = Serializer.Deserialize<Tile>(pbfStream);
             Assert.IsTrue(tile.Layers[4].Name == "road___1");
             Assert.IsTrue(tile.Layers[4].Values[1].IntValue == 0);
