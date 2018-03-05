@@ -19,6 +19,8 @@ namespace mapbox.vector.tile.tests
             Assert.IsTrue(tile.Layers[4].Name == "road___1");
             Assert.IsTrue(tile.Layers[4].Values[1].IntValue == 0);
             Assert.IsTrue(tile.Layers[4].Values[1].HasIntValue);
+            Assert.IsTrue(tile.Layers[4].Values[0].StringValue == "");
+            Assert.IsTrue(tile.Layers[4].Values[0].HasStringValue);
 
             // it is enough to serialize into stream
             var serializedTileStream = new MemoryStream();
@@ -30,12 +32,14 @@ namespace mapbox.vector.tile.tests
 
             Assert.IsTrue(deserializedTile.Layers[4].Name == "road___1");
             Assert.IsTrue(deserializedTile.Layers[4].Values[1].IntValue == 0);
+            Assert.IsTrue(deserializedTile.Layers[4].Values[1].HasIntValue);
+            Assert.IsTrue(deserializedTile.Layers[4].Values[0].StringValue == "");
+            Assert.IsTrue(deserializedTile.Layers[4].Values[0].HasStringValue);
 
             // next line: 
             // expected result: true,
             // actual result: false 
             // see https://github.com/bertt/mapbox-vector-tile-cs/issues/16)
-            Assert.IsTrue(deserializedTile.Layers[4].Values[1].HasIntValue);
         }
     }
 }

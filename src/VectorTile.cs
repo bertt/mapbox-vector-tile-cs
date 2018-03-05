@@ -24,7 +24,7 @@
             public bool HasBoolValue { get; set; }
 
             [ProtoBuf.ProtoMember(1, IsRequired = false, Name = @"string_value", DataFormat = ProtoBuf.DataFormat.Default)]
-            [System.ComponentModel.DefaultValue("")]
+            [System.ComponentModel.DefaultValue(null)]
             public string StringValue
             {
                 get { return _stringValue; }
@@ -37,7 +37,7 @@
 
             float _floatValue;
             [ProtoBuf.ProtoMember(2, IsRequired = false, Name = @"float_value", DataFormat = ProtoBuf.DataFormat.FixedSize)]
-            [System.ComponentModel.DefaultValue(default(float))]
+            [System.ComponentModel.DefaultValue(float.MinValue)]
             public float FloatValue
             {
                 get
@@ -65,7 +65,7 @@
             }
             long _intValue;
             [ProtoBuf.ProtoMember(4, IsRequired = false, Name = @"int_value", DataFormat = ProtoBuf.DataFormat.TwosComplement)]
-            [System.ComponentModel.DefaultValue(default(long))]
+            [System.ComponentModel.DefaultValue(int.MinValue)]
             public long IntValue
             {
                 get { return _intValue; }
