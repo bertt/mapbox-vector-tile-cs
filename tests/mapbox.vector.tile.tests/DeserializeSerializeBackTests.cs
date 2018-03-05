@@ -1,6 +1,7 @@
 ﻿using Mapbox.Vector.Tile;
 using NUnit.Framework;
 using ProtoBuf;
+using System.IO;
 using System.Reflection;
 
 namespace mapbox.vector.tile.tests
@@ -19,13 +20,22 @@ namespace mapbox.vector.tile.tests
             Assert.IsTrue(tile.Layers[4].Values[1].IntValue == 0);
             Assert.IsTrue(tile.Layers[4].Values[1].HasIntValue);
 
-            // todo: serialize the tile (to file or something)
+            // it is enough to serialize into stream
+            var serializedTileStream = new MemoryStream();
+            ProtoBuf.Serializer.Serialize<Tile>(serializedTileStream, tile);
 
-            // todo: read the file again
+            // read the stream again
+            serializedTileStream.Seek(0, SeekOrigin.Begin);
+            var deserializedTile = Serializer.Deserialize<Tile>(serializedTileStream);
 
-            // todo: check again the tile.Layers[4].Values[1].HasIntValue
-            // expected result: true, actual result: false (according to https://github.com/bertt/mapbox-vector-tile-cs/issues/16)
+            Assert.IsTrue(deserializedTile.Layers[4].Name == "road___1");
+            Assert.IsTrue(deserializedTile.Layers[4].Values[1].IntValue == 0);
 
+            // next line: 
+            // expected result: true,
+            /// actual result: false 
+            /// see https://github.com/bertt/mapbox-vector-tile-cs/issues/16)
+            Assert.IsTrue(deserializedTile.Layers[4].Values[1].HasIntValue);
         }
     }
 }
