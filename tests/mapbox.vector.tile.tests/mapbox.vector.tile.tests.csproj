@@ -50,6 +50,7 @@
   <ItemGroup>
     <Compile Include="AttributesParserTests.cs" />
     <Compile Include="ClassifyRingsTests.cs" />
+    <Compile Include="DeserializeSerializeBackTests.cs" />
     <Compile Include="GeometryParserTests.cs" />
     <Compile Include="IEnumerableExtensionTests.cs" />
     <Compile Include="LotsOfTagsTest.cs" />
@@ -85,6 +86,7 @@
     <EmbeddedResource Include="testdata\lots-of-tags.vector.pbf" />
     <EmbeddedResource Include="testdata\bag_7_65_41.pbf" />
     <EmbeddedResource Include="testdata\cadastral.pbf" />
+    <EmbeddedResource Include="testdata\16_34440_23455_raw.mvt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\src\mapbox.vector.tile.csproj">
