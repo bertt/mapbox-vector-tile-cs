@@ -22,7 +22,7 @@ namespace mapbox.vector.tile.tests
 
             // it is enough to serialize into stream
             var serializedTileStream = new MemoryStream();
-            Serializer.Serialize<Tile>(serializedTileStream, tile);
+            Serializer.Serialize(serializedTileStream, tile);
 
             // read the stream again
             serializedTileStream.Seek(0, SeekOrigin.Begin);
