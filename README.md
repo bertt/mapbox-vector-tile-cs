@@ -39,6 +39,9 @@ Tip: If you use this library with vector tiles loading from a webserver, you cou
 Probably you need to check the GZip compression, see also TileParserTests.cs for an example.
 
 # History
+
+2018-03-08: Release version 4.1 with fix for issue 16 (https://github.com/bertt/mapbox-vector-tile-cs/issues/16 - about serializing attributes)
+
 2017-10-19: Release version 4.0 for .NET Standard 1.3
 
 2016-11-03: Release 3.1
