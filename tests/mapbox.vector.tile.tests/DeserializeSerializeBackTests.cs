@@ -32,7 +32,6 @@ namespace mapbox.vector.tile.tests
 
             Assert.IsTrue(deserializedTile.Layers[4].Name == "road___1");
             Assert.IsTrue(deserializedTile.Layers[4].Values[1].IntValue == 0);
-            // next line is failing, expected=true, actueal=false
             Assert.IsTrue(deserializedTile.Layers[4].Values[1].HasIntValue);
             Assert.IsTrue(deserializedTile.Layers[4].Values[0].StringValue == "");
             Assert.IsTrue(deserializedTile.Layers[4].Values[0].HasStringValue);
