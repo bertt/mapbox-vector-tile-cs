@@ -23,6 +23,14 @@
             public bool HasSIntValue { get; set; }
             public bool HasBoolValue { get; set; }
 
+            public bool ShouldSerializeStringValue() => HasStringValue;
+            public bool ShouldSerializeFloatValue() => HasFloatValue;
+            public bool ShouldSerializeDoubleValue() => HasDoubleValue;
+            public bool ShouldSerializeIntValue() => HasIntValue;
+            public bool ShouldSerializeUIntValue() => HasUIntValue;
+            public bool ShouldSerializeSIntValue() => HasSIntValue;
+            public bool ShouldSerializeBoolValue() => HasBoolValue;
+
             [ProtoBuf.ProtoMember(1, IsRequired = false, Name = @"string_value", DataFormat = ProtoBuf.DataFormat.Default)]
             [System.ComponentModel.DefaultValue("")]
             public string StringValue
