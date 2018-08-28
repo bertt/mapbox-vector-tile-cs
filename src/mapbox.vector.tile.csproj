@@ -11,6 +11,8 @@
     <PackageReleaseNotes />
     <Description>.NET library for encoding/decoding Mapbox Vector tiles</Description>
     <RepositoryUrl>https://github.com/bertt/mapbox-vector-tile-cs</RepositoryUrl>
+    <AssemblyVersion>4.2.0.0</AssemblyVersion>
+    <FileVersion>4.2.0.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

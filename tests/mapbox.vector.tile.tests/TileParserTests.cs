@@ -76,10 +76,10 @@ namespace Mapbox.Vector.Tile.tests
         }
 
         [Test]
-        public void TestMapzenTileFromUrl()
+        public void TestPdokTileFromUrl()
         {
             // arrange
-            var url = "https://tile.nextzen.org/tilezen/vector/v1/512/all/0/0/0.mvt?api_key=ZVKjQi5pS1-afO-ziytQ8g";
+            var url = "https://geodata.nationaalgeoregister.nl/beta/topotiles/9/262/169.pbf";
 
             // Note: Use HttpClient with automatic decompression 
             // instead of regular HttpClient otherwise we get exception 
