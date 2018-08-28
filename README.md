@@ -17,7 +17,7 @@ Dependencies: GeoJSON.NET, JSON.NET, protobuf-net
 PM> Install-Package mapbox-vector-tile
 ```
 
-NuGet package contains multitagret .NET Standard 1.3 and 2.0 library
+NuGet package contains multitarget .NET Standard 1.3 and 2.0 library
 
 ### Usage
 
