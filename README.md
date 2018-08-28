@@ -2,7 +2,9 @@
 
 [![NuGet Status](http://img.shields.io/nuget/v/mapbox-vector-tile.svg?style=flat)](https://www.nuget.org/packages/mapbox-vector-tile/)
 
-A .NET library for decoding a Mapbox vector tile into a collection of GeoJSON FeatureCollection objects.
+A .NET library for decoding a Mapbox vector tile. 
+
+Optionally it's possible to convert the tile into a collection of GeoJSON FeatureCollection objects.
 
 For each layer there is one GeoJSON FeatureCollection. Code is tested using the Mapbox tests from
 
@@ -15,7 +17,7 @@ Dependencies: GeoJSON.NET, JSON.NET, protobuf-net
 PM> Install-Package mapbox-vector-tile
 ```
 
-NuGet package contains .NET Standard 1.3 library
+NuGet package contains multitagret .NET Standard 1.3 and 2.0 library
 
 ### Usage
 
@@ -39,6 +41,8 @@ Tip: If you use this library with vector tiles loading from a webserver, you cou
 Probably you need to check the GZip compression, see also TileParserTests.cs for an example.
 
 # History
+
+2018-08-28: Release version 4.2 containing .NET Standard multitarget 1.3 and 2.0
 
 2018-03-08: Release version 4.1 with fix for issue 16 (https://github.com/bertt/mapbox-vector-tile-cs/issues/16 - about serializing attributes)
 
