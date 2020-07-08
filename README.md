@@ -2,6 +2,8 @@
 
 [![NuGet Status](http://img.shields.io/nuget/v/mapbox-vector-tile.svg?style=flat)](https://www.nuget.org/packages/mapbox-vector-tile/)
 
+![.NET Core](https://github.com/bertt/mapbox-vector-tile-cs/workflows/.NET%20Core/badge.svg)
+
 A .NET library for decoding a Mapbox vector tile. 
 
 Optionally it's possible to convert the tile into a collection of GeoJSON FeatureCollection objects.
