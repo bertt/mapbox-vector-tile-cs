@@ -54,6 +54,10 @@ $ dotnet build
 $ dotnet clone https://github.com/bertt/mapbox-vector-tile-cs.git
 $ cd mapbox-vector-tile-cs/tests/mapbox.vector.tile.tests
 $ dotnet test
+Test Run Successful.
+Total tests: 39
+     Passed: 39
+ Total time: 30.0631 Seconds
 ```
 
 ## Benchmark test
