@@ -20,8 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="geojson.net" Version="1.1.70" />
-    <PackageReference Include="protobuf-net" Version="3.0.0-alpha.3" />
+    <PackageReference Include="geojson.net" Version="1.2.19" />
+    <PackageReference Include="protobuf-net" Version="3.0.29" />
   </ItemGroup>
 
   <ItemGroup>

@@ -217,16 +217,16 @@
         public enum GeomType
         {
 
-            [ProtoBuf.ProtoEnum(Name = @"Unknown", Value = 0)]
+            [ProtoBuf.ProtoEnum(Name = @"Unknown")]
             Unknown = 0,
 
-            [ProtoBuf.ProtoEnum(Name = @"Point", Value = 1)]
+            [ProtoBuf.ProtoEnum(Name = @"Point")]
             Point = 1,
 
-            [ProtoBuf.ProtoEnum(Name = @"LineString", Value = 2)]
+            [ProtoBuf.ProtoEnum(Name = @"LineString")]
             LineString = 2,
 
-            [ProtoBuf.ProtoEnum(Name = @"Polygon", Value = 3)]
+            [ProtoBuf.ProtoEnum(Name = @"Polygon")]
             Polygon = 3
         }
 
