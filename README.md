@@ -4,7 +4,7 @@
 
 ![.NET Core](https://github.com/bertt/mapbox-vector-tile-cs/workflows/.NET%20Core/badge.svg)
 
-A .NET library for decoding a Mapbox vector tile. 
+.NET Standard 2.0 library for decoding a Mapbox vector tile. 
 
 Optionally it's possible to convert the tile into a collection of GeoJSON FeatureCollection objects.
 
@@ -12,16 +12,21 @@ For each layer there is one GeoJSON FeatureCollection. Code is tested using the 
 
 https://github.com/mapbox/vector-tile-js
 
-Dependencies: GeoJSON.NET, JSON.NET, protobuf-net
+## Dependencies
+
+- GeoJSON.NET
+
+- JSON.NET
+
+- protobuf-net
 
 ## Installation
+
 ```
-PM> Install-Package mapbox-vector-tile
+$ Install-Package mapbox-vector-tile
 ```
 
-NuGet package contains .NET Standard 2.0 library
-
-### Usage
+## Usage
 
 ```cs
 const string vtfile = "vectortile.pbf";
@@ -62,7 +67,7 @@ Total tests: 39
  Total time: 30.0631 Seconds
 ```
 
-## Benchmark test
+## Benchmarking
 
 Test performed with Mapbox vector tile '14-8801-5371.vector.pbf'
 
@@ -97,37 +102,9 @@ Type=ParsingBenchmark  Mode=Throughput
 
 ```
 
-## Projects that use mapbox-vector-tile-cs
-
-* nextgis - ArcQMS
-
-https://github.com/nextgis/ArcQMS
-
-* ryanlowdermilk/VectorTilesWithXamarinMaps
-
-A sample Android, iOS and Windows Universal app that maps vector tile data onto Xamarin Maps
-https://github.com/ryanlowdermilk/VectorTilesWithXamarinMaps
-
-* OSMSharp VectorTileToBitmapRenderer Mapzen vector tile layer demo in 
-https://github.com/OsmSharp/VectorTileToBitmapRenderer
-
-* BruTile BruTile.Samples.VectorTileToBitmap
-https://github.com/BruTile/BruTile/tree/master/Samples/BruTile.Samples.VectorTileToBitmap
-
-* longlostbro/MapsDevelopmentApplication/RadControls/
-https://github.com/longlostbro/MapsDevelopmentApplication/tree/master/RadControls
-
-* ArcBruTile/ArcBruTile
-https://github.com/ArcBruTile/ArcBruTile
-
-* Mapbox vector tile uploader. Upload vector tile and display on Esri 3D Javascript map http://mapboxvectortileuploaderthingymajig.azurewebsites.net/
-
-* indirasam/StreetHarassmentReporting/CartMap
-https://github.com/indirasam/StreetHarassmentReporting/tree/indira/CartMap
-
 ## History
 
-2018-08-28: Release version 4.2 containing .NET Standard multitarget 1.3 and 2.0
+2018-08-28: Release version 4.2 containing .NET Standard 2.0
 
 2018-03-08: Release version 4.1 with fix for issue 16 (https://github.com/bertt/mapbox-vector-tile-cs/issues/16 - about serializing attributes)
 
