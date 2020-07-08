@@ -50,7 +50,7 @@ Probably you need to check the GZip compression, see also TileParserTests.cs for
 ## Building
 
 ```
-$ dotnet clone https://github.com/bertt/mapbox-vector-tile-cs.git
+$ git clone https://github.com/bertt/mapbox-vector-tile-cs.git
 $ cd mapbox-vector-tile-cs
 $ dotnet build
 ```
@@ -58,7 +58,7 @@ $ dotnet build
 ## Testing
 
 ```
-$ dotnet clone https://github.com/bertt/mapbox-vector-tile-cs.git
+$ git clone https://github.com/bertt/mapbox-vector-tile-cs.git
 $ cd mapbox-vector-tile-cs/tests/mapbox.vector.tile.tests
 $ dotnet test
 Test Run Successful.
