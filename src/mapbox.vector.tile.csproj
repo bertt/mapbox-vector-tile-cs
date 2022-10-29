@@ -1,8 +1,8 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0</TargetFrameworks>
-    <Version>4.2.0</Version>
+    <TargetFrameworks>net6.0</TargetFrameworks>
+    <Version>5.0</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>mapbox-vector-tile</PackageId>
     <Authors>Bert Temme</Authors>
@@ -16,16 +16,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Properties\**" />
+    <EmbeddedResource Remove="Properties\**" />
+    <None Remove="Properties\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="mapbox.vector.tile.v2.ncrunchproject" />
   </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="geojson.net" Version="1.2.19" />
-    <PackageReference Include="protobuf-net" Version="3.0.29" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Properties\" />
+    <PackageReference Include="protobuf-net" Version="3.1.22" />
   </ItemGroup>
 
 </Project>

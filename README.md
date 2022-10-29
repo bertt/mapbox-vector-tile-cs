@@ -4,7 +4,7 @@
 
 ![.NET Core](https://github.com/bertt/mapbox-vector-tile-cs/workflows/.NET%20Core/badge.svg)
 
-.NET Standard 2.0 library for decoding a Mapbox vector tile. 
+.NET 6 library for decoding a Mapbox vector tile. 
 
 Optionally it's possible to convert the tile into a collection of GeoJSON FeatureCollection objects.
 
@@ -103,6 +103,8 @@ Type=ParsingBenchmark  Mode=Throughput
 ```
 
 ## History
+
+2022-10-29: Release version 5.0 containing .NET 6
 
 2018-08-28: Release version 4.2 containing .NET Standard 2.0
 
