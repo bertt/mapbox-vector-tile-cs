@@ -1,15 +1,14 @@
 ﻿using BenchmarkDotNet.Running;
 using System;
 
-namespace mapbox.vector.tile.benchmark
+namespace mapbox.vector.tile.benchmark;
+
+class Program
 {
-    class Program
+    static void Main(string[] args)
     {
-        static void Main(string[] args)
-        {
-            var summary = BenchmarkRunner.Run<ParsingBenchmark>();
-            var summary1= BenchmarkRunner.Run<SecondBenchmark>();
-            Console.ReadKey();
-        }
+        var summary = BenchmarkRunner.Run<ParsingBenchmark>();
+        var summary1= BenchmarkRunner.Run<SecondBenchmark>();
+        Console.ReadKey();
     }
 }

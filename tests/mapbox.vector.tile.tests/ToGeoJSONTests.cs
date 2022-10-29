@@ -3,42 +3,42 @@ using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using System.Reflection;
 
-namespace Mapbox.Vector.Tile
+namespace Mapbox.Vector.Tile;
+
+public class ToGeoJsonTests
 {
-    public class ToGeoJsonTests
+    [Test]
+    public void TestBagTile()
     {
-        [Test]
-        public void TestBagTile()
-        {
-            // arrange
-            const string name = "mapbox.vector.tile.tests.testdata.bag_7_65_41.pbf";
-            var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(name);
-            var layerInfos = VectorTileParser.Parse(pbfStream);
-            var buildings = layerInfos[0];
+        // arrange
+        const string name = "mapbox.vector.tile.tests.testdata.bag_7_65_41.pbf";
+        var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(name);
+        var layerInfos = VectorTileParser.Parse(pbfStream);
+        var buildings = layerInfos[0];
 
-            // act
-            var geoJson = buildings.ToGeoJSON(8801, 5371, 14);
+        // act
+        var geoJson = buildings.ToGeoJSON(8801, 5371, 14);
 
-            // assert
-            Assert.IsTrue(geoJson != null);
-        }
+        // assert
+        Assert.IsTrue(geoJson != null);
+    }
 
-        [Test]
-        public void TestToGeoJsonPolygonFeature()
-        {
-            // arrange
-            const string mapboxfile = "mapbox.vector.tile.tests.testdata.14-8801-5371.vector.pbf";
-            var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
-            var layerInfos = VectorTileParser.Parse(pbfStream);
-            var building = layerInfos[5].VectorTileFeatures[0];
+    [Test]
+    public void TestToGeoJsonPolygonFeature()
+    {
+        // arrange
+        const string mapboxfile = "mapbox.vector.tile.tests.testdata.14-8801-5371.vector.pbf";
+        var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
+        var layerInfos = VectorTileParser.Parse(pbfStream);
+        var building = layerInfos[5].VectorTileFeatures[0];
 
-            var geoJson = building.ToGeoJSON(8801, 5371, 14);
-            var json = JsonConvert.SerializeObject(geoJson);
+        var geoJson = building.ToGeoJSON(8801, 5371, 14);
+        var json = JsonConvert.SerializeObject(geoJson);
 
-            // act
-            var actualResult = JObject.Parse(json);
+        // act
+        var actualResult = JObject.Parse(json);
 
-            var expectedResult = JObject.Parse(@"
+        var expectedResult = JObject.Parse(@"
                 {
                     type: 'Feature',
                     id: '1000267229912',
@@ -54,23 +54,23 @@ namespace Mapbox.Vector.Tile
                 }
             ");
 
-            // assert
-            Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
-        }
+        // assert
+        Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
+    }
 
-        [Test]
-        public void TestToGeoJsonLineFeature()
-        {
-            const string mapboxfile = "mapbox.vector.tile.tests.testdata.14-8801-5371.vector.pbf";
-            var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
-            var layerInfos = VectorTileParser.Parse(pbfStream);
-            var bridge = layerInfos[9].VectorTileFeatures[0];
+    [Test]
+    public void TestToGeoJsonLineFeature()
+    {
+        const string mapboxfile = "mapbox.vector.tile.tests.testdata.14-8801-5371.vector.pbf";
+        var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
+        var layerInfos = VectorTileParser.Parse(pbfStream);
+        var bridge = layerInfos[9].VectorTileFeatures[0];
 
-            var geoJson = bridge.ToGeoJSON(8801, 5371, 14);
-            var json = JsonConvert.SerializeObject(geoJson);
-            var actualResult = JObject.Parse(json);
+        var geoJson = bridge.ToGeoJSON(8801, 5371, 14);
+        var json = JsonConvert.SerializeObject(geoJson);
+        var actualResult = JObject.Parse(json);
 
-            var expectedResult = JObject.Parse(@"
+        var expectedResult = JObject.Parse(@"
                 {
                     type: 'Feature',
                     id: '238162948',
@@ -87,25 +87,25 @@ namespace Mapbox.Vector.Tile
                 }
                 ");
 
-                Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
+            Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
 
-        }
+    }
 
-        [Test]
-        public void TestToGeoJsonPointFeature()
-        {
-            // arrange
-            const string mapboxfile = "mapbox.vector.tile.tests.testdata.14-8801-5371.vector.pbf";
-            var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
-            var layerInfos = VectorTileParser.Parse(pbfStream);
-            var parkFeature = layerInfos[17].VectorTileFeatures[11];
+    [Test]
+    public void TestToGeoJsonPointFeature()
+    {
+        // arrange
+        const string mapboxfile = "mapbox.vector.tile.tests.testdata.14-8801-5371.vector.pbf";
+        var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
+        var layerInfos = VectorTileParser.Parse(pbfStream);
+        var parkFeature = layerInfos[17].VectorTileFeatures[11];
 
-            // act
-            var geoJson = parkFeature.ToGeoJSON(8801, 5371, 14);
-            var json = JsonConvert.SerializeObject(geoJson);
-            var actualResult = JObject.Parse(json);
+        // act
+        var geoJson = parkFeature.ToGeoJSON(8801, 5371, 14);
+        var json = JsonConvert.SerializeObject(geoJson);
+        var actualResult = JObject.Parse(json);
 
-            var expectedResult = JObject.Parse(@"{
+        var expectedResult = JObject.Parse(@"{
                 type: 'Feature',
                 id: '3000003150561',
                 properties:
@@ -129,8 +129,7 @@ namespace Mapbox.Vector.Tile
                 }
             }");
 
-            // assert
-            Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
-        }
+        // assert
+        Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
     }
 }

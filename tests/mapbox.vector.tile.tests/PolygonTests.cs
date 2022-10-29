@@ -1,36 +1,35 @@
 ﻿using NUnit.Framework;
-namespace Mapbox.Vector.Tile.tests
+namespace Mapbox.Vector.Tile.tests;
+
+public class PolygonTests
 {
-    public class PolygonTests
+
+    [Test]
+    public void TestCWPolygon()
     {
+        // arrange
+        var coords = TestData.GetCWPolygon(1);
+        var poly = new VTPolygon(coords);
 
-        [Test]
-        public void TestCWPolygon()
-        {
-            // arrange
-            var coords = TestData.GetCWPolygon(1);
-            var poly = new VTPolygon(coords);
+        // act
+        var ccw = poly.IsCW();
 
-            // act
-            var ccw = poly.IsCW();
+        // assert
+        Assert.IsTrue(poly.SignedArea() < 0);
+        Assert.IsTrue(ccw);
+    }
 
-            // assert
-            Assert.IsTrue(poly.SignedArea() < 0);
-            Assert.IsTrue(ccw);
-        }
+    [Test]
+    public void TestCCWPolygon()
+    {
+        var coords = TestData.GetCCWPolygon(1);
+        var poly = new VTPolygon(coords);
 
-        [Test]
-        public void TestCCWPolygon()
-        {
-            var coords = TestData.GetCCWPolygon(1);
-            var poly = new VTPolygon(coords);
+        // act
+        var ccw = poly.IsCCW();
 
-            // act
-            var ccw = poly.IsCCW();
-
-            // assert
-            Assert.IsTrue(poly.SignedArea() > 0);
-            Assert.IsTrue(ccw);
-        }
+        // assert
+        Assert.IsTrue(poly.SignedArea() > 0);
+        Assert.IsTrue(ccw);
     }
 }

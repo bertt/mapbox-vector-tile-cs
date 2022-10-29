@@ -2,21 +2,21 @@
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 
-namespace Mapbox.Vector.Tile.tests
-{
-    public class MultiGeometryTests
-    {
-        [Test]
-        public void StackedMultipolygonTest()
-        {
-            // arrange
-            const string mapboxfile = "mapbox.vector.tile.tests.testdata.stacked-multipolygon.pbf";
-            var feature = PbfLoader.GeoJSONFromFixture(mapboxfile);
+namespace Mapbox.Vector.Tile.tests;
 
-            // act
-            var json = JsonConvert.SerializeObject(feature);
-            var actualResult = JObject.Parse(json);
-            var expectedResult = JObject.Parse(@"
+public class MultiGeometryTests
+{
+    [Test]
+    public void StackedMultipolygonTest()
+    {
+        // arrange
+        const string mapboxfile = "mapbox.vector.tile.tests.testdata.stacked-multipolygon.pbf";
+        var feature = PbfLoader.GeoJSONFromFixture(mapboxfile);
+
+        // act
+        var json = JsonConvert.SerializeObject(feature);
+        var actualResult = JObject.Parse(json);
+        var expectedResult = JObject.Parse(@"
             {
               'geometry': {
                 'coordinates': [
@@ -77,21 +77,21 @@ namespace Mapbox.Vector.Tile.tests
             }
             ");
 
-            // assert
-            Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
-        }
+        // assert
+        Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
+    }
 
-        [Test]
-        public void TestToGeoJsonPolygonWithInnerRing()
-        {
-            // arrange
-            const string mapboxfile = "mapbox.vector.tile.tests.testdata.polygon-with-inner.pbf";
-            var feature = PbfLoader.GeoJSONFromFixture(mapboxfile);
+    [Test]
+    public void TestToGeoJsonPolygonWithInnerRing()
+    {
+        // arrange
+        const string mapboxfile = "mapbox.vector.tile.tests.testdata.polygon-with-inner.pbf";
+        var feature = PbfLoader.GeoJSONFromFixture(mapboxfile);
 
-            // act
-            var json = JsonConvert.SerializeObject(feature);
-            var actualResult = JObject.Parse(json);
-            var expectedResult = JObject.Parse(@"
+        // act
+        var json = JsonConvert.SerializeObject(feature);
+        var actualResult = JObject.Parse(json);
+        var expectedResult = JObject.Parse(@"
 {
   'geometry': {
     'coordinates': [
@@ -148,22 +148,22 @@ namespace Mapbox.Vector.Tile.tests
 }
 ");
 
-            // assert
-            Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
-        }
+        // assert
+        Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
+    }
 
 
-        [Test]
-        public void TestToGeoJsonMultiPolygonFeature()
-        {
-            // arrange
-            const string mapboxfile = "mapbox.vector.tile.tests.testdata.multi-polygon.pbf";
-            var feature = PbfLoader.GeoJSONFromFixture(mapboxfile);
+    [Test]
+    public void TestToGeoJsonMultiPolygonFeature()
+    {
+        // arrange
+        const string mapboxfile = "mapbox.vector.tile.tests.testdata.multi-polygon.pbf";
+        var feature = PbfLoader.GeoJSONFromFixture(mapboxfile);
 
-            // act
-            var json = JsonConvert.SerializeObject(feature);
-            var actualResult = JObject.Parse(json);
-            var expectedResult = JObject.Parse(@"
+        // act
+        var json = JsonConvert.SerializeObject(feature);
+        var actualResult = JObject.Parse(json);
+        var expectedResult = JObject.Parse(@"
                 {
                   'geometry': {
                     'coordinates': [
@@ -216,21 +216,21 @@ namespace Mapbox.Vector.Tile.tests
                 }
 ");
 
-            // assert
-            Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
-        }
+        // assert
+        Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
+    }
 
-        [Test]
-        public void TestToGeoJsonMultiLineFeature()
-        {
-            // arrange
-            const string mapboxfile = "mapbox.vector.tile.tests.testdata.multi-line.pbf";
-            var feature = PbfLoader.GeoJSONFromFixture(mapboxfile);
+    [Test]
+    public void TestToGeoJsonMultiLineFeature()
+    {
+        // arrange
+        const string mapboxfile = "mapbox.vector.tile.tests.testdata.multi-line.pbf";
+        var feature = PbfLoader.GeoJSONFromFixture(mapboxfile);
 
-            // act
-            var json = JsonConvert.SerializeObject(feature);
-            var actualResult = JObject.Parse(json);
-            var expectedResult = JObject.Parse(@"
+        // act
+        var json = JsonConvert.SerializeObject(feature);
+        var actualResult = JObject.Parse(json);
+        var expectedResult = JObject.Parse(@"
                 {
                   'geometry': {
                     'coordinates': [
@@ -262,19 +262,19 @@ namespace Mapbox.Vector.Tile.tests
                   'type': 'Feature'
                 }
             ");
-            // assert
-            Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
-        }
+        // assert
+        Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
+    }
 
-        [Test]
-        public void TestToGeoJsonMultiPointFeature()
-        {
-            const string mapboxfile = "mapbox.vector.tile.tests.testdata.multi-point.pbf";
-            var feature = PbfLoader.GeoJSONFromFixture(mapboxfile);
-            var json = JsonConvert.SerializeObject(feature);
-            var actualResult = JObject.Parse(json);
+    [Test]
+    public void TestToGeoJsonMultiPointFeature()
+    {
+        const string mapboxfile = "mapbox.vector.tile.tests.testdata.multi-point.pbf";
+        var feature = PbfLoader.GeoJSONFromFixture(mapboxfile);
+        var json = JsonConvert.SerializeObject(feature);
+        var actualResult = JObject.Parse(json);
 
-            var expectedResult = JObject.Parse(@"
+        var expectedResult = JObject.Parse(@"
                 {
                    'geometry': {
                     'coordinates': [
@@ -294,7 +294,6 @@ namespace Mapbox.Vector.Tile.tests
                   'type': 'Feature'
                 }      
             ");
-            Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
-        }
+        Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
     }
 }

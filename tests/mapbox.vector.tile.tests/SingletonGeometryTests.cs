@@ -3,21 +3,21 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 
-namespace Mapbox.Vector.Tile.tests
-{
-    public class SingletonGeometryTests
-    {
-        [Test]
-        public void SingletonPointTest()
-        {
-            // arrange
-            const string mapboxfile = "mapbox.vector.tile.tests.testdata.singleton-point.pbf";
-            var feature = PbfLoader.GeoJSONFromFixture(mapboxfile);
+namespace Mapbox.Vector.Tile.tests;
 
-            // act
-            var json = JsonConvert.SerializeObject(feature);
-            var actualResult = JObject.Parse(json);
-            var expectedResult = JObject.Parse(@"
+public class SingletonGeometryTests
+{
+    [Test]
+    public void SingletonPointTest()
+    {
+        // arrange
+        const string mapboxfile = "mapbox.vector.tile.tests.testdata.singleton-point.pbf";
+        var feature = PbfLoader.GeoJSONFromFixture(mapboxfile);
+
+        // act
+        var json = JsonConvert.SerializeObject(feature);
+        var actualResult = JObject.Parse(json);
+        var expectedResult = JObject.Parse(@"
             {
               'geometry': {
                 'coordinates': [
@@ -31,21 +31,21 @@ namespace Mapbox.Vector.Tile.tests
               'type': 'Feature'
             }
             ");
-            // assert
-            Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
-        }
+        // assert
+        Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
+    }
 
-        [Test]
-        public void SingletonLineTest()
-        {
-            // arrange
-            const string mapboxfile = "mapbox.vector.tile.tests.testdata.singleton-line.pbf";
-            var feature = PbfLoader.GeoJSONFromFixture(mapboxfile);
+    [Test]
+    public void SingletonLineTest()
+    {
+        // arrange
+        const string mapboxfile = "mapbox.vector.tile.tests.testdata.singleton-line.pbf";
+        var feature = PbfLoader.GeoJSONFromFixture(mapboxfile);
 
-            // act
-            var json = JsonConvert.SerializeObject(feature);
-            var actualResult = JObject.Parse(json);
-            var expectedResult = JObject.Parse(@"
+        // act
+        var json = JsonConvert.SerializeObject(feature);
+        var actualResult = JObject.Parse(json);
+        var expectedResult = JObject.Parse(@"
                 {
                   'geometry': {
                     'coordinates': [
@@ -65,22 +65,22 @@ namespace Mapbox.Vector.Tile.tests
                   'type': 'Feature'
                 }            
             ");
-            // assert
-            Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
-        }
+        // assert
+        Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
+    }
 
 
-        [Test]
-        public void SingletonPolygonTest()
-        {
-            // arrange
-            const string mapboxfile = "mapbox.vector.tile.tests.testdata.singleton-polygon.pbf";
-            var feature = PbfLoader.GeoJSONFromFixture(mapboxfile);
+    [Test]
+    public void SingletonPolygonTest()
+    {
+        // arrange
+        const string mapboxfile = "mapbox.vector.tile.tests.testdata.singleton-polygon.pbf";
+        var feature = PbfLoader.GeoJSONFromFixture(mapboxfile);
 
-            // act
-            var json = JsonConvert.SerializeObject(feature);
-            var actualResult = JObject.Parse(json);
-            var expectedResult = JObject.Parse(@"
+        // act
+        var json = JsonConvert.SerializeObject(feature);
+        var actualResult = JObject.Parse(json);
+        var expectedResult = JObject.Parse(@"
                 {
                   'geometry': {
                     'coordinates': [
@@ -110,10 +110,9 @@ namespace Mapbox.Vector.Tile.tests
                   'type': 'Feature'
                 }
             ");
-            // assert
-            Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
-        }
-
-
+        // assert
+        Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
     }
+
+
 }

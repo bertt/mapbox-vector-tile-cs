@@ -3,25 +3,25 @@ using Newtonsoft.Json.Linq;
 using NUnit.Framework;
 using System.Reflection;
 
-namespace Mapbox.Vector.Tile.tests
+namespace Mapbox.Vector.Tile.tests;
+
+public class VectorTileLayerTests
 {
-    public class VectorTileLayerTests
+    [Test]
+    public void TestVectorTileToGeoJson()
     {
-        [Test]
-        public void TestVectorTileToGeoJson()
-        {
-            // arrange
-            const string name = "mapbox.vector.tile.tests.testdata.multi-point.pbf";
-            var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(name);
-            var layerInfos = VectorTileParser.Parse(pbfStream);
-            var geojson = layerInfos[0].ToGeoJSON(0,0,0);
+        // arrange
+        const string name = "mapbox.vector.tile.tests.testdata.multi-point.pbf";
+        var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(name);
+        var layerInfos = VectorTileParser.Parse(pbfStream);
+        var geojson = layerInfos[0].ToGeoJSON(0,0,0);
 
-            // act
-            var json = JsonConvert.SerializeObject(geojson);
+        // act
+        var json = JsonConvert.SerializeObject(geojson);
 
-            // act
-            var actualResult = JObject.Parse(json);
-            var expectedResult = JObject.Parse(@"
+        // act
+        var actualResult = JObject.Parse(json);
+        var expectedResult = JObject.Parse(@"
                 {
                   'features': [
                     {
@@ -47,8 +47,7 @@ namespace Mapbox.Vector.Tile.tests
                 }            
             ");
 
-            // assert
-            Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
-        }
+        // assert
+        Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
     }
 }

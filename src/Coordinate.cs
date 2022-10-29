@@ -1,8 +1,7 @@
-﻿namespace Mapbox.Vector.Tile
+﻿namespace Mapbox.Vector.Tile;
+
+public class Coordinate
 {
-    public class Coordinate
-    {
-        public long X { get; set; }
-        public long Y { get; set; }
-    }
+    public long X { get; set; }
+    public long Y { get; set; }
 }
