@@ -14,7 +14,7 @@ public class VectorTileLayerTests
         const string name = "mapbox.vector.tile.tests.testdata.multi-point.pbf";
         var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(name);
         var layerInfos = VectorTileParser.Parse(pbfStream);
-        var geojson = layerInfos[0].ToGeoJSON(0,0,0);
+        var geojson = layerInfos[0].ToGeoJSON(0, 0, 0);
 
         // act
         var json = JsonConvert.SerializeObject(geojson);

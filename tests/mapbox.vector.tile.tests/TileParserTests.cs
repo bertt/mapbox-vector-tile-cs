@@ -42,10 +42,10 @@ public class TileParserTests
         var layerInfos = VectorTileParser.Parse(pbfStream);
 
         // asserts
-			Assert.IsTrue(layerInfos[7].VectorTileFeatures.Count == 225);
-			Assert.IsTrue(layerInfos[0].Version == 2);
-			Assert.IsTrue(layerInfos[7].Name=="road");
-			Assert.IsTrue(layerInfos[7].Extent == 4096);
+        Assert.IsTrue(layerInfos[7].VectorTileFeatures.Count == 225);
+        Assert.IsTrue(layerInfos[0].Version == 2);
+        Assert.IsTrue(layerInfos[7].Name == "road");
+        Assert.IsTrue(layerInfos[7].Extent == 4096);
         var firstroad = layerInfos[7].VectorTileFeatures[0];
         Assert.IsTrue(firstroad.Geometry.Count == 5);
         Assert.IsTrue(firstroad.Geometry[0].Count == 1);
@@ -70,8 +70,8 @@ public class TileParserTests
         var layerInfos = VectorTileParser.Parse(pbfStream);
 
         // assert
-        Assert.IsTrue(layerInfos.Count==1);
-        Assert.IsTrue(layerInfos[0].VectorTileFeatures.Count== 83);
+        Assert.IsTrue(layerInfos.Count == 1);
+        Assert.IsTrue(layerInfos[0].VectorTileFeatures.Count == 83);
         Assert.IsTrue(layerInfos[0].VectorTileFeatures[0].GeometryType == GeomType.Polygon);
     }
 
@@ -208,18 +208,18 @@ public class TileParserTests
         var layerInfos = VectorTileParser.Parse(pbfStream);
 
         // check features
-        Assert.IsTrue(layerInfos[17].ToGeoJSON(8801,5371,14)!=null);
+        Assert.IsTrue(layerInfos[17].ToGeoJSON(8801, 5371, 14) != null);
         Assert.IsTrue(layerInfos.Count == 20);
         Assert.IsTrue(layerInfos[0].VectorTileFeatures.Count == 107);
         Assert.IsTrue(layerInfos[0].VectorTileFeatures[0].Attributes.Count == 2);
 
         // check park feature
         var park = layerInfos[17].VectorTileFeatures[11];
-        var firstOrDefault = (from prop in park.Attributes where prop.Key=="name" select prop.Value).FirstOrDefault();
+        var firstOrDefault = (from prop in park.Attributes where prop.Key == "name" select prop.Value).FirstOrDefault();
         if (firstOrDefault != null)
         {
             var namePark = firstOrDefault.ToString();
-            Assert.IsTrue(namePark=="Mauerpark");
+            Assert.IsTrue(namePark == "Mauerpark");
         }
         var pnt = park.Geometry[0];
         var p = pnt[0];

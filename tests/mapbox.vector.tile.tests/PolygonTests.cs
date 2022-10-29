@@ -1,9 +1,9 @@
 ﻿using NUnit.Framework;
+
 namespace Mapbox.Vector.Tile.tests;
 
 public class PolygonTests
 {
-
     [Test]
     public void TestCWPolygon()
     {

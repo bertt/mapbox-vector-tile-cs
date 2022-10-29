@@ -59,7 +59,7 @@ public static class GeometryParser
             y = y + ldy;
 
             // use scale? var  coord = new Coordinate(x / scale, y / scale);
-            var  coord = new Coordinate() { X = x, Y = y };
+            var coord = new Coordinate() { X = x, Y = y };
             coords.Add(coord);
         }
         return coordsList;

@@ -69,7 +69,6 @@ public class SingletonGeometryTests
         Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
     }
 
-
     [Test]
     public void SingletonPolygonTest()
     {
@@ -113,6 +112,4 @@ public class SingletonGeometryTests
         // assert
         Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
     }
-
-
 }

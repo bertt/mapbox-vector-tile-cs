@@ -1,5 +1,4 @@
-﻿
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 namespace Mapbox.Vector.Tile.tests;
 
@@ -28,7 +27,7 @@ public class ZigZagTests
         var res = ZigZag.Decode(inputVar);
 
         // assert
-        Assert.IsTrue(res == -2 );
+        Assert.IsTrue(res == -2);
     }
 
     [Test]
@@ -43,5 +42,4 @@ public class ZigZagTests
         // assert
         Assert.IsTrue(res == 3);
     }
-
 }

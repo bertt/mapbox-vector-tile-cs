@@ -22,9 +22,9 @@ public class AttributesParserTests
 
         // assert
         Assert.IsTrue(attributes.Count == 2);
-        Assert.IsTrue(attributes[0].Key=="class");
+        Assert.IsTrue(attributes[0].Key == "class");
         Assert.IsTrue((string)attributes[0].Value == "park");
-        Assert.IsTrue(attributes[1].Key =="osm_id");
+        Assert.IsTrue(attributes[1].Key == "osm_id");
         Assert.IsTrue(attributes[1].Value.ToString() == "3000000224480");
     }
 }

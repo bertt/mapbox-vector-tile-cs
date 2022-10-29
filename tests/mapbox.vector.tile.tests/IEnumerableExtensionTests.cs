@@ -16,8 +16,8 @@ public class EnumerableExtensionTests
         var evens = sequence.GetEvens().ToList();
 
         // assert
-        Assert.IsTrue(evens[0]==0);
-        Assert.IsTrue(evens[1]==2);
+        Assert.IsTrue(evens[0] == 0);
+        Assert.IsTrue(evens[1] == 2);
     }
 
     [Test]
