@@ -6,6 +6,7 @@ using NUnit.Framework;
 using static Mapbox.Vector.Tile.Tile;
 using System.Net;
 using System.Net.Http;
+using System.Threading.Tasks;
 
 namespace Mapbox.Vector.Tile.tests;
 
@@ -76,10 +77,10 @@ public class TileParserTests
     }
 
     [Test]
-    public void TestPdokTileFromUrl()
+    public async Task TestTrailViewTileFromUrl()
     {
         // arrange
-        var url = "https://geodata.nationaalgeoregister.nl/beta/topotiles/9/262/169.pbf";
+        var url = "https://trailview-tiles.maps.komoot.net/tiles/v2/9/264/167.vector.pbf";
 
         // Note: Use HttpClient with automatic decompression 
         // instead of regular HttpClient otherwise we get exception 
@@ -88,7 +89,7 @@ public class TileParserTests
         {
             AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate
         });
-        var bytes = gzipWebClient.GetByteArrayAsync(url).Result;
+        var bytes = await gzipWebClient.GetByteArrayAsync(url);
 
         var stream = new MemoryStream(bytes);
 
