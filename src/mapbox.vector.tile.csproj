@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>net6.0;net8.0</TargetFrameworks>
-    <Version>5.0.1</Version>
+    <Version>5.0.2</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>mapbox-vector-tile</PackageId>
     <Authors>Bert Temme</Authors>
@@ -11,8 +11,8 @@
     <PackageReleaseNotes />
     <Description>.NET library for encoding/decoding Mapbox Vector tiles</Description>
     <RepositoryUrl>https://github.com/bertt/mapbox-vector-tile-cs</RepositoryUrl>
-    <AssemblyVersion>4.2.0.0</AssemblyVersion>
-    <FileVersion>4.2.0.0</FileVersion>
+    <AssemblyVersion>5.0.2.0</AssemblyVersion>
+    <FileVersion>5.0.2.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

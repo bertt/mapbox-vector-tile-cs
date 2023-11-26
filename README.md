@@ -102,6 +102,8 @@ Type=ParsingBenchmark  Mode=Throughput
 
 ## History
 
+2023-11-26: Release 5.0.2, containing .NET 8
+
 2022-10-29: Release 5.0.1, upgrading dependencies 
 
 2022-10-29: Release 5.0 containing .NET 6
