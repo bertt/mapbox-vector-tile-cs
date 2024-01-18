@@ -15,8 +15,8 @@ public class PolygonTests
         var ccw = poly.IsCW();
 
         // assert
-        Assert.IsTrue(poly.SignedArea() < 0);
-        Assert.IsTrue(ccw);
+        Assert.That(poly.SignedArea() < 0);
+        Assert.That(ccw);
     }
 
     [Test]
@@ -29,7 +29,7 @@ public class PolygonTests
         var ccw = poly.IsCCW();
 
         // assert
-        Assert.IsTrue(poly.SignedArea() > 0);
-        Assert.IsTrue(ccw);
+        Assert.That(poly.SignedArea() > 0);
+        Assert.That(ccw);
     }
 }

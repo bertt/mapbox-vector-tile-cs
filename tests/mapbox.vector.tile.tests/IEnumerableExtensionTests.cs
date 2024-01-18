@@ -16,8 +16,8 @@ public class EnumerableExtensionTests
         var evens = sequence.GetEvens().ToList();
 
         // assert
-        Assert.IsTrue(evens[0] == 0);
-        Assert.IsTrue(evens[1] == 2);
+        Assert.That(evens[0] == 0);
+        Assert.That(evens[1] == 2);
     }
 
     [Test]
@@ -30,7 +30,7 @@ public class EnumerableExtensionTests
         var evens = sequence.GetOdds().ToList();
 
         // assert
-        Assert.IsTrue(evens[0] == 1);
-        Assert.IsTrue(evens[1] == 3);
+        Assert.That(evens[0] == 1);
+        Assert.That(evens[1] == 3);
     }
 }

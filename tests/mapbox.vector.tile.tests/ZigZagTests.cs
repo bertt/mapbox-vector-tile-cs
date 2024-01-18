@@ -14,7 +14,7 @@ public class ZigZagTests
         var res = ZigZag.Decode(inputVar);
 
         // assert
-        Assert.IsTrue(res == -1);
+        Assert.That(res == -1);
     }
 
     [Test]
@@ -27,7 +27,7 @@ public class ZigZagTests
         var res = ZigZag.Decode(inputVar);
 
         // assert
-        Assert.IsTrue(res == -2);
+        Assert.That(res == -2);
     }
 
     [Test]
@@ -40,6 +40,6 @@ public class ZigZagTests
         var res = ZigZag.Encode(inputVar);
 
         // assert
-        Assert.IsTrue(res == 3);
+        Assert.That(res == 3);
     }
 }

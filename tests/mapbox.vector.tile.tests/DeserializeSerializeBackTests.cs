@@ -16,11 +16,11 @@ public class DeserializeSerializeBackTests
 
         // deserialize the tile first
         var tile = Serializer.Deserialize<Tile>(pbfStream);
-        Assert.IsTrue(tile.Layers[4].Name == "road___1");
-        Assert.IsTrue(tile.Layers[4].Values[1].IntValue == 0);
-        Assert.IsTrue(tile.Layers[4].Values[1].HasIntValue);
-        Assert.IsTrue(tile.Layers[4].Values[0].StringValue == "");
-        Assert.IsTrue(tile.Layers[4].Values[0].HasStringValue);
+        Assert.That(tile.Layers[4].Name == "road___1");
+        Assert.That(tile.Layers[4].Values[1].IntValue == 0);
+        Assert.That(tile.Layers[4].Values[1].HasIntValue);
+        Assert.That(tile.Layers[4].Values[0].StringValue == "");
+        Assert.That(tile.Layers[4].Values[0].HasStringValue);
 
         // it is enough to serialize into stream
         var serializedTileStream = new MemoryStream();
@@ -30,12 +30,12 @@ public class DeserializeSerializeBackTests
         serializedTileStream.Seek(0, SeekOrigin.Begin);
         var deserializedTile = Serializer.Deserialize<Tile>(serializedTileStream);
 
-        Assert.IsTrue(deserializedTile.Layers[4].Name == "road___1");
-        Assert.IsTrue(deserializedTile.Layers[4].Values[1].IntValue == 0);
-        Assert.IsTrue(deserializedTile.Layers[4].Values[1].HasIntValue);
-        Assert.IsTrue(deserializedTile.Layers[4].Values[0].StringValue == "");
-        Assert.IsTrue(deserializedTile.Layers[4].Values[0].HasStringValue);
-        Assert.IsFalse(deserializedTile.Layers[4].Values[1].HasFloatValue);
-        Assert.IsFalse(deserializedTile.Layers[4].Values[1].HasStringValue);
+        Assert.That(deserializedTile.Layers[4].Name == "road___1");
+        Assert.That(deserializedTile.Layers[4].Values[1].IntValue == 0);
+        Assert.That(deserializedTile.Layers[4].Values[1].HasIntValue);
+        Assert.That(deserializedTile.Layers[4].Values[0].StringValue == "");
+        Assert.That(deserializedTile.Layers[4].Values[0].HasStringValue);
+        Assert.That(deserializedTile.Layers[4].Values[1].HasFloatValue, Is.False);
+        Assert.That(deserializedTile.Layers[4].Values[1].HasStringValue, Is.False);
     }
 }

@@ -78,7 +78,7 @@ public class MultiGeometryTests
             ");
 
         // assert
-        Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
+        Assert.That(JToken.DeepEquals(actualResult, expectedResult));
     }
 
     [Test]
@@ -149,7 +149,7 @@ public class MultiGeometryTests
 ");
 
         // assert
-        Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
+        Assert.That(JToken.DeepEquals(actualResult, expectedResult));
     }
 
 
@@ -217,7 +217,7 @@ public class MultiGeometryTests
 ");
 
         // assert
-        Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
+        Assert.That(JToken.DeepEquals(actualResult, expectedResult));
     }
 
     [Test]
@@ -263,7 +263,7 @@ public class MultiGeometryTests
                 }
             ");
         // assert
-        Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
+        Assert.That(JToken.DeepEquals(actualResult, expectedResult));
     }
 
     [Test]
@@ -294,6 +294,6 @@ public class MultiGeometryTests
                   'type': 'Feature'
                 }      
             ");
-        Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
+        Assert.That(JToken.DeepEquals(actualResult, expectedResult));
     }
 }

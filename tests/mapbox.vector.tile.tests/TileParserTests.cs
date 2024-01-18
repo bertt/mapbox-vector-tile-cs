@@ -27,7 +27,7 @@ public class TileParserTests
         // asserts
         var firstattribute = layerInfos[0].VectorTileFeatures[0].Attributes[0];
         var val = firstattribute.Value;
-        Assert.IsTrue((long)val == 867160);
+        Assert.That((long)val == 867160);
     }
 
     [Test]
@@ -43,21 +43,21 @@ public class TileParserTests
         var layerInfos = VectorTileParser.Parse(pbfStream);
 
         // asserts
-        Assert.IsTrue(layerInfos[7].VectorTileFeatures.Count == 225);
-        Assert.IsTrue(layerInfos[0].Version == 2);
-        Assert.IsTrue(layerInfos[7].Name == "road");
-        Assert.IsTrue(layerInfos[7].Extent == 4096);
+        Assert.That(layerInfos[7].VectorTileFeatures.Count == 225);
+        Assert.That(layerInfos[0].Version == 2);
+        Assert.That(layerInfos[7].Name == "road");
+        Assert.That(layerInfos[7].Extent == 4096);
         var firstroad = layerInfos[7].VectorTileFeatures[0];
-        Assert.IsTrue(firstroad.Geometry.Count == 5);
-        Assert.IsTrue(firstroad.Geometry[0].Count == 1);
-        Assert.IsTrue(firstroad.Geometry[0][0].X == 816);
-        Assert.IsTrue(firstroad.Geometry[0][0].Y == 3446);
+        Assert.That(firstroad.Geometry.Count == 5);
+        Assert.That(firstroad.Geometry[0].Count == 1);
+        Assert.That(firstroad.Geometry[0][0].X == 816);
+        Assert.That(firstroad.Geometry[0][0].Y == 3446);
 
         var secondroad = layerInfos[7].VectorTileFeatures[1];
-        Assert.IsTrue(secondroad.Geometry.Count == 2);
-        Assert.IsTrue(secondroad.Geometry[0].Count == 9);
-        Assert.IsTrue(secondroad.Geometry[0][0].X == 3281);
-        Assert.IsTrue(secondroad.Geometry[0][0].Y == 424);
+        Assert.That(secondroad.Geometry.Count == 2);
+        Assert.That(secondroad.Geometry[0].Count == 9);
+        Assert.That(secondroad.Geometry[0][0].X == 3281);
+        Assert.That(secondroad.Geometry[0][0].Y == 424);
     }
 
     [Test]
@@ -71,9 +71,9 @@ public class TileParserTests
         var layerInfos = VectorTileParser.Parse(pbfStream);
 
         // assert
-        Assert.IsTrue(layerInfos.Count == 1);
-        Assert.IsTrue(layerInfos[0].VectorTileFeatures.Count == 83);
-        Assert.IsTrue(layerInfos[0].VectorTileFeatures[0].GeometryType == GeomType.Polygon);
+        Assert.That(layerInfos.Count == 1);
+        Assert.That(layerInfos[0].VectorTileFeatures.Count == 83);
+        Assert.That(layerInfos[0].VectorTileFeatures[0].GeometryType == GeomType.Polygon);
     }
 
     [Test]
@@ -97,7 +97,7 @@ public class TileParserTests
         var layerInfos = VectorTileParser.Parse(stream);
 
         // assert
-        Assert.IsTrue(layerInfos.Count > 0);
+        Assert.That(layerInfos.Count > 0);
     }
 
 
@@ -112,7 +112,7 @@ public class TileParserTests
         var layerInfos = VectorTileParser.Parse(pbfStream);
 
         // assert
-        Assert.IsTrue(layerInfos.Count == 10);
+        Assert.That(layerInfos.Count == 10);
     }
 
     [Test]
@@ -132,9 +132,9 @@ public class TileParserTests
         var layerInfos = VectorTileParser.Parse(pbfStream);
 
         // check features
-        Assert.IsTrue(layerInfos.Count == 20);
-        Assert.IsTrue(layerInfos[0].VectorTileFeatures.Count == 107);
-        Assert.IsTrue(layerInfos[0].VectorTileFeatures[0].Attributes.Count == 2);
+        Assert.That(layerInfos.Count == 20);
+        Assert.That(layerInfos[0].VectorTileFeatures.Count == 107);
+        Assert.That(layerInfos[0].VectorTileFeatures[0].Attributes.Count == 2);
 
         // check park feature
         var park = layerInfos[17].VectorTileFeatures[11];
@@ -142,59 +142,59 @@ public class TileParserTests
         if (firstOrDefault != null)
         {
             var namePark = firstOrDefault.ToString();
-            Assert.IsTrue(namePark == "Mauerpark");
+            Assert.That(namePark == "Mauerpark");
         }
 
         // check point geometry type from park
-        Assert.IsTrue(park.Id == "3000003150561");
-        Assert.IsTrue(park.GeometryType == GeomType.Point);
-        Assert.IsTrue(park.Geometry.Count == 1);
-        Assert.IsTrue(park.Geometry[0].Count == 1);
+        Assert.That(park.Id == "3000003150561");
+        Assert.That(park.GeometryType == GeomType.Point);
+        Assert.That(park.Geometry.Count == 1);
+        Assert.That(park.Geometry[0].Count == 1);
         var p = park.Geometry[0][0];
-        Assert.IsTrue(Math.Abs(p.X - 3898) < 0.1);
-        Assert.IsTrue(Math.Abs(p.Y - 1731) < 0.1);
+        Assert.That(Math.Abs(p.X - 3898) < 0.1);
+        Assert.That(Math.Abs(p.Y - 1731) < 0.1);
 
         // Check line geometry from roads
         var road = layerInfos[8].VectorTileFeatures[656];
-        Assert.IsTrue(road.Id == "241452814");
-        Assert.IsTrue(road.GeometryType == GeomType.LineString);
+        Assert.That(road.Id == "241452814");
+        Assert.That(road.GeometryType == GeomType.LineString);
         var ls = road.Geometry;
-        Assert.IsTrue(ls.Count == 1);
-        Assert.IsTrue(ls[0].Count == 3);
+        Assert.That(ls.Count == 1);
+        Assert.That(ls[0].Count == 3);
         var firstPoint = ls[0][0];
-        Assert.IsTrue(Math.Abs(firstPoint.X - 1988) < 0.1);
-        Assert.IsTrue(Math.Abs(firstPoint.Y - 306) < 0.1);
+        Assert.That(Math.Abs(firstPoint.X - 1988) < 0.1);
+        Assert.That(Math.Abs(firstPoint.Y - 306) < 0.1);
 
         var secondPoint = ls[0][1];
-        Assert.IsTrue(Math.Abs(secondPoint.X - 1808) < 0.1);
-        Assert.IsTrue(Math.Abs(secondPoint.Y - 321) < 0.1);
+        Assert.That(Math.Abs(secondPoint.X - 1808) < 0.1);
+        Assert.That(Math.Abs(secondPoint.Y - 321) < 0.1);
 
         var thirdPoint = ls[0][2];
-        Assert.IsTrue(Math.Abs(thirdPoint.X - 1506) < 0.1);
-        Assert.IsTrue(Math.Abs(thirdPoint.Y - 347) < 0.1);
+        Assert.That(Math.Abs(thirdPoint.X - 1506) < 0.1);
+        Assert.That(Math.Abs(thirdPoint.Y - 347) < 0.1);
 
         // Check polygon geometry for buildings
         var building = layerInfos[5].VectorTileFeatures[0];
-        Assert.IsTrue(building.Id == "1000267229912");
-        Assert.IsTrue(building.GeometryType == GeomType.Polygon);
+        Assert.That(building.Id == "1000267229912");
+        Assert.That(building.GeometryType == GeomType.Polygon);
         var b = building.Geometry;
-        Assert.IsTrue(b.Count == 1);
-        Assert.IsTrue(b[0].Count == 5);
+        Assert.That(b.Count == 1);
+        Assert.That(b[0].Count == 5);
         firstPoint = b[0][0];
-        Assert.IsTrue(Math.Abs(firstPoint.X - 2039) < 0.1);
-        Assert.IsTrue(Math.Abs(firstPoint.Y + 32) < 0.1);
+        Assert.That(Math.Abs(firstPoint.X - 2039) < 0.1);
+        Assert.That(Math.Abs(firstPoint.Y + 32) < 0.1);
         secondPoint = b[0][1];
-        Assert.IsTrue(Math.Abs(secondPoint.X - 2035) < 0.1);
-        Assert.IsTrue(Math.Abs(secondPoint.Y + 31) < 0.1);
+        Assert.That(Math.Abs(secondPoint.X - 2035) < 0.1);
+        Assert.That(Math.Abs(secondPoint.Y + 31) < 0.1);
         thirdPoint = b[0][2];
-        Assert.IsTrue(Math.Abs(thirdPoint.X - 2032) < 0.1);
-        Assert.IsTrue(Math.Abs(thirdPoint.Y + 31) < 0.1);
+        Assert.That(Math.Abs(thirdPoint.X - 2032) < 0.1);
+        Assert.That(Math.Abs(thirdPoint.Y + 31) < 0.1);
         var fourthPoint = b[0][3];
-        Assert.IsTrue(Math.Abs(fourthPoint.X - 2032) < 0.1);
-        Assert.IsTrue(Math.Abs(fourthPoint.Y + 32) < 0.1);
+        Assert.That(Math.Abs(fourthPoint.X - 2032) < 0.1);
+        Assert.That(Math.Abs(fourthPoint.Y + 32) < 0.1);
         var fifthPoint = b[0][4];
-        Assert.IsTrue(Math.Abs(fifthPoint.X - 2039) < 0.1);
-        Assert.IsTrue(Math.Abs(fifthPoint.Y + 32) < 0.1);
+        Assert.That(Math.Abs(fifthPoint.X - 2039) < 0.1);
+        Assert.That(Math.Abs(fifthPoint.Y + 32) < 0.1);
     }
 
     [Test]
@@ -209,10 +209,10 @@ public class TileParserTests
         var layerInfos = VectorTileParser.Parse(pbfStream);
 
         // check features
-        Assert.IsTrue(layerInfos[17].ToGeoJSON(8801, 5371, 14) != null);
-        Assert.IsTrue(layerInfos.Count == 20);
-        Assert.IsTrue(layerInfos[0].VectorTileFeatures.Count == 107);
-        Assert.IsTrue(layerInfos[0].VectorTileFeatures[0].Attributes.Count == 2);
+        Assert.That(layerInfos[17].ToGeoJSON(8801, 5371, 14) != null);
+        Assert.That(layerInfos.Count == 20);
+        Assert.That(layerInfos[0].VectorTileFeatures.Count == 107);
+        Assert.That(layerInfos[0].VectorTileFeatures[0].Attributes.Count == 2);
 
         // check park feature
         var park = layerInfos[17].VectorTileFeatures[11];
@@ -220,48 +220,48 @@ public class TileParserTests
         if (firstOrDefault != null)
         {
             var namePark = firstOrDefault.ToString();
-            Assert.IsTrue(namePark == "Mauerpark");
+            Assert.That(namePark == "Mauerpark");
         }
         var pnt = park.Geometry[0];
         var p = pnt[0];
-        Assert.IsTrue(Math.Abs(p.X - 3898) < 0.1);
-        Assert.IsTrue(Math.Abs(p.Y - 1731) < 0.1);
+        Assert.That(Math.Abs(p.X - 3898) < 0.1);
+        Assert.That(Math.Abs(p.Y - 1731) < 0.1);
 
         // Check line geometry from roads
         var road = layerInfos[8].VectorTileFeatures[656];
         var ls = road.Geometry[0];
-        Assert.IsTrue(ls.Count == 3);
+        Assert.That(ls.Count == 3);
         var firstPoint = ls[0];
-        Assert.IsTrue(Math.Abs(firstPoint.X - 1988) < 0.1);
-        Assert.IsTrue(Math.Abs(firstPoint.Y - 306) < 0.1);
+        Assert.That(Math.Abs(firstPoint.X - 1988) < 0.1);
+        Assert.That(Math.Abs(firstPoint.Y - 306) < 0.1);
 
         var secondPoint = ls[1];
-        Assert.IsTrue(Math.Abs(secondPoint.X - 1808) < 0.1);
-        Assert.IsTrue(Math.Abs(secondPoint.Y - 321) < 0.1);
+        Assert.That(Math.Abs(secondPoint.X - 1808) < 0.1);
+        Assert.That(Math.Abs(secondPoint.Y - 321) < 0.1);
 
         var thirdPoint = ls[2];
-        Assert.IsTrue(Math.Abs(thirdPoint.X - 1506) < 0.1);
-        Assert.IsTrue(Math.Abs(thirdPoint.Y - 347) < 0.1);
+        Assert.That(Math.Abs(thirdPoint.X - 1506) < 0.1);
+        Assert.That(Math.Abs(thirdPoint.Y - 347) < 0.1);
 
         // check building geometry
         var buildings = layerInfos[5].VectorTileFeatures[0];
         var poly = buildings.Geometry[0];
-        Assert.IsTrue(poly.Count == 5);
+        Assert.That(poly.Count == 5);
 
         var p1 = poly[0];
-        Assert.IsTrue(Math.Abs(p1.X - 2039) < 0.1);
-        Assert.IsTrue(Math.Abs(p1.Y - (-32)) < 0.1);
+        Assert.That(Math.Abs(p1.X - 2039) < 0.1);
+        Assert.That(Math.Abs(p1.Y - (-32)) < 0.1);
         var p2 = poly[1];
-        Assert.IsTrue(Math.Abs(p2.X - 2035) < 0.1);
-        Assert.IsTrue(Math.Abs(p2.Y - (-31)) < 0.1);
+        Assert.That(Math.Abs(p2.X - 2035) < 0.1);
+        Assert.That(Math.Abs(p2.Y - (-31)) < 0.1);
         var p3 = poly[2];
-        Assert.IsTrue(Math.Abs(p3.X - 2032) < 0.1);
-        Assert.IsTrue(Math.Abs(p3.Y - (-31)) < 0.1);
+        Assert.That(Math.Abs(p3.X - 2032) < 0.1);
+        Assert.That(Math.Abs(p3.Y - (-31)) < 0.1);
         var p4 = poly[3];
-        Assert.IsTrue(Math.Abs(p4.X - 2032) < 0.1);
-        Assert.IsTrue(Math.Abs(p4.Y - (-32)) < 0.1);
+        Assert.That(Math.Abs(p4.X - 2032) < 0.1);
+        Assert.That(Math.Abs(p4.Y - (-32)) < 0.1);
         var p5 = poly[4];
-        Assert.IsTrue(Math.Abs(p5.X - 2039) < 0.1);
-        Assert.IsTrue(Math.Abs(p5.Y - (-32)) < 0.1);
+        Assert.That(Math.Abs(p5.X - 2039) < 0.1);
+        Assert.That(Math.Abs(p5.Y - (-32)) < 0.1);
     }
 }

@@ -10,9 +10,9 @@ public class ClassifyRingsTests
     public void TestReversePolygon()
     {
         var poly1 = TestData.GetCWPolygon(2);
-        Assert.IsTrue(new VTPolygon(poly1).IsCW());
+        Assert.That(new VTPolygon(poly1).IsCW());
         poly1.Reverse();
-        Assert.IsTrue(new VTPolygon(poly1).IsCCW());
+        Assert.That(new VTPolygon(poly1).IsCCW());
     }
 
     [Test]
@@ -29,9 +29,9 @@ public class ClassifyRingsTests
         var classify = ClassifyRings.Classify(coords);
 
         // assert
-        Assert.IsTrue(classify.Count == 2);
-        Assert.IsTrue(classify[0].Count == 1);
-        Assert.IsTrue(classify[1].Count == 1);
+        Assert.That(classify.Count == 2);
+        Assert.That(classify[0].Count == 1);
+        Assert.That(classify[1].Count == 1);
     }
 
     [Test]
@@ -48,8 +48,8 @@ public class ClassifyRingsTests
         var classify = ClassifyRings.Classify(coords);
 
         // assert
-        Assert.IsTrue(classify.Count == 1);
-        Assert.IsTrue(classify[0].Count == 2);
+        Assert.That(classify.Count == 1);
+        Assert.That(classify[0].Count == 2);
     }
 
     [Test]
@@ -69,8 +69,8 @@ public class ClassifyRingsTests
         var classify = ClassifyRings.Classify(coords);
 
         // assert
-        Assert.IsTrue(classify.Count == 2);
-        Assert.IsTrue(classify[0].Count == 2);
-        Assert.IsTrue(classify[1].Count == 1);
+        Assert.That(classify.Count == 2);
+        Assert.That(classify[0].Count == 2);
+        Assert.That(classify[1].Count == 1);
     }
 }

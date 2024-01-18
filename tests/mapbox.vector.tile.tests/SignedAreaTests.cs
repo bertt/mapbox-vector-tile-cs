@@ -23,7 +23,7 @@ public class SignedAreaTests
 
         // assert
         // polygon is defined clock-wise so area should be negative
-        Assert.IsTrue(area == -1);
+        Assert.That(area == -1);
     }
 
     [Test]
@@ -46,7 +46,7 @@ public class SignedAreaTests
 
         // assert
         // polygon is defined clock-wise so area should be negative
-        Assert.IsTrue(area == 60);
+        Assert.That(area == 60);
     }
 
 }

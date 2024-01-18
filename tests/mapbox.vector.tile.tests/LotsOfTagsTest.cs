@@ -16,6 +16,6 @@ public class LotsOfTagsTest
         var layerInfos = VectorTileParser.Parse(pbfStream);
 
         // assert
-        Assert.IsTrue(layerInfos[0] != null);
+        Assert.That(layerInfos[0] != null);
     }
 }

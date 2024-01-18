@@ -20,7 +20,7 @@ public class ToGeoJsonTests
         var geoJson = buildings.ToGeoJSON(8801, 5371, 14);
 
         // assert
-        Assert.IsTrue(geoJson != null);
+        Assert.That(geoJson != null);
     }
 
     [Test]
@@ -55,7 +55,7 @@ public class ToGeoJsonTests
             ");
 
         // assert
-        Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
+        Assert.That(JToken.DeepEquals(actualResult, expectedResult));
     }
 
     [Test]
@@ -87,7 +87,7 @@ public class ToGeoJsonTests
                 }
                 ");
 
-            Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
+        Assert.That(JToken.DeepEquals(actualResult, expectedResult));
 
     }
 
@@ -130,6 +130,6 @@ public class ToGeoJsonTests
             }");
 
         // assert
-        Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
+        Assert.That(JToken.DeepEquals(actualResult, expectedResult));
     }
 }

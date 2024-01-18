@@ -48,6 +48,6 @@ public class VectorTileLayerTests
             ");
 
         // assert
-        Assert.IsTrue(JToken.DeepEquals(actualResult, expectedResult));
+        Assert.That(JToken.DeepEquals(actualResult, expectedResult));
     }
 }
