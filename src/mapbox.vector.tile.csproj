@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>net6.0;net8.0</TargetFrameworks>
+    <TargetFrameworks>net8.0</TargetFrameworks>
     <Version>5.0.2</Version>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>mapbox-vector-tile</PackageId>
@@ -26,8 +26,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GeoJSON.Net" Version="1.2.19" />
-    <PackageReference Include="protobuf-net" Version="3.2.30" />
+    <PackageReference Include="GeoJSON.Net" Version="1.4.1" />
+    <PackageReference Include="protobuf-net" Version="3.2.45" />
   </ItemGroup>
 
 </Project>

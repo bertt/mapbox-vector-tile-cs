@@ -12,7 +12,8 @@
     <ProjectReference Include="..\src\mapbox.vector.tile.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="BenchmarkDotNet" Version="0.13.10" />
+    <PackageReference Include="BenchmarkDotNet" Version="0.14.0" />
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
+    <PackageReference Include="protobuf-net" Version="3.2.45" />
   </ItemGroup>
 </Project>
