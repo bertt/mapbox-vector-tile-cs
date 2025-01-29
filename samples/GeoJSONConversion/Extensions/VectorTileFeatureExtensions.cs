@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using GeoJSON.Net.Feature;
+﻿using GeoJSON.Net.Feature;
 using GeoJSON.Net.Geometry;
 
 namespace Mapbox.Vector.Tile;

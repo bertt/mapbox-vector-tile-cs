@@ -1,5 +1,4 @@
 ﻿using GeoJSON.Net.Geometry;
-using System;
 
 namespace Mapbox.Vector.Tile;
 
