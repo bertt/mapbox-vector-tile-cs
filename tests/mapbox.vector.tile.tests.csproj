@@ -24,9 +24,6 @@
     <EmbeddedResource Include="testdata\16_34440_23455_raw.mvt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\src\mapbox.vector.tile.csproj" />
-  </ItemGroup>
-  <ItemGroup>
     <PackageReference Include="NUnit" Version="4.3.2" />
     <PackageReference Include="NUnit.Analyzers" Version="4.6.0">
       <PrivateAssets>all</PrivateAssets>
@@ -37,5 +34,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="BenchmarkTests.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\src\mapbox.vector.tile.csproj" />
   </ItemGroup>
 </Project>

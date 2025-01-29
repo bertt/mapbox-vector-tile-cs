@@ -5,7 +5,7 @@ VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mapbox.vector.tile", "src\mapbox.vector.tile.csproj", "{E1EA7DC2-6EA3-403A-A2DB-7143C9E5B704}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mapbox.vector.tile.tests", "tests\mapbox.vector.tile.tests\mapbox.vector.tile.tests.csproj", "{37C76CED-224F-475D-8819-93D194161BB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mapbox.vector.tile.tests", "tests\mapbox.vector.tile.tests.csproj", "{37C76CED-224F-475D-8819-93D194161BB0}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mapbox.vector.tile.benchmark", "benchmark\mapbox.vector.tile.benchmark.csproj", "{99D6786C-8627-4CDA-B047-D0ECA0F1EADF}"
 EndProject
