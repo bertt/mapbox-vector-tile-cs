@@ -52,7 +52,7 @@ The samples folder contains a simple console application that reads a vector til
 
 2] SkiaSharp Forms Sample
 
-SkiaSharp is a cross-platform 2D graphics API for .NET platforms based on Google's Skia Graphics Library. The samples folder contains a simple console application that reads a 
+SkiaSharp is a cross-platform 2D graphics API for .NET platforms based on Google's Skia Graphics Library. The samples folder contains a simple GUI application that reads a 
 vector tile from a file and draws the geometries using SkiaSharp.
 
 ## Benchmarking
