@@ -6,19 +6,9 @@
 
 .NET 8 library for decoding a Mapbox vector tile. 
 
-Optionally it's possible to convert the tile into a collection of GeoJSON FeatureCollection objects.
-
-For each layer there is one GeoJSON FeatureCollection. Code is tested using the Mapbox tests from
-
-https://github.com/mapbox/vector-tile-js
-
 ## Dependencies
 
-- GeoJSON.NET
-
-- JSON.NET
-
-- protobuf-net
+- protobuf-net https://github.com/protobuf-net/protobuf-net
 
 ## Installation
 
@@ -65,6 +55,19 @@ Passed!
 Failed: 0, Passed: 38, Skipped: 0, Total: 38, Duration: 937 ms
 ```
 
+## Samples
+
+1] GeoJSON
+
+The samples folder contains a simple console application that reads a vector tile from a file and writes the GeoJSON to the console.
+
+2] SkiaSharp
+
+(Todo)
+
+SkiaSharp is a cross-platform 2D graphics API for .NET platforms based on Google's Skia Graphics Library. The samples folder contains a simple console application that reads a 
+vector tile from a file and draws the geometries using SkiaSharp.
+
 ## Benchmarking
 
 Test performed with Mapbox vector tile '14-8801-5371.vector.pbf'
@@ -78,29 +81,15 @@ Line layer: roads (id=8) - 686 features
 Polygon layer: building (id=5) - 975 features
 
 ```
-Host Process Environment Information:
-BenchmarkDotNet.Core=v0.9.9.0
-OS=Microsoft Windows NT 6.2.9200.0
-Processor=Intel(R) Core(TM) i7-6820HQ CPU 2.70GHz, ProcessorCount=8
-Frequency=2648440 ticks, Resolution=377.5808 ns, Timer=TSC
-CLR=MS.NET 4.0.30319.42000, Arch=32-bit RELEASE
-GC=Concurrent Workstation
-JitModules=clrjit-v4.6.1586.0
 
-Type=ParsingBenchmark  Mode=Throughput
--------------------------------- |-------------- |-------------|
-                          Method |    Median     |    StdDev   |
--------------------------------- |-------------- |-------------|
-       ParseVectorTileFromStream |     1.7147 us |   0.0196 us |
- --------------------------------|-------------- |------------ |
-   VectorTilePointLayerToGeoJSON |   719.3773 us |   5.7271 us |
-    VectorTileLineLayerToGeoJSON | 1,532.6888 us | 114.5458 us |
- VectorTilePolygonLayerToGeoJSON | 4,458.0017 us | 274.7238 us |
--------------------------------- |-------------- |-------------|
-
+| Method                    | Mean     | Error     | StdDev    |
+|-------------------------- |---------:|----------:|----------:|
+| ParseVectorTileFromStream | 1.401 us | 0.0133 us | 0.0125 us |
 ```
 
 ## History
+
+2025-01-29: Release 5.1, upgrading dependencies + remove GeoJSON.NET dependency
 
 2023-11-26: Release 5.0.2, containing .NET 8
 

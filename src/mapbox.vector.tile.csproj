@@ -2,8 +2,10 @@
 
   <PropertyGroup>
     <TargetFrameworks>net8.0</TargetFrameworks>
-    <Version>5.0.2</Version>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Version>5.1.0</Version>
+	<AssemblyVersion>5.1.0.0</AssemblyVersion>
+	<FileVersion>5.1.0.0</FileVersion>
+	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>mapbox-vector-tile</PackageId>
     <Authors>Bert Temme</Authors>
     <Company />
@@ -11,8 +13,6 @@
     <PackageReleaseNotes />
     <Description>.NET library for encoding/decoding Mapbox Vector tiles</Description>
     <RepositoryUrl>https://github.com/bertt/mapbox-vector-tile-cs</RepositoryUrl>
-    <AssemblyVersion>5.0.2.0</AssemblyVersion>
-    <FileVersion>5.0.2.0</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -26,8 +26,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="GeoJSON.Net" Version="1.4.1" />
-    <PackageReference Include="protobuf-net" Version="3.2.45" />
+    <PackageReference Include="protobuf-net" Version="3.2.46" />
   </ItemGroup>
 
 </Project>

@@ -1,5 +1,4 @@
-﻿using Mapbox.Vector.Tile;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using System.Collections.Generic;
 
 namespace Mapbox.Vector.Tile.tests;
