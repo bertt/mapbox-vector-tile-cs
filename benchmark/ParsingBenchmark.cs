@@ -10,8 +10,8 @@ public class ParsingBenchmark
     Stream input;
     public ParsingBenchmark()
     {
-        const string mapboxissue3File = @"./testdata/14-8801-5371.vector.pbf";
-        input = File.OpenRead(mapboxissue3File);
+        const string mvtFile = @"./testdata/14-8801-5371.vector.pbf";
+        input = File.OpenRead(mvtFile);
     }
 
     [Benchmark]

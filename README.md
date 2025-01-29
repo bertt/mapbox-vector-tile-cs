@@ -18,18 +18,9 @@ $ Install-Package mapbox-vector-tile
 
 ```cs
 const string vtfile = "vectortile.pbf";
-using (var stream = File.OpenRead(vtfile))
-{
-  // parameters: tileColumn = 67317, tileRow = 43082, tileLevel = 17 
-  var layerInfos = VectorTileParser.Parse(stream);
-  var fc = layerInfos[0].ToGeoJSON(67317,43082,17);
-  Assert.IsTrue(fc.Features.Count == 47);
-  Assert.IsTrue(fc.Features[0].Geometry.Type == GeoJSONObjectType.Polygon);
-  Assert.IsTrue(fc.Features[0].Properties.Count==2);
-}
+var stream = File.OpenRead(vtfile);
+var layerInfos = VectorTileParser.Parse(stream);
 ```
-
-See also https://github.com/bertt/mapbox-vector-tile-cs/blob/master/tests/mapbox.vector.tile.tests/TileParserTests.cs for working examples
 
 Tip: If you use this library with vector tiles loading from a webserver, you could run into the following exception: 
 'ProtoBuf.ProtoException: Invalid wire-type; this usually means you have over-written a file without truncating or setting the length'
