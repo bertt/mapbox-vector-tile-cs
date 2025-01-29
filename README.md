@@ -76,7 +76,7 @@ Polygon layer: building (id=5) - 975 features
 
 ## History
 
-2025-01-29: Release 5.1, upgrading dependencies + remove GeoJSON.NET dependency
+2025-01-29: Release 5.1, upgrading dependencies + remove GeoJSON.NET dependency + adding samples (SkiaSharp, GeoJSON)
 
 2023-11-26: Release 5.0.2, containing .NET 8
 
