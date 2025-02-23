@@ -2,7 +2,7 @@
 
 [![NuGet Status](http://img.shields.io/nuget/v/mapbox-vector-tile.svg?style=flat)](https://www.nuget.org/packages/mapbox-vector-tile/) ![.NET 8](https://github.com/bertt/mapbox-vector-tile-cs/workflows/.NET%208/badge.svg)
 
-.NET 8 library for decoding a Mapbox vector tile. 
+.NET Standard 2.0 library for decoding a Mapbox vector tile. 
 
 ## Dependencies
 
