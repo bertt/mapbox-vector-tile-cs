@@ -1,7 +1,7 @@
 ﻿namespace Mapbox.Vector.Tile;
 
-public class Coordinate
+public struct Coordinate(long x, long y)
 {
-    public long X { get; set; }
-    public long Y { get; set; }
+    public long X { get; set; } = x; 
+    public long Y { get; set; } = y;
 }

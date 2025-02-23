@@ -5,7 +5,7 @@ namespace Mapbox.Vector.Tile;
 
 public static class VectorTileFeatureExtensions
 {
-    private static List<Position> Project(List<Coordinate> coords, int x, int y, int z, uint extent)
+    private static List<Position> Project(IEnumerable<Coordinate> coords, int x, int y, int z, uint extent)
     {
         return coords.Select(coord => coord.ToPosition(x, y, z, extent)).ToList();
     }
@@ -66,10 +66,10 @@ public static class VectorTileFeatureExtensions
         return geom;
     }
 
-    private static IGeometryObject GetPolygonGeometry(List<List<List<Position>>> polygons)
+    private static IGeometryObject? GetPolygonGeometry(List<List<List<Position>>> polygons)
     {
         {
-            IGeometryObject geom=null;
+            IGeometryObject? geom=null;
 
             if (polygons.Count == 1)
             {
@@ -90,20 +90,10 @@ public static class VectorTileFeatureExtensions
         }
     }
 
-    public static List<Position> ProjectPoints(List<List<Coordinate>> Geometry, int x, int y, int z, uint extent)
-    {
-        var projectedCoords = new List<Position>();
-        var coords = new List<Coordinate>();
+    public static List<Position> ProjectPoints(IEnumerable<IEnumerable<Coordinate>> Geometry, int x, int y, int z, uint extent) => 
+        Geometry.Select(g => Project(g, x, y, z, extent).Single()).ToList();
 
-        foreach (var g in Geometry)
-        {
-            coords.Add(g[0]);
-            projectedCoords = Project(coords, x, y, z, extent);
-        }
-        return projectedCoords;
-    }
-
-    public static List<List<Position>> ProjectLines(List<List<Coordinate>> Geometry, int x, int y, int z, uint extent)
+    public static List<List<Position>> ProjectLines(IEnumerable<IEnumerable<Coordinate>> Geometry, int x, int y, int z, uint extent)
     {
         var projectedCoords = new List<Position>();
         var pointList = new List<List<Position>>();
@@ -115,7 +105,7 @@ public static class VectorTileFeatureExtensions
         return pointList;
     }
 
-    public static List<List<List<Position>>> ProjectPolygons(List<List<List<Coordinate>>> Geometry, int x, int y, int z, uint extent)
+    public static List<List<List<Position>>> ProjectPolygons(IEnumerable<IEnumerable<IEnumerable<Coordinate>>> Geometry, int x, int y, int z, uint extent)
     {
         var projectedCoords = new List<List<Position>>();
         var result = new List<List<List<Position>>>();
@@ -130,20 +120,20 @@ public static class VectorTileFeatureExtensions
 
     public static Feature ToGeoJSON(this VectorTileFeature vectortileFeature, int x, int y, int z)
     {
-        IGeometryObject geom = null;
+        IGeometryObject? geom = null;
 
         switch (vectortileFeature.GeometryType)
         {
             case Tile.GeomType.Point:
-                var projectedPoints = ProjectPoints(vectortileFeature.Geometry, x, y, z, vectortileFeature.Extent);
+                var projectedPoints = ProjectPoints(vectortileFeature.Geometry.Cast<IEnumerable<Coordinate>>(), x, y, z, vectortileFeature.Extent);
                 geom = GetPointGeometry(projectedPoints);
                 break;
             case Tile.GeomType.LineString:
-                var projectedLines = ProjectLines(vectortileFeature.Geometry, x, y, z, vectortileFeature.Extent);
+                var projectedLines = ProjectLines(vectortileFeature.Geometry.Cast<IEnumerable<Coordinate>>(), x, y, z, vectortileFeature.Extent);
                 geom = GetLineGeometry(projectedLines);
                 break;
             case Tile.GeomType.Polygon:
-                var rings = ClassifyRings.Classify(vectortileFeature.Geometry);
+                var rings = ClassifyRings.Classify(vectortileFeature.Geometry.Cast<IList<Coordinate>>());
                 var projectedPolygons = ProjectPolygons(rings, x, y, z, vectortileFeature.Extent);
                 geom = GetPolygonGeometry(projectedPolygons);
                 break;
