@@ -3,6 +3,7 @@
 	  <OutputType>Exe</OutputType>
 	  <TargetFramework>net8.0</TargetFramework>
 	  <IsPackable>false</IsPackable>
+	  <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
     <None Update="testdata\14-8801-5371.vector.pbf">

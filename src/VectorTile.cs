@@ -119,7 +119,7 @@ public sealed class Tile : ProtoBuf.IExtensible
                 HasBoolValue = true;
             }
         }
-        ProtoBuf.IExtension _extensionObject;
+        ProtoBuf.IExtension? _extensionObject;
         ProtoBuf.IExtension ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
         { return ProtoBuf.Extensible.GetExtensionObject(ref _extensionObject, createIfMissing); }
     }
@@ -157,7 +157,7 @@ public sealed class Tile : ProtoBuf.IExtensible
             get { return _geometry; }
         }
 
-        ProtoBuf.IExtension _extensionObject;
+        ProtoBuf.IExtension? _extensionObject;
         ProtoBuf.IExtension ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
         { return ProtoBuf.Extensible.GetExtensionObject(ref _extensionObject, createIfMissing); }
     }
@@ -172,9 +172,9 @@ public sealed class Tile : ProtoBuf.IExtensible
             get { return _version; }
             set { _version = value; }
         }
-        string _name;
+        string? _name;
         [ProtoBuf.ProtoMember(1, IsRequired = true, Name = @"name", DataFormat = ProtoBuf.DataFormat.Default)]
-        public string Name
+        public string? Name
         {
             get { return _name; }
             set { _name = value; }
@@ -208,7 +208,7 @@ public sealed class Tile : ProtoBuf.IExtensible
             get { return _extent; }
             set { _extent = value; }
         }
-        ProtoBuf.IExtension _extensionObject;
+        ProtoBuf.IExtension? _extensionObject;
         ProtoBuf.IExtension ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
         { return ProtoBuf.Extensible.GetExtensionObject(ref _extensionObject, createIfMissing); }
     }
@@ -230,7 +230,7 @@ public sealed class Tile : ProtoBuf.IExtensible
         Polygon = 3
     }
 
-    ProtoBuf.IExtension _extensionObject;
+    ProtoBuf.IExtension? _extensionObject;
     ProtoBuf.IExtension ProtoBuf.IExtensible.GetExtensionObject(bool createIfMissing)
     { return ProtoBuf.Extensible.GetExtensionObject(ref _extensionObject, createIfMissing); }
 }
