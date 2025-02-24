@@ -1,47 +1,57 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace Mapbox.Vector.Tile;
 
 public static class GeometryParser
 {
-    public static List<List<Coordinate>> ParseGeometry(List<uint> geom, Tile.GeomType geomType)
+    private enum Command
     {
-        const uint cmdMoveTo = 1;
-        //const uint cmdLineTo = 2;
-        const uint cmdSegEnd = 7;
-        //const uint cmdBits = 3;
+        None = 0,
+        MoveTo = 1,
+        LineTo = 2,
+        Bits = 3,
+        SegEnd = 7,
+    }
 
+    public static List<ArraySegment<Coordinate>> ParseGeometry(IReadOnlyList<uint> geom, Tile.GeomType geomType)
+    {
         long x = 0;
         long y = 0;
-        var coordsList = new List<List<Coordinate>>();
-        List<Coordinate> coords = null;
-        var geometryCount = geom.Count;
+        
+        var coords = new Coordinate[geom.Count];
+        var insert = 0;
+        var segmentStart = 0;
+
         uint length = 0;
-        uint command = 0;
+        var command = Command.None;
         var i = 0;
-        while (i < geometryCount)
+
+        var result = new List<ArraySegment<Coordinate>>();
+
+        while (i < coords.Length)
         {
             if (length <= 0)
             {
                 length = geom[i++];
-                command = length & ((1 << 3) - 1);
-                length = length >> 3;
+                command = (Command) (length & ((1 << 3) - 1));
+                length >>= 3;
             }
 
             if (length > 0)
             {
-                if (command == cmdMoveTo)
+                if (command == Command.MoveTo && insert > segmentStart)
                 {
-                    coords = new List<Coordinate>();
-                    coordsList.Add(coords);
+                    result.Add(new(coords, segmentStart, insert - segmentStart));
+                    segmentStart = insert;
                 }
             }
 
-            if (command == cmdSegEnd)
+            if (command == Command.SegEnd)
             {
-                if (geomType != Tile.GeomType.Point && !(coords.Count == 0))
+                if (geomType != Tile.GeomType.Point && insert > segmentStart)
                 {
-                    coords.Add(coords[0]);
+                    coords[insert++] = coords[segmentStart];
                 }
                 length--;
                 continue;
@@ -55,13 +65,19 @@ public static class GeometryParser
             var ldx = ZigZag.Decode(dx);
             var ldy = ZigZag.Decode(dy);
 
-            x = x + ldx;
-            y = y + ldy;
+            x += ldx;
+            y += ldy;
 
             // use scale? var  coord = new Coordinate(x / scale, y / scale);
-            var coord = new Coordinate() { X = x, Y = y };
-            coords.Add(coord);
+            var coord = new Coordinate(x, y);
+            coords[insert++] = coord;
         }
-        return coordsList;
+
+        if (insert > segmentStart)
+        {
+            result.Add(new(coords, segmentStart, insert - segmentStart));            
+        }
+
+        return result;
     }
 }

@@ -4,9 +4,9 @@ namespace Mapbox.Vector.Tile;
 
 public class VTPolygon
 {
-    private List<Coordinate> points;
+    private IList<Coordinate> points;
 
-    public VTPolygon(List<Coordinate> points)
+    public VTPolygon(IList<Coordinate> points)
     {
         this.points = points;
     }
