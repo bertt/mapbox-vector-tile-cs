@@ -48,7 +48,7 @@ Failed: 0, Passed: 38, Skipped: 0, Total: 38, Duration: 937 ms
 
 1] GeoJSON
 
-The samples folder contains a simple console application that reads a vector tile from a file and writes the GeoJSON to the console.
+The samples folder contains a simple console application that reads a vector tile from a file and converts to GeoJSON file.
 
 2] SkiaSharp Forms Sample
 
