@@ -1,12 +1,11 @@
-﻿using System;
+﻿using NUnit.Framework;
+using System;
 using System.IO;
 using System.Linq;
-using System.Reflection;
-using NUnit.Framework;
-using static Mapbox.Vector.Tile.Tile;
 using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
+using static Mapbox.Vector.Tile.Tile;
 
 namespace Mapbox.Vector.Tile.tests;
 
@@ -18,10 +17,10 @@ public class TileParserTests
     public void TestIssue10MapBoxVectorTile()
     {
         // arrange
-        const string mapboxissue10File = "mapbox.vector.tile.tests.testdata.cadastral.pbf";
+        const string mapboxissue10File = "cadastral.pbf";
 
         // act
-        var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxissue10File);
+        var pbfStream = File.OpenRead(Path.Combine("testdata", mapboxissue10File));
         var layerInfos = VectorTileParser.Parse(pbfStream);
 
         // asserts
@@ -36,10 +35,10 @@ public class TileParserTests
     public void TestIssue3MapBoxVectorTile()
     {
         // arrange
-        const string mapboxissue3File = "mapbox.vector.tile.tests.testdata.issue3_2911.vector.pbf";
+        const string mapboxissue3File = "issue3_2911.vector.pbf";
 
         // act
-        var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxissue3File);
+        var pbfStream = File.OpenRead(Path.Combine("testdata", mapboxissue3File));
         var layerInfos = VectorTileParser.Parse(pbfStream);
 
         // asserts
@@ -64,10 +63,10 @@ public class TileParserTests
     public void TestBagVectorTile()
     {
         // arrange
-        const string bagfile = "mapbox.vector.tile.tests.testdata.bag-17-67317-43082.pbf";
+        const string bagfile = "bag-17-67317-43082.pbf";
 
         // act
-        var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(bagfile);
+        var pbfStream = File.OpenRead(Path.Combine("testdata", bagfile));
         var layerInfos = VectorTileParser.Parse(pbfStream);
 
         // assert
@@ -105,10 +104,10 @@ public class TileParserTests
     public void TestMapzenTile()
     {
         // arrange
-        const string mapzenfile = "mapbox.vector.tile.tests.testdata.mapzen000.mvt";
+        const string mapzenfile = "mapzen000.mvt";
 
         // act
-        var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapzenfile);
+        var pbfStream = File.OpenRead(Path.Combine("testdata", mapzenfile));
         var layerInfos = VectorTileParser.Parse(pbfStream);
 
         // assert
@@ -125,10 +124,10 @@ public class TileParserTests
     public void TestMapBoxVectorTileNew()
     {
         // arrange
-        const string mapboxfile = "mapbox.vector.tile.tests.testdata.14-8801-5371.vector.pbf";
+        const string mapboxfile = "14-8801-5371.vector.pbf";
 
         // act
-        var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
+        var pbfStream = File.OpenRead(Path.Combine("testdata", mapboxfile));
         var layerInfos = VectorTileParser.Parse(pbfStream);
 
         // check features

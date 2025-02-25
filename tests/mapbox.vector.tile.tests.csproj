@@ -2,26 +2,10 @@
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <IsPackable>false</IsPackable>
+    <Nullable>enable</Nullable>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Include="testdata\14-8801-5371.vector.pbf" />
-    <EmbeddedResource Include="testdata\issue3_2911.vector.pbf" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="testdata\bag-17-67317-43082.pbf" />
-    <EmbeddedResource Include="testdata\mapzen000.mvt" />
-    <EmbeddedResource Include="testdata\multi-point.pbf" />
-    <EmbeddedResource Include="testdata\multi-line.pbf" />
-    <EmbeddedResource Include="testdata\multi-polygon.pbf" />
-    <EmbeddedResource Include="testdata\polygon-with-inner.pbf" />
-    <EmbeddedResource Include="testdata\singleton-line.pbf" />
-    <EmbeddedResource Include="testdata\singleton-point.pbf" />
-    <EmbeddedResource Include="testdata\singleton-polygon.pbf" />
-    <EmbeddedResource Include="testdata\stacked-multipolygon.pbf" />
-    <EmbeddedResource Include="testdata\lots-of-tags.vector.pbf" />
-    <EmbeddedResource Include="testdata\bag_7_65_41.pbf" />
-    <EmbeddedResource Include="testdata\cadastral.pbf" />
-    <EmbeddedResource Include="testdata\16_34440_23455_raw.mvt" />
+    <Content Include="testdata\**" CopyToOutputDirectory="PreserveNewest" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="NUnit" Version="4.3.2" />

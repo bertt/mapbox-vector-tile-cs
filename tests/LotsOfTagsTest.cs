@@ -1,5 +1,5 @@
 ﻿using NUnit.Framework;
-using System.Reflection;
+using System.IO;
 
 namespace Mapbox.Vector.Tile.tests;
 
@@ -9,8 +9,8 @@ public class LotsOfTagsTest
     public void TestLotsOfTags()
     {
         // arrange
-        const string mapboxfile = "mapbox.vector.tile.tests.testdata.lots-of-tags.vector.pbf";
-        var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
+        const string mapboxfile = "lots-of-tags.vector.pbf";
+        var pbfStream = File.OpenRead(Path.Combine("testdata", mapboxfile));
 
         // act
         var layerInfos = VectorTileParser.Parse(pbfStream);

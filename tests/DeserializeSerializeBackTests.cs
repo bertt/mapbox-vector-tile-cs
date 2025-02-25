@@ -2,7 +2,6 @@
 using NUnit.Framework;
 using ProtoBuf;
 using System.IO;
-using System.Reflection;
 
 namespace mapbox.vector.tile.tests;
 
@@ -11,8 +10,8 @@ public class DeserializeSerializeBackTests
     [Test]
     public void TestIssue16()
     {
-        string pbf = "mapbox.vector.tile.tests.testdata.16_34440_23455_raw.mvt";
-        var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(pbf);
+        string pbf = "16_34440_23455_raw.mvt";
+        var pbfStream = File.OpenRead(Path.Combine("testdata", pbf));
 
         // deserialize the tile first
         var tile = Serializer.Deserialize<Tile>(pbfStream);

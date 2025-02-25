@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Mapbox.Vector.Tile;
@@ -23,36 +24,37 @@ public static class AttributesParser
 
     private static object GetAttr(Tile.Value value)
     {
-        object res = null;
-
         if (value.HasBoolValue)
         {
-            res = value.BoolValue;
+            return value.BoolValue;
         }
         else if (value.HasDoubleValue)
         {
-            res = value.DoubleValue;
+            return value.DoubleValue;
         }
         else if (value.HasFloatValue)
         {
-            res = value.FloatValue;
+            return value.FloatValue;
         }
         else if (value.HasIntValue)
         {
-            res = value.IntValue;
+            return value.IntValue;
         }
         else if (value.HasStringValue)
         {
-            res = value.StringValue;
+            return value.StringValue;
         }
         else if (value.HasSIntValue)
         {
-            res = value.SintValue;
+            return value.SintValue;
         }
         else if (value.HasUIntValue)
         {
-            res = value.UintValue;
+            return value.UintValue;
         }
-        return res;
+        else
+        {
+            throw new NotImplementedException("Unknown attribute type");
+        }
     }
 }

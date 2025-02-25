@@ -1,4 +1,4 @@
-﻿using System.Reflection;
+﻿using System.IO;
 using NUnit.Framework;
 using ProtoBuf;
 
@@ -10,8 +10,8 @@ public class AttributesParserTests
     public void TestAttributeParser()
     {
         // arrange
-        const string mapboxfile = "mapbox.vector.tile.tests.testdata.14-8801-5371.vector.pbf";
-        var pbfStream = Assembly.GetExecutingAssembly().GetManifestResourceStream(mapboxfile);
+        const string mapboxfile = "14-8801-5371.vector.pbf";
+        var pbfStream = File.OpenRead(Path.Combine("testdata", mapboxfile));
         var tile = Serializer.Deserialize<Tile>(pbfStream);
         var keys = tile.Layers[0].Keys;
         var values = tile.Layers[0].Values;

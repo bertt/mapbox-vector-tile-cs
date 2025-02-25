@@ -1,6 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using ProtoBuf;
+using System.Collections.Generic;
 using System.IO;
-using ProtoBuf;
 
 namespace Mapbox.Vector.Tile;
 
@@ -13,10 +13,7 @@ public static class VectorTileParser
         foreach (var layer in tile.Layers)
         {
             var extent = layer.Extent;
-            var vectorTileLayer = new VectorTileLayer();
-            vectorTileLayer.Name = layer.Name;
-            vectorTileLayer.Version = layer.Version;
-            vectorTileLayer.Extent = layer.Extent;
+            var vectorTileLayer = new VectorTileLayer(layer.Name ?? "[Unnamed]", layer.Version, extent);
 
             foreach (var feature in layer.Features)
             {
