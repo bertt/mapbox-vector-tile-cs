@@ -76,6 +76,8 @@ Polygon layer: building (id=5) - 975 features
 
 ## History
 
+2025-02-25: Release 5.2.2, nullable enabled
+
 2025-02-24: Release 5.2.1, improved memory handling
 
 2025-02-24: Release 5.2, library is now .NET Standard 2.0
