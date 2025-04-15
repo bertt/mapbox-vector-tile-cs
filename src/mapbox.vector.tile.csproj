@@ -10,12 +10,17 @@
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageId>mapbox-vector-tile</PackageId>
     <Authors>Bert Temme</Authors>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <Company />
     <Product />
     <PackageReleaseNotes />
     <Description>.NET library for encoding/decoding Mapbox Vector tiles</Description>
     <RepositoryUrl>https://github.com/bertt/mapbox-vector-tile-cs</RepositoryUrl>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE" Pack="true" PackagePath = "\" />
+  </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="Properties\**" />
