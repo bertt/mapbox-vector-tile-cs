@@ -76,7 +76,7 @@ Polygon layer: building (id=5) - 975 features
 
 ## History
 
-2025-04-16: Release 5.3.3, updated licence in Nuget package
+2025-04-16: Release 5.2.3, updated licence in Nuget package
 
 2025-02-25: Release 5.2.2, nullable enabled
 
