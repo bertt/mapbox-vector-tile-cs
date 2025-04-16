@@ -18,6 +18,10 @@
     <RepositoryUrl>https://github.com/bertt/mapbox-vector-tile-cs</RepositoryUrl>
   </PropertyGroup>
 
+  <PropertyGroup>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+  </PropertyGroup>
+
   <ItemGroup>
     <None Include="..\LICENSE" Pack="true" PackagePath = "\" />
   </ItemGroup>
