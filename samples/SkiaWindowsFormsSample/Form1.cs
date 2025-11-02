@@ -31,19 +31,20 @@ namespace WinFormsApp1
             var pen = new VelloPen(Color.Blue, 5);
 
             const string vtfile = @"cadastral.pbf";
-            var stream = File.OpenRead(vtfile);
-            var layerInfos = VectorTileParser.Parse(stream);
-            var laerInfo = layerInfos[0];
-            foreach (var feature in laerInfo.VectorTileFeatures)
+            using (var stream = File.OpenRead(vtfile))
             {
-                var coords = feature.Geometry[0];
-                for (var i = 1; i < coords.Count; i++)
+                var layerInfos = VectorTileParser.Parse(stream);
+                var layerInfo = layerInfos[0];
+                foreach (var feature in layerInfo.VectorTileFeatures)
                 {
-                    var c0 = coords[i-1];
-                    var c1 = coords[i];
-                    graphics.DrawLine(pen, new PointF(c0.X, c0.Y), new PointF(c1.X, c1.Y));
+                    var coords = feature.Geometry[0];
+                    for (var i = 1; i < coords.Count; i++)
+                    {
+                        var c0 = coords[i-1];
+                        var c1 = coords[i];
+                        graphics.DrawLine(pen, new PointF(c0.X, c0.Y), new PointF(c1.X, c1.Y));
+                    }
                 }
-
             }
 
             // Dispose de pen
