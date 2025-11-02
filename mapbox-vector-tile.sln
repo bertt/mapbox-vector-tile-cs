@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.3.32929.385
+# Visual Studio Version 18
+VisualStudioVersion = 18.0.11123.170 d18.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "mapbox.vector.tile", "src\mapbox.vector.tile.csproj", "{E1EA7DC2-6EA3-403A-A2DB-7143C9E5B704}"
 EndProject
@@ -45,7 +45,9 @@ Global
 		{3ADBC272-EDCC-4688-A17B-3840B20BDB17}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3ADBC272-EDCC-4688-A17B-3840B20BDB17}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A862BFAB-AD2D-47FC-93D7-4EF509B79E20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A862BFAB-AD2D-47FC-93D7-4EF509B79E20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A862BFAB-AD2D-47FC-93D7-4EF509B79E20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A862BFAB-AD2D-47FC-93D7-4EF509B79E20}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B973CFAC-BE3E-48FD-A4E8-5F0609C89F31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{B973CFAC-BE3E-48FD-A4E8-5F0609C89F31}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B973CFAC-BE3E-48FD-A4E8-5F0609C89F31}.Release|Any CPU.ActiveCfg = Release|Any CPU
