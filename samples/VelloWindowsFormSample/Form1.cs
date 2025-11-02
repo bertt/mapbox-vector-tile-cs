@@ -2,7 +2,7 @@ using Mapbox.Vector.Tile;
 using SkiaSharp;
 using SkiaSharp.Views.Desktop;
 
-namespace WinFormsApp1
+namespace VelloWindowsFormSample
 {
     public partial class Form1 : Form
     {

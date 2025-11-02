@@ -18,9 +18,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "samples", "samples", "{DA8D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoJSONConversion", "samples\GeoJSONConversion\GeoJSONConversion.csproj", "{3ADBC272-EDCC-4688-A17B-3840B20BDB17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkiaWindowsFormsSample", "samples\SkiaWindowsFormsSample\SkiaWindowsFormsSample.csproj", "{A862BFAB-AD2D-47FC-93D7-4EF509B79E20}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VelloWindowsFormSample", "samples\VelloWindowsFormSample\VelloWindowsFormSample.csproj", "{A862BFAB-AD2D-47FC-93D7-4EF509B79E20}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkiaAvaloniaample", "samples\SkiaAvaloniaample\SkiaAvaloniaample.csproj", "{B973CFAC-BE3E-48FD-A4E8-5F0609C89F31}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VelloAvaloniaSample", "samples\VelloAvaloniaSample\VelloAvaloniaSample.csproj", "{B973CFAC-BE3E-48FD-A4E8-5F0609C89F31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
