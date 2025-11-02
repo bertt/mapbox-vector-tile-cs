@@ -49,7 +49,7 @@ namespace SkiaAvaloniaample
                 canvas.Clear(SKColors.White);
 
                 // Create a paint for drawing
-                var paint = new SKPaint
+                using var paint = new SKPaint
                 {
                     Color = SKColors.Blue,
                     StrokeWidth = 5,
@@ -59,7 +59,7 @@ namespace SkiaAvaloniaample
                 const string vtfile = @"cadastral.pbf";
                 if (File.Exists(vtfile))
                 {
-                    var stream = File.OpenRead(vtfile);
+                    using var stream = File.OpenRead(vtfile);
                     var layerInfos = VectorTileParser.Parse(stream);
                     if (layerInfos.Count > 0)
                     {
@@ -75,7 +75,6 @@ namespace SkiaAvaloniaample
                             }
                         }
                     }
-                    stream.Close();
                 }
             }
         }
