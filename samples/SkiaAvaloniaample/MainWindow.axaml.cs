@@ -1,9 +1,8 @@
 using Avalonia;
 using Avalonia.Controls;
+using Avalonia.Media;
 using Mapbox.Vector.Tile;
-using System;
 using System.IO;
-using VelloSharp.Avalonia.Controls;
 
 namespace SkiaAvaloniaample
 {
@@ -19,8 +18,8 @@ namespace SkiaAvaloniaample
         }
     }
 
-    // Custom canvas control that renders vector tiles using VelloSharp
-    public class VectorTileCanvas : VelloCanvasControl
+    // Custom canvas control that renders vector tiles using Avalonia's native drawing
+    public class VectorTileCanvas : Control
     {
         private VectorTileLayer? _tileData;
 
@@ -43,24 +42,39 @@ namespace SkiaAvaloniaample
             }
         }
 
-        // Note: The exact rendering API will depend on VelloSharp's exposed methods
-        // This is a placeholder that demonstrates the integration structure
-        // The actual implementation would use VelloSharp's Scene-based rendering
-        public void RenderVectorTile()
+        public override void Render(DrawingContext context)
         {
+            base.Render(context);
+            
             if (_tileData == null) return;
 
-            // Render vector tile features using VelloSharp
-            // This would use VelloSharp's Scene API once the correct method signatures are determined
+            // Draw white background
+            context.FillRectangle(
+                Brushes.White,
+                new Rect(0, 0, Bounds.Width, Bounds.Height)
+            );
+
+            // Create a blue pen for drawing lines
+            var pen = new Pen(Brushes.Blue, 2);
+
+            // Render vector tile features
             foreach (var feature in _tileData.VectorTileFeatures)
             {
+                if (feature.Geometry == null || feature.Geometry.Count == 0)
+                    continue;
+
                 var coords = feature.Geometry[0];
                 for (var i = 1; i < coords.Count; i++)
                 {
                     var c0 = coords[i - 1];
                     var c1 = coords[i];
                     
-                    // Draw lines - exact API TBD based on VelloSharp documentation
+                    // Draw line using Avalonia's native drawing
+                    context.DrawLine(
+                        pen,
+                        new Point(c0.X, c0.Y),
+                        new Point(c1.X, c1.Y)
+                    );
                 }
             }
         }
