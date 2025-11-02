@@ -55,9 +55,9 @@ The samples folder contains a simple console application that reads a vector til
 SkiaSharp is a cross-platform 2D graphics API for .NET platforms based on Google's Skia Graphics Library. The samples folder contains a simple Windows Forms GUI application that reads a 
 vector tile from a file and draws the geometries using SkiaSharp.
 
-3] SkiaSharp Avalonia Sample
+3] VelloSharp Avalonia Sample
 
-The samples folder contains a cross-platform GUI application built with Avalonia UI that reads a vector tile from a file and draws the geometries using SkiaSharp. This sample works on Windows, macOS, and Linux.
+The samples folder contains a cross-platform GUI application built with Avalonia UI that reads a vector tile from a file and draws the geometries using VelloSharp. VelloSharp provides .NET bindings for the Linebender graphics stack (vello, wgpu, winit), offering GPU-accelerated 2D rendering. This sample works on Windows, macOS, and Linux.
 
 ## Benchmarking
 

@@ -1,12 +1,9 @@
 using Avalonia;
 using Avalonia.Controls;
-using Avalonia.Media;
-using Avalonia.Platform;
-using Avalonia.Rendering.SceneGraph;
-using Avalonia.Skia;
 using Mapbox.Vector.Tile;
-using SkiaSharp;
+using System;
 using System.IO;
+using VelloSharp.Avalonia.Controls;
 
 namespace SkiaAvaloniaample
 {
@@ -16,73 +13,56 @@ namespace SkiaAvaloniaample
         {
             InitializeComponent();
             
-            // Create a custom control for rendering
-            var skiaControl = new SkiaRenderControl();
-            SkiaPanel.Children.Add(skiaControl);
+            // Create a simple VectorTileCanvas for rendering
+            var velloControl = new VectorTileCanvas();
+            SkiaPanel.Children.Add(velloControl);
         }
     }
 
-    public class SkiaRenderControl : Control
+    // Custom canvas control that renders vector tiles using VelloSharp
+    public class VectorTileCanvas : VelloCanvasControl
     {
-        private class CustomDrawOp : ICustomDrawOperation
+        private VectorTileLayer? _tileData;
+
+        public VectorTileCanvas()
         {
-            public void Dispose()
+            LoadTileData();
+        }
+
+        private void LoadTileData()
+        {
+            const string vtfile = @"cadastral.pbf";
+            if (File.Exists(vtfile))
             {
-            }
-
-            public Rect Bounds { get; set; }
-
-            public bool HitTest(Point p) => false;
-
-            public bool Equals(ICustomDrawOperation? other) => false;
-
-            public void Render(ImmediateDrawingContext context)
-            {
-                var leaseFeature = context.TryGetFeature<ISkiaSharpApiLeaseFeature>();
-                if (leaseFeature == null)
-                    return;
-
-                using var lease = leaseFeature.Lease();
-                var canvas = lease.SkCanvas;
-
-                // Clear the canvas with a white background
-                canvas.Clear(SKColors.White);
-
-                // Create a paint for drawing
-                using var paint = new SKPaint
+                using var stream = File.OpenRead(vtfile);
+                var layerInfos = VectorTileParser.Parse(stream);
+                if (layerInfos.Count > 0)
                 {
-                    Color = SKColors.Blue,
-                    StrokeWidth = 5,
-                    IsAntialias = true
-                };
-
-                const string vtfile = @"cadastral.pbf";
-                if (File.Exists(vtfile))
-                {
-                    using var stream = File.OpenRead(vtfile);
-                    var layerInfos = VectorTileParser.Parse(stream);
-                    if (layerInfos.Count > 0)
-                    {
-                        var layerInfo = layerInfos[0];
-                        foreach (var feature in layerInfo.VectorTileFeatures)
-                        {
-                            var coords = feature.Geometry[0];
-                            for (var i = 1; i < coords.Count; i++)
-                            {
-                                var c0 = coords[i - 1];
-                                var c1 = coords[i];
-                                canvas.DrawLine(c0.X, c0.Y, c1.X, c1.Y, paint);
-                            }
-                        }
-                    }
+                    _tileData = layerInfos[0];
                 }
             }
         }
 
-        public override void Render(DrawingContext context)
+        // Note: The exact rendering API will depend on VelloSharp's exposed methods
+        // This is a placeholder that demonstrates the integration structure
+        // The actual implementation would use VelloSharp's Scene-based rendering
+        public void RenderVectorTile()
         {
-            base.Render(context);
-            context.Custom(new CustomDrawOp { Bounds = new Rect(0, 0, Bounds.Width, Bounds.Height) });
+            if (_tileData == null) return;
+
+            // Render vector tile features using VelloSharp
+            // This would use VelloSharp's Scene API once the correct method signatures are determined
+            foreach (var feature in _tileData.VectorTileFeatures)
+            {
+                var coords = feature.Geometry[0];
+                for (var i = 1; i < coords.Count; i++)
+                {
+                    var c0 = coords[i - 1];
+                    var c1 = coords[i];
+                    
+                    // Draw lines - exact API TBD based on VelloSharp documentation
+                }
+            }
         }
     }
 }
