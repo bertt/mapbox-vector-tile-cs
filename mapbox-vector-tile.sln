@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeoJSONConversion", "sample
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkiaWindowsFormsSample", "samples\SkiaWindowsFormsSample\SkiaWindowsFormsSample.csproj", "{A862BFAB-AD2D-47FC-93D7-4EF509B79E20}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SkiaAvaloniaample", "samples\SkiaAvaloniaample\SkiaAvaloniaample.csproj", "{B973CFAC-BE3E-48FD-A4E8-5F0609C89F31}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -44,6 +46,10 @@ Global
 		{3ADBC272-EDCC-4688-A17B-3840B20BDB17}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A862BFAB-AD2D-47FC-93D7-4EF509B79E20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A862BFAB-AD2D-47FC-93D7-4EF509B79E20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B973CFAC-BE3E-48FD-A4E8-5F0609C89F31}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B973CFAC-BE3E-48FD-A4E8-5F0609C89F31}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B973CFAC-BE3E-48FD-A4E8-5F0609C89F31}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B973CFAC-BE3E-48FD-A4E8-5F0609C89F31}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +57,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{3ADBC272-EDCC-4688-A17B-3840B20BDB17} = {DA8D94F6-E16A-480B-B25D-4002F7F432C9}
 		{A862BFAB-AD2D-47FC-93D7-4EF509B79E20} = {DA8D94F6-E16A-480B-B25D-4002F7F432C9}
+		{B973CFAC-BE3E-48FD-A4E8-5F0609C89F31} = {DA8D94F6-E16A-480B-B25D-4002F7F432C9}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {EAE9C612-1C61-4448-9730-9C3F6D1CA715}
