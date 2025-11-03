@@ -2,7 +2,7 @@
 
 [![NuGet Status](http://img.shields.io/nuget/v/mapbox-vector-tile.svg?style=flat)](https://www.nuget.org/packages/mapbox-vector-tile/) ![.NET 8](https://github.com/bertt/mapbox-vector-tile-cs/workflows/.NET%208/badge.svg)
 
-.NET Standard 2.0 library for decoding a Mapbox vector tile. 
+.NET Standard 2.0 library for encoding and decoding Mapbox vector tiles. 
 
 ## Dependencies
 
@@ -16,10 +16,43 @@ $ Install-Package mapbox-vector-tile
 
 ## Usage
 
+### Decoding
+
 ```cs
 const string vtfile = "vectortile.pbf";
 var stream = File.OpenRead(vtfile);
 var layerInfos = VectorTileParser.Parse(stream);
+```
+
+### Encoding
+
+```cs
+// Create a layer
+var layer = new VectorTileLayer("my_layer", 2, 4096);
+
+// Create a feature with attributes and geometry
+var attributes = new List<KeyValuePair<string, object>>
+{
+    new KeyValuePair<string, object>("name", "Example"),
+    new KeyValuePair<string, object>("value", 42)
+};
+
+var coordinates = new[] { new Coordinate(100, 200) };
+var geometry = new List<ArraySegment<Coordinate>> 
+{ 
+    new ArraySegment<Coordinate>(coordinates) 
+};
+
+var feature = new VectorTileFeature("1", geometry, attributes, Tile.GeomType.Point, 4096);
+layer.VectorTileFeatures.Add(feature);
+
+// Encode to stream
+var layers = new List<VectorTileLayer> { layer };
+var outputStream = new MemoryStream();
+VectorTileEncoder.Encode(layers, outputStream);
+
+// Save to file
+File.WriteAllBytes("output.pbf", outputStream.ToArray());
 ```
 
 Tip: If you use this library with vector tiles loading from a webserver, you could run into the following exception: 
