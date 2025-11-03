@@ -4,7 +4,7 @@ using Avalonia.Media;
 using Mapbox.Vector.Tile;
 using System.IO;
 
-namespace SkiaAvaloniaample
+namespace VelloAvaloniaSample
 {
     public partial class MainWindow : Window
     {

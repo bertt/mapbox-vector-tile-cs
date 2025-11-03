@@ -1,7 +1,7 @@
 using Avalonia;
 using System;
 
-namespace SkiaAvaloniaample
+namespace VelloAvaloniaSample
 {
     internal class Program
     {

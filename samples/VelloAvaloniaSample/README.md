@@ -1,4 +1,4 @@
-# SkiaAvaloniaample
+# VelloAvaloniaSample
 
 An Avalonia-based sample application that demonstrates rendering Mapbox Vector Tiles using Avalonia's native drawing APIs.
 
@@ -21,7 +21,7 @@ This cross-platform desktop application uses Avalonia UI framework with its nati
 ## Running the Sample
 
 ```bash
-cd samples/SkiaAvaloniaample
+cd samples/VelloAvaloniaSample
 dotnet run
 ```
 

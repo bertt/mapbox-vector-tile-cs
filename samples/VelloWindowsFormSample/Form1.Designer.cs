@@ -1,4 +1,4 @@
-﻿namespace WinFormsApp1
+﻿namespace VelloWindowsFormSample
 {
     partial class Form1
     {

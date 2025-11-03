@@ -3,7 +3,7 @@ using VelloSharp.WinForms;
 using VelloSharp.WinForms.Integration;
 using System.Drawing;
 
-namespace WinFormsApp1
+namespace VelloWindowsFormSample
 {
     public partial class Form1 : Form
     {

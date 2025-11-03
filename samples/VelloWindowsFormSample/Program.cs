@@ -1,4 +1,4 @@
-namespace WinFormsApp1
+namespace VelloWindowsFormSample
 {
     internal static class Program
     {
