@@ -1,14 +1,15 @@
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Media;
-using Avalonia.Media.Imaging;
 using Avalonia.Platform;
+using Avalonia.Rendering.SceneGraph;
+using Avalonia.Skia;
 using Mapbox.Vector.Tile;
+using SkiaSharp;
 using System;
 using System.IO;
 using System.Numerics;
 using VelloSharp;
-using AvaloniaVector = Avalonia.Vector;
 
 namespace VelloAvaloniaSample
 {
@@ -28,10 +29,6 @@ namespace VelloAvaloniaSample
     public class VelloRenderControl : Control
     {
         private VectorTileLayer? _tileData;
-        private WriteableBitmap? _bitmap;
-        private SparseRenderContext? _renderer;
-        private int _lastWidth;
-        private int _lastHeight;
 
         public VelloRenderControl()
         {
@@ -59,102 +56,133 @@ namespace VelloAvaloniaSample
             var width = (int)Bounds.Width;
             var height = (int)Bounds.Height;
 
-            if (width <= 0 || height <= 0)
+            if (width <= 0 || height <= 0 || _tileData == null)
                 return;
 
-            // Initialize or resize renderer if needed
-            if (_renderer == null || _lastWidth != width || _lastHeight != height)
-            {
-                _renderer?.Dispose();
-                
-                // Clamp dimensions to ushort range for SparseRenderContext
-                var clampedWidth = (ushort)Math.Min(width, ushort.MaxValue);
-                var clampedHeight = (ushort)Math.Min(height, ushort.MaxValue);
-                
-                var options = new SparseRenderContextOptions
-                {
-                    EnableMultithreading = true
-                };
-                
-                _renderer = new SparseRenderContext(clampedWidth, clampedHeight, options);
-                _lastWidth = width;
-                _lastHeight = height;
-                
-                // Create a new WriteableBitmap
-                _bitmap = new WriteableBitmap(
-                    new PixelSize(width, height),
-                    new AvaloniaVector(96, 96),
-                    PixelFormat.Bgra8888,
-                    AlphaFormat.Premul);
-            }
+            // Use custom draw operation to render with VelloSharp
+            context.Custom(new VelloDrawOperation(new Rect(0, 0, width, height), _tileData));
+        }
+    }
 
-            if (_renderer != null && _bitmap != null)
-            {
-                // Clear the renderer
-                _renderer.Reset();
+    // Custom draw operation that uses VelloSharp to render
+    public class VelloDrawOperation : ICustomDrawOperation
+    {
+        private readonly Rect _bounds;
+        private readonly VectorTileLayer _tileData;
 
-                // Fill background with white
-                _renderer.FillRect(0, 0, width, height, new RgbaColor(255, 255, 255, 255));
-
-                // Draw vector tile features using VelloSharp
-                if (_tileData != null)
-                {
-                    var strokeStyle = new StrokeStyle
-                    {
-                        Width = 2.0f
-                    };
-
-                    foreach (var feature in _tileData.VectorTileFeatures)
-                    {
-                        if (feature.Geometry == null || feature.Geometry.Count == 0)
-                            continue;
-
-                        var coords = feature.Geometry[0];
-                        for (var i = 1; i < coords.Count; i++)
-                        {
-                            var c0 = coords[i - 1];
-                            var c1 = coords[i];
-
-                            var linePath = new PathBuilder();
-                            linePath.MoveTo(c0.X, c0.Y);
-                            linePath.LineTo(c1.X, c1.Y);
-
-                            _renderer.StrokePath(
-                                linePath,
-                                strokeStyle,
-                                Matrix3x2.Identity,
-                                new RgbaColor(0, 0, 255, 255)
-                            );
-                        }
-                    }
-                }
-
-                // Render the scene to a byte buffer
-                using (var frameBuffer = _bitmap.Lock())
-                {
-                    unsafe
-                    {
-                        var bufferSpan = new Span<byte>(
-                            (void*)frameBuffer.Address,
-                            frameBuffer.RowBytes * height
-                        );
-                        
-                        _renderer.RenderTo(bufferSpan, SparseRenderMode.OptimizeSpeed);
-                    }
-                }
-
-                // Draw the bitmap to the Avalonia DrawingContext
-                context.DrawImage(_bitmap, new Rect(0, 0, width, height));
-            }
+        public VelloDrawOperation(Rect bounds, VectorTileLayer tileData)
+        {
+            _bounds = bounds;
+            _tileData = tileData;
         }
 
-        protected override void OnDetachedFromVisualTree(VisualTreeAttachmentEventArgs e)
+        public Rect Bounds => _bounds;
+
+        public void Dispose()
         {
-            base.OnDetachedFromVisualTree(e);
+            // Nothing to dispose
+        }
+
+        public bool Equals(ICustomDrawOperation? other)
+        {
+            return other is VelloDrawOperation op && op._bounds == _bounds;
+        }
+
+        public bool HitTest(Point p)
+        {
+            return _bounds.Contains(p);
+        }
+
+        public void Render(ImmediateDrawingContext context)
+        {
+            var leaseFeature = context.TryGetFeature<ISkiaSharpApiLeaseFeature>();
+            if (leaseFeature == null)
+                return;
+
+            using var lease = leaseFeature.Lease();
+            if (lease == null)
+                return;
+
+            // Use reflection to get the canvas property (name varies by version)
+            var canvasProperty = lease.GetType().GetProperty("SkiaCanvas") ?? lease.GetType().GetProperty("Canvas");
+            var canvas = canvasProperty?.GetValue(lease) as SKCanvas;
             
-            // Clean up resources
-            _renderer?.Dispose();
-            _bitmap?.Dispose();
+            if (canvas == null)
+                return;
+
+            var width = (int)_bounds.Width;
+            var height = (int)_bounds.Height;
+
+            // Clamp dimensions to ushort range for SparseRenderContext
+            var clampedWidth = (ushort)Math.Min(width, ushort.MaxValue);
+            var clampedHeight = (ushort)Math.Min(height, ushort.MaxValue);
+
+            var options = new SparseRenderContextOptions
+            {
+                EnableMultithreading = true
+            };
+
+            using var renderer = new SparseRenderContext(clampedWidth, clampedHeight, options);
+
+            // Clear the renderer
+            renderer.Reset();
+
+            // Fill background with white
+            renderer.FillRect(0, 0, width, height, new RgbaColor(255, 255, 255, 255));
+
+            // Draw vector tile features using VelloSharp
+            var strokeStyle = new StrokeStyle
+            {
+                Width = 2.0f
+            };
+
+            foreach (var feature in _tileData.VectorTileFeatures)
+            {
+                if (feature.Geometry == null || feature.Geometry.Count == 0)
+                    continue;
+
+                var coords = feature.Geometry[0];
+                for (var i = 1; i < coords.Count; i++)
+                {
+                    var c0 = coords[i - 1];
+                    var c1 = coords[i];
+
+                    var linePath = new PathBuilder();
+                    linePath.MoveTo(c0.X, c0.Y);
+                    linePath.LineTo(c1.X, c1.Y);
+
+                    renderer.StrokePath(
+                        linePath,
+                        strokeStyle,
+                        Matrix3x2.Identity,
+                        new RgbaColor(0, 0, 255, 255)
+                    );
+                }
+            }
+
+            // Render to a byte buffer
+            var imageInfo = new SKImageInfo(width, height, SKColorType.Bgra8888, SKAlphaType.Premul);
+            var buffer = new byte[imageInfo.RowBytes * height];
+            
+            unsafe
+            {
+                fixed (byte* ptr = buffer)
+                {
+                    var bufferSpan = new Span<byte>(ptr, buffer.Length);
+                    renderer.RenderTo(bufferSpan, SparseRenderMode.OptimizeSpeed);
+                }
+            }
+
+            // Create SKBitmap from buffer and draw to canvas
+            unsafe
+            {
+                fixed (byte* ptr = buffer)
+                {
+                    using var skBitmap = new SKBitmap();
+                    skBitmap.InstallPixels(imageInfo, (IntPtr)ptr, imageInfo.RowBytes);
+                    canvas.DrawBitmap(skBitmap, 0, 0);
+                }
+            }
         }
     }
 }
