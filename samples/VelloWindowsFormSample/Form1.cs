@@ -30,7 +30,9 @@ namespace VelloWindowsFormSample
             // Maak een pen aan
             var pen = new VelloPen(Color.Blue, 5);
 
-            const string vtfile = @"cadastral.pbf";
+            // Load cadastral.pbf from the executable's directory
+            var exeDirectory = AppContext.BaseDirectory;
+            var vtfile = Path.Combine(exeDirectory, "cadastral.pbf");
             using (var stream = File.OpenRead(vtfile))
             {
                 var layerInfos = VectorTileParser.Parse(stream);
