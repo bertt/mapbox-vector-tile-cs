@@ -8,7 +8,6 @@ using System;
 using System.IO;
 using System.Numerics;
 using VelloSharp;
-using VelloFillRule = VelloSharp.FillRule;
 using AvaloniaVector = Avalonia.Vector;
 
 namespace VelloAvaloniaSample
@@ -68,12 +67,16 @@ namespace VelloAvaloniaSample
             {
                 _renderer?.Dispose();
                 
+                // Clamp dimensions to ushort range for SparseRenderContext
+                var clampedWidth = (ushort)Math.Min(width, ushort.MaxValue);
+                var clampedHeight = (ushort)Math.Min(height, ushort.MaxValue);
+                
                 var options = new SparseRenderContextOptions
                 {
                     EnableMultithreading = true
                 };
                 
-                _renderer = new SparseRenderContext((ushort)width, (ushort)height, options);
+                _renderer = new SparseRenderContext(clampedWidth, clampedHeight, options);
                 _lastWidth = width;
                 _lastHeight = height;
                 
@@ -96,6 +99,11 @@ namespace VelloAvaloniaSample
                 // Draw vector tile features using VelloSharp
                 if (_tileData != null)
                 {
+                    var strokeStyle = new StrokeStyle
+                    {
+                        Width = 2.0f
+                    };
+
                     foreach (var feature in _tileData.VectorTileFeatures)
                     {
                         if (feature.Geometry == null || feature.Geometry.Count == 0)
@@ -110,11 +118,6 @@ namespace VelloAvaloniaSample
                             var linePath = new PathBuilder();
                             linePath.MoveTo(c0.X, c0.Y);
                             linePath.LineTo(c1.X, c1.Y);
-
-                            var strokeStyle = new StrokeStyle
-                            {
-                                Width = 2.0f
-                            };
 
                             _renderer.StrokePath(
                                 linePath,
