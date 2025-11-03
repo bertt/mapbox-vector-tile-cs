@@ -15,7 +15,6 @@
     <PackageReference Include="Avalonia.Desktop" Version="11.3.6" />
     <PackageReference Include="Avalonia.Themes.Fluent" Version="11.3.6" />
     <PackageReference Include="Avalonia.Fonts.Inter" Version="11.3.6" />
-    <PackageReference Include="SkiaSharp" Version="2.88.9" />
     <PackageReference Include="VelloSharp" Version="0.5.0-alpha.3" />
     <PackageReference Include="VelloSharp.Native.Vello" Version="0.5.0-alpha.3" />
     <PackageReference Include="VelloSharp.Native.VelloSparse" Version="0.5.0-alpha.3" />
