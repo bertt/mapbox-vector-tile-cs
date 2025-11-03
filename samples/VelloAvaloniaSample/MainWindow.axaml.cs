@@ -30,8 +30,7 @@ namespace VelloAvaloniaSample
     {
         private VectorTileLayer? _tileData;
         private WriteableBitmap? _bitmap;
-        private Renderer? _renderer;
-        private Scene? _scene;
+        private SparseRenderContext? _renderer;
         private int _lastWidth;
         private int _lastHeight;
 
@@ -68,10 +67,13 @@ namespace VelloAvaloniaSample
             if (_renderer == null || _lastWidth != width || _lastHeight != height)
             {
                 _renderer?.Dispose();
-                _scene?.Dispose();
                 
-                _renderer = new Renderer((uint)width, (uint)height);
-                _scene = new Scene();
+                var options = new SparseRenderContextOptions
+                {
+                    EnableMultithreading = true
+                };
+                
+                _renderer = new SparseRenderContext((ushort)width, (ushort)height, options);
                 _lastWidth = width;
                 _lastHeight = height;
                 
@@ -83,25 +85,13 @@ namespace VelloAvaloniaSample
                     AlphaFormat.Premul);
             }
 
-            if (_scene != null && _bitmap != null && _renderer != null)
+            if (_renderer != null && _bitmap != null)
             {
-                // Clear the scene
-                _scene.Reset();
+                // Clear the renderer
+                _renderer.Reset();
 
                 // Fill background with white
-                var pathBuilder = new PathBuilder();
-                pathBuilder.MoveTo(0, 0);
-                pathBuilder.LineTo(width, 0);
-                pathBuilder.LineTo(width, height);
-                pathBuilder.LineTo(0, height);
-                pathBuilder.Close();
-
-                _scene.FillPath(
-                    pathBuilder,
-                    VelloFillRule.NonZero,
-                    Matrix3x2.Identity,
-                    new RgbaColor(255, 255, 255, 255)
-                );
+                _renderer.FillRect(0, 0, width, height, new RgbaColor(255, 255, 255, 255));
 
                 // Draw vector tile features using VelloSharp
                 if (_tileData != null)
@@ -126,7 +116,7 @@ namespace VelloAvaloniaSample
                                 Width = 2.0f
                             };
 
-                            _scene.StrokePath(
+                            _renderer.StrokePath(
                                 linePath,
                                 strokeStyle,
                                 Matrix3x2.Identity,
@@ -141,13 +131,12 @@ namespace VelloAvaloniaSample
                 {
                     unsafe
                     {
-                        var renderParams = new RenderParams();
                         var bufferSpan = new Span<byte>(
                             (void*)frameBuffer.Address,
                             frameBuffer.RowBytes * height
                         );
                         
-                        _renderer.Render(_scene, renderParams, bufferSpan, frameBuffer.RowBytes);
+                        _renderer.RenderTo(bufferSpan, SparseRenderMode.OptimizeSpeed);
                     }
                 }
 
@@ -162,7 +151,6 @@ namespace VelloAvaloniaSample
             
             // Clean up resources
             _renderer?.Dispose();
-            _scene?.Dispose();
             _bitmap?.Dispose();
         }
     }
