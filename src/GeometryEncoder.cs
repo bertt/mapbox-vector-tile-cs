@@ -71,8 +71,8 @@ public static class GeometryEncoder
                 }
             }
 
-            // ClosePath command for polygons and linestrings
-            if (geomType != Tile.GeomType.Point)
+            // ClosePath command for polygons only
+            if (geomType == Tile.GeomType.Polygon)
             {
                 commands.Add(EncodeCommand(Command.ClosePath, 1));
             }
