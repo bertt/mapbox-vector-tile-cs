@@ -10,8 +10,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="SkiaSharp" Version="3.116.1" />
-    <PackageReference Include="SkiaSharp.Views.WindowsForms" Version="3.116.1" />
+    <PackageReference Include="VelloSharp.Integration.WinForms" Version="0.5.0-alpha.3" />
   </ItemGroup>
 
   <ItemGroup>
