@@ -6,7 +6,7 @@ namespace Mapbox.Vector.Tile;
 
 public static class VectorTileEncoder
 {
-    public static void Encode(List<VectorTileLayer> layers, Stream stream)
+    public static Stream Encode(List<VectorTileLayer> layers, Stream stream)
     {
         var tile = new Tile();
         
@@ -48,5 +48,6 @@ public static class VectorTileEncoder
         }
 
         Serializer.Serialize(stream, tile);
+        return stream;
     }
 }

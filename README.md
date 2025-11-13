@@ -48,11 +48,10 @@ layer.VectorTileFeatures.Add(feature);
 
 // Encode to stream
 var layers = new List<VectorTileLayer> { layer };
-var outputStream = new MemoryStream();
-VectorTileEncoder.Encode(layers, outputStream);
+var stream = VectorTileEncoder.Encode(layers, new MemoryStream());
 
 // Save to file
-File.WriteAllBytes("output.pbf", outputStream.ToArray());
+File.WriteAllBytes("output.pbf", ((MemoryStream)stream).ToArray());
 ```
 
 Tip: If you use this library with vector tiles loading from a webserver, you could run into the following exception: 
