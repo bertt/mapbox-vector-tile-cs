@@ -89,7 +89,8 @@ vector tile from a file and draws the geometries using SkiaSharp.
 
 3] Avalonia Sample
 
-The samples folder contains a cross-platform GUI application built with Avalonia UI that reads a vector tile from a file and draws the geometries using Avalonia's native DrawingContext API. This sample works on Windows, macOS, and Linux.
+The samples folder contains a cross-platform GUI application built with Avalonia UI that reads a vector tile from a file and draws the geometries using Avalonia's native DrawingContext API. 
+This sample works on Windows, macOS, and Linux.
 
 ## Benchmarking
 
@@ -111,6 +112,8 @@ Polygon layer: building (id=5) - 975 features
 ```
 
 ## History
+
+2025-11-13: release 5.3.0, add encoding vector tile
 
 2025-04-16: Release 5.2.3, updated licence in Nuget package
 
