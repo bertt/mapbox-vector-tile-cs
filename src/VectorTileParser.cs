@@ -9,11 +9,12 @@ public static class VectorTileParser
     public static List<VectorTileLayer> Parse(Stream stream)
     {
         var tile = Serializer.Deserialize<Tile>(stream);
-        var list = new List<VectorTileLayer>();
+        var list = new List<VectorTileLayer>(tile.Layers.Count);
         foreach (var layer in tile.Layers)
         {
             var extent = layer.Extent;
             var vectorTileLayer = new VectorTileLayer(layer.Name ?? "[Unnamed]", layer.Version, extent);
+            vectorTileLayer.VectorTileFeatures.Capacity = layer.Features.Count;
 
             foreach (var feature in layer.Features)
             {
