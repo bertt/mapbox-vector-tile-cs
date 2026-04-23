@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "BooleanAttributes": {
+      "commandName": "Project",
+      "commandLineArgs": "BooleanAttributes"
+    },
+    "Parsing": {
+      "commandName": "Project",
+      "commandLineArgs": "Parsing"
+    }
+  }
+}
