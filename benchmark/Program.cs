@@ -8,7 +8,7 @@ class Program
     static void Main(string[] args)
     {
         BenchmarkRunner.Run<ParsingBenchmark>();
-        // BenchmarkRunner.Run<BooleanAttributesBenchmark>();
+        BenchmarkRunner.Run<BooleanAttributesBenchmark>();
         Console.ReadKey();
     }
 }
