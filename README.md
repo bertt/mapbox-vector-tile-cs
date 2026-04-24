@@ -113,6 +113,8 @@ Polygon layer: building (id=5) - 975 features
 
 ## History
 
+2026-04-24: release 5.3.1, reduce memory usage + improved performance when decoding boolean vector tiles attributes
+
 2025-11-13: release 5.3.0, add encoding vector tile
 
 2025-04-16: Release 5.2.3, updated licence in Nuget package
