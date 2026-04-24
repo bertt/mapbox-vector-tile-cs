@@ -14,7 +14,7 @@
     <ProjectReference Include="..\src\mapbox.vector.tile.csproj" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="BenchmarkDotNet" Version="0.15.7" />
+    <PackageReference Include="BenchmarkDotNet" Version="0.15.8" />
     <PackageReference Include="CommandLineParser" Version="2.9.1" />
   </ItemGroup>
 </Project>
